@@ -1,0 +1,83 @@
+/* article */
+article .article-group {
+  text-align: center;
+}
+
+/* article - section1 */
+article .section1 {
+  width: 900px;
+  height: 400px;
+  margin-bottom: 30px;
+}
+
+article .section1 img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* article - section2 */
+article .section2 {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  width: 900px;
+  height: 60px;
+  margin-bottom: 30px;
+}
+
+article .section2 span {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 60px;
+  margin-left: 20px;
+}
+
+article .section2 #date1,
+#date2 {
+  width: 180px;
+  height: 30px;
+  margin-left: 20px;
+}
+
+article .section2 #submit {
+  width: 90px;
+  height: 30px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+/* article - section3 */
+article .section3 {
+  width: 900px;
+  height: 300px;
+  margin-bottom: 10px;
+}
+
+article .section3 img {
+  width: 300px;
+  height: 250px;
+  background-size: 100% 100%;
+}
+
+article .section3 span {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+article .section3 .section3-left {
+  width: 300px;
+  float: left;
+  text-align: left;
+}
+
+article .section3 .section3-center {
+  width: 300px;
+  float: left;
+  text-align: left;
+}
+
+article .section3 .section3-right {
+  width: 300px;
+  float: right;
+  text-align: left;
+}

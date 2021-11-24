@@ -26,7 +26,6 @@
                     <h2>예 약</h2>
                 </section>
 
-                <!-- PHP 반복문 사용 요망 -->
                 <section class="section2">
                     <h3>예약 세부정보</h3>
                 </section>

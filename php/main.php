@@ -1,5 +1,5 @@
 <?php
-    include_once $_SERVER['DOCUMENT_ROOT']."/phpsource/theMiraeSeoul/db/create_statement.php";
+    include_once $_SERVER['DOCUMENT_ROOT']."/theMiraeSeoul/db/create_statement.php";
 ?>
 
 <!DOCTYPE html>

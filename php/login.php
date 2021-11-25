@@ -29,7 +29,7 @@
                             <td rowspan="2"><input type="submit" id="login" value="로그인" /></td>
                         </tr>
                         <tr>
-                            <td><input type="text" id="password" name="password" placeholder="비밀번호 입력" /></td>
+                            <td><input type="password" id="password" name="password" placeholder="비밀번호 입력" /></td>
                         </tr>
                         <tr>
                             <td>

@@ -24,7 +24,7 @@
                         full_name VARCHAR(40) NOT NULL DEFAULT '',
                         gender CHAR(3) NOT NULL DEFAULT '',
                         id VARCHAR(20) NOT NULL DEFAULT '',
-                        password VARCHAR(20) NOT NULL DEFAULT '',
+                        password VARCHAR(255) NOT NULL DEFAULT '',
                         email1 VARCHAR(20) NOT NULL DEFAULT '',
                         email2 VARCHAR(20) NOT NULL DEFAULT '',
                         mobile1 CHAR(3) NOT NULL DEFAULT '',

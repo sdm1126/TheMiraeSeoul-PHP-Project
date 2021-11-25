@@ -221,13 +221,16 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 <?php
                 for ($i = 0; $i < count($list); $i++) {
                 ?>
-                    <tr>
-                        <td><?php echo $list[$i]['full_name'] ?></td>
-                        <td><?php echo $list[$i]['id'] ?></td>
-                        <td><?php echo $list[$i]['email1'] . "@" . $list[$i]['email2'] ?></td>
-                        <td><?php echo $list[$i]['mobile1'] . "-" . $list[$i]['mobile2'] . "-" . $list[$i]['mobile3'] ?></td>
-                        <td><button type="button" class="btn btn-secondary btn1">탈퇴</button></td>
-                    </tr>
+                    <form action="adminpage_user_delete.php" method="post">
+                        <tr>
+                            <input type="hidden" name='id' value="<?php echo $list[$i]['id'] ?>">
+                            <td><?php echo $list[$i]['full_name'] ?></td>
+                            <td><?php echo $list[$i]['id'] ?></td>
+                            <td><?php echo $list[$i]['email1'] . "@" . $list[$i]['email2'] ?></td>
+                            <td><?php echo $list[$i]['mobile1'] . "-" . $list[$i]['mobile2'] . "-" . $list[$i]['mobile3'] ?></td>
+                            <td><button type="submit" class="btn btn-secondary btn1">탈퇴</button></td>
+                        </tr>
+                    </form>
                 <?php } ?>
                 <?php if (count($list) == 0) {
                     echo '<tr><td colspan="9">등록된 회원이 없습니다.</td></tr>';

@@ -95,7 +95,6 @@
                     $sql = "CREATE TABLE IF NOT EXISTS inquiry (
                         no INT(11) NOT NULL AUTO_INCREMENT,
                         id VARCHAR(20) NOT NULL DEFAULT '', 
-                        reservation_number VARCHAR(255) DEFAULT '',
                         title VARCHAR(255) NOT NULL DEFAULT '',
                         content VARCHAR(255) NOT NULL DEFAULT '',
                         attached_file VARCHAR(255) DEFAULT '',
@@ -171,5 +170,3 @@
             }
         } // end of if
     }
-
-?>

@@ -35,17 +35,17 @@ $from_record = ($page - 1) * $page_rows; // 시작 열을 구함
 $list = array(); // 회원 정보를 담을 배열 선언
 //해당되는 페이지 레코드를 가져온다.
 if (!isset($_GET['search'])) {
-    $sql = " SELECT * FROM reservation ORDER BY registered_date desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+    $sql = " SELECT * FROM reservation ORDER BY reservation_no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
 } else {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
         $sql = " SELECT * FROM reservation where full_name ='{$nameId}' ORDER BY full_name desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     } else if ($_GET['search'] === 'reservation_no') {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM reservation where reservation_no ='{$nameId}' ORDER BY id desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM reservation where reservation_no ='{$nameId}'"; // 회원 정보를 조회
     } else {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM reservation where check_in ='{$nameId}' ORDER BY id desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM reservation where check_in ='{$nameId}' ORDER BY reservation_no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     }
 }
 

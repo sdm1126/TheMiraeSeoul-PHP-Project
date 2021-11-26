@@ -35,7 +35,7 @@ $from_record = ($page - 1) * $page_rows; // 시작 열을 구함
 $list = array(); // 회원 정보를 담을 배열 선언
 //해당되는 페이지 레코드를 가져온다.
 if (!isset($_GET['search'])) {
-    $sql = " SELECT * FROM inquiry ORDER BY written_date desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+    $sql = " SELECT * FROM inquiry ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
 } else {
     if ($_GET['search'] === 'id') {
         $nameId = $_GET['nameId'];
@@ -61,14 +61,14 @@ $str = ''; // 페이징 시작
 if ($page > 1) {
 
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./adminpage_user.php?page=1" class="arrow pprev"><<</a>';
+        $str .= '<a href="./adminpage_inquiry_board.php?page=1" class="arrow pprev"><<</a>';
     } else {
         if ($_GET['search'] === 'id') {
-            $str .= '<a href="./adminpage_user.php?page=1&search=id&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=1&search=id&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         } else if ($_GET['search'] === 'title') {
-            $str .= '<a href="./adminpage_user.php?page=1&search=title&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=1&search=title&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=1&search=written_date&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=1&search=written_date&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         }
     }
 }
@@ -83,15 +83,15 @@ if ($end_page >= $total_page) $end_page = $total_page;
 //[처음][이전][11]스트롱[12][13]...[19][20]=>//[처음][이전][1][2][3]...[9][10]스트롱
 if ($start_page > 1) {
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '" class="arrow prev"><</a>';
+        $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($start_page - 1) . '" class="arrow prev"><</a>';
     } else {
 
         if ($_GET['search'] === 'id') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '&search=id&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($start_page - 1) . '&search=id&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else if ($_GET['search'] === 'title') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '&search=title&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($start_page - 1) . '&search=title&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '&search=written_date&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($start_page - 1) . '&search=written_date&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
     }
 }
@@ -102,7 +102,7 @@ if ($total_page > 1) {
     if (!isset($_GET['search'])) {
         for ($k = $start_page; $k <= $end_page; $k++) {
             if ($page != $k)
-                $str .= '<a href="./adminpage_user.php?page=' . $k . '" class="pg_page">' . $k . '</a>';
+                $str .= '<a href="./adminpage_inquiry_board.php?page=' . $k . '" class="pg_page">' . $k . '</a>';
             else
                 $str .= '<a class="active">' . $k . '</a>';
         }
@@ -110,21 +110,21 @@ if ($total_page > 1) {
         if ($_GET['search'] === 'id') {
             for ($k = $start_page; $k <= $end_page; $k++) {
                 if ($page != $k)
-                    $str .= '<a href="./adminpage_user.php?page=' . $k . '&search=id&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
+                    $str .= '<a href="./adminpage_inquiry_board.php?page=' . $k . '&search=id&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
         } else if ($_GET['search'] === 'title') {
             for ($k = $start_page; $k <= $end_page; $k++) {
                 if ($page != $k)
-                    $str .= '<a href="./adminpage_user.php?page=' . $k . '&search=title&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
+                    $str .= '<a href="./adminpage_inquiry_board.php?page=' . $k . '&search=title&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
         } else {
             for ($k = $start_page; $k <= $end_page; $k++) {
                 if ($page != $k)
-                    $str .= '<a href="./adminpage_user.php?page=' . $k . '&search=written_date&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
+                    $str .= '<a href="./adminpage_inquiry_board.php?page=' . $k . '&search=written_date&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
@@ -135,28 +135,28 @@ if ($total_page > 1) {
 //[처음][이전][11]스트롱[12][13]...[19][20]=>//[처음][이전][21]스트롱[22][23]...[29][30]
 if ($total_page > $end_page) {
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./memo_login.php?page=' . ($end_page + 1) . '" class="arrow next">></a>';
+        $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($end_page + 1) . '" class="arrow next">></a>';
     } else {
         if ($_GET['search'] === 'id') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '&search=id&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($end_page + 1) . '&search=id&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else if ($_GET['search'] === 'title') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '&search=title&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($end_page + 1) . '&search=title&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '&search=written_date&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . ($end_page + 1) . '&search=written_date&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
     }
 }
 //현재페이지가 전체페이지보다 작다면 //[처음][이전][11]스트롱[12][13]...[19][20]
 if ($page < $total_page) {
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./adminpage_user.php?page=' . $total_page . '" class="arrow nnext">>></a>';
+        $str .= '<a href="./adminpage_inquiry_board.php?page=' . $total_page . '" class="arrow nnext">>></a>';
     } else {
         if ($_GET['search'] === 'id') {
-            $str .= '<a href="./adminpage_user.php?page=' . $total_page . '&search=id&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . $total_page . '&search=id&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else if ($_GET['search'] === 'title') {
-            $str .= '<a href="./adminpage_user.php?page=' . $total_page . '&search=title&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . $total_page . '&search=title&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=' . $total_page . '&search=written_date&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_inquiry_board.php?page=' . $total_page . '&search=written_date&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
     }
 }
@@ -181,6 +181,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/aside.css">
     <link rel="stylesheet" href="../css/adminpage_inquiry_board.css">
+    <link rel="stylesheet" href="../css/page.css">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const search = document.querySelector('#search');
@@ -213,9 +214,9 @@ mysqli_close($con); // 데이터베이스 접속 종료
                         <br>페이지
                     </li>
                     <hr>
-                    <li>전체 정보</li>
-                    <li>전체 예약</li>
-                    <li><b>전체 문의</b></li>
+                    <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
+                    <li><a href="./adminpage_reservation.php?page=1">전체 예약</a></li>
+                    <li><a href="./adminpage_inquiry_board.php?page=1"><b>전체 문의</a></b></li>
                 </ul>
             </div>
         </aside>
@@ -225,10 +226,9 @@ mysqli_close($con); // 데이터베이스 접속 종료
             <select class="custom-select" id="root">
                 <option value="id">아이디</option>
                 <option value="title">제목</option>
-                <option value="written_date">작성일자</option>
             </select>
-            <input type="text" class="custum-search form-control">
-            <button type="button" class="btn btn-secondary">조회</button>
+            <input type="text" class="custum-search form-control" id="nameId">
+            <button type="button" class="btn btn-secondary" id="search">조회</button>
         </div>
         <div class="section2">
             <table border="1">
@@ -237,7 +237,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
                         <h4>번호</h4>
                     </td>
                     <td class="id title">
-                        <h4>성명</h4>
+                        <h4>아이디</h4>
                     </td>
                     <td class="email title">
                         <h4>제목</h4>
@@ -252,13 +252,16 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 <?php
                 for ($i = 0; $i < count($list); $i++) {
                 ?>
-                    <tr>
-                        <td><?php echo $list[$i]['full_name'] ?></td>
-                        <td><?php echo $list[$i]['reservation_no'] ?></td>
-                        <td><?php echo $list[$i]['check_in'] ?></td>
-                        <td><?php echo $list[$i]['check_out'] ?></td>
-                        <td><button type="button" class="btn btn-secondary btn1">취소</button></td>
-                    </tr>
+                    <form action="adminpage_inquiry_board_delete.php" method="post">
+                        <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                        <tr>
+                            <td><?php echo $list[$i]['no'] ?></td>
+                            <td><?php echo $list[$i]['id'] ?></td>
+                            <td><a href="adminpage_inquiry_read.php?no=<?php echo $list[$i]['no'] ?>"><?php echo $list[$i]['title'] ?></a></td>
+                            <td><?php echo $list[$i]['written_date'] ?></td>
+                            <td><button type="submit" class="btn btn-secondary btn1">삭제</button></td>
+                        </tr>
+                    </form>
                 <?php } ?>
                 <?php if (count($list) == 0) {
                     echo '<tr><td colspan="9">등록된 문의가 없습니다.</td></tr>';

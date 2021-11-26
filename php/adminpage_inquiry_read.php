@@ -1,3 +1,17 @@
+<?php
+include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
+$no = $_GET['no'];
+
+$sql = " SELECT * FROM inquiry where no = '{$no}'"; // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
+$result = mysqli_query($con, $sql);
+$row = mysqli_fetch_assoc($result);;
+
+$id = $row['id'];
+
+$sql = " SELECT * FROM user where id = '{$id}'"; // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
+$result = mysqli_query($con, $sql);
+$row1 = mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +30,7 @@
     <div class="container">
         <!-- header -->
         <?php
-            include('./header.php');
+        include('./header.php');
         ?>
 
         <!-- aside -->
@@ -44,28 +58,28 @@
                 <form action="">
                     <table>
                         <tr>
-                            <td class="title">성명</td>
-                            <td>(개인 정보에서 넘어오게 함)</td>
+                            <td class="title">아이디</td>
+                            <td><?php echo $row['id'] ?></td>
                         </tr>
                         <tr>
                             <td class="title">예약번호</td>
-                            <td><span></span></td>
+                            <td><span><?php echo $row['no'] ?></span></td>
                         </tr>
                         <tr>
                             <td class="title">제목</td>
-                            <td><span></span></td>
+                            <td><span><?php echo $row['title'] ?></span></td>
                         </tr>
                         <tr>
                             <td class="title" id="content">내용</td>
-                            <td><textarea name="" id="" cols="30" rows="10" disabled></textarea></td>
+                            <td><textarea name="" id="" cols="30" rows="10" disabled><?php echo $row['content'] ?></textarea></td>
                         </tr>
                         <tr>
                             <td class="title">휴대전화</td>
-                            <td>(개인 정보에서 넘어오게 함)</td>
+                            <td><?php echo $row1['mobile1'] . "-" . $row1['mobile2'] . "-" . $row1['mobile3'] ?></td>
                         </tr>
                         <tr>
                             <td class="title">이메일</td>
-                            <td>(개인 정보에서 넘어오게 함)</td>
+                            <td><?php echo $row1['email1'] . "@" . $row1['email2'] ?></td>
                         </tr>
                     </table>
                 </form>
@@ -74,7 +88,7 @@
 
         <!-- footer -->
         <?php
-            include('./footer.php');
+        include('./footer.php');
         ?>
     </div>
 </body>

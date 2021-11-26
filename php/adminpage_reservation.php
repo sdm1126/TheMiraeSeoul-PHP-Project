@@ -61,14 +61,14 @@ $str = ''; // 페이징 시작
 if ($page > 1) {
 
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./adminpage_user.php?page=1" class="arrow pprev"><<</a>';
+        $str .= '<a href="./adminpage_reservation.php?page=1" class="arrow pprev"><<</a>';
     } else {
         if ($_GET['search'] === 'name') {
-            $str .= '<a href="./adminpage_user.php?page=1&search=name&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=1&search=name&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_user.php?page=1&search=reservation_no&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=1&search=reservation_no&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=1&search=check_in&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=1&search=check_in&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         }
     }
 }
@@ -83,15 +83,15 @@ if ($end_page >= $total_page) $end_page = $total_page;
 //[처음][이전][11]스트롱[12][13]...[19][20]=>//[처음][이전][1][2][3]...[9][10]스트롱
 if ($start_page > 1) {
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '" class="arrow prev"><</a>';
+        $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '" class="arrow prev"><</a>';
     } else {
 
         if ($_GET['search'] === 'name') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=' . ($start_page - 1) . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
     }
 }
@@ -102,7 +102,7 @@ if ($total_page > 1) {
     if (!isset($_GET['search'])) {
         for ($k = $start_page; $k <= $end_page; $k++) {
             if ($page != $k)
-                $str .= '<a href="./adminpage_user.php?page=' . $k . '" class="pg_page">' . $k . '</a>';
+                $str .= '<a href="./adminpage_reservation.php?page=' . $k . '" class="pg_page">' . $k . '</a>';
             else
                 $str .= '<a class="active">' . $k . '</a>';
         }
@@ -110,21 +110,21 @@ if ($total_page > 1) {
         if ($_GET['search'] === 'name') {
             for ($k = $start_page; $k <= $end_page; $k++) {
                 if ($page != $k)
-                    $str .= '<a href="./adminpage_user.php?page=' . $k . '&search=name&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
+                    $str .= '<a href="./adminpage_reservation.php?page=' . $k . '&search=name&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
         } else if ($_GET['search'] === 'reservation_no') {
             for ($k = $start_page; $k <= $end_page; $k++) {
                 if ($page != $k)
-                    $str .= '<a href="./adminpage_user.php?page=' . $k . '&search=reservation_no&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
+                    $str .= '<a href="./adminpage_reservation.php?page=' . $k . '&search=reservation_no&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
         } else {
             for ($k = $start_page; $k <= $end_page; $k++) {
                 if ($page != $k)
-                    $str .= '<a href="./adminpage_user.php?page=' . $k . '&search=check_in&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
+                    $str .= '<a href="./adminpage_reservation.php?page=' . $k . '&search=check_in&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
@@ -135,28 +135,28 @@ if ($total_page > 1) {
 //[처음][이전][11]스트롱[12][13]...[19][20]=>//[처음][이전][21]스트롱[22][23]...[29][30]
 if ($total_page > $end_page) {
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./memo_login.php?page=' . ($end_page + 1) . '" class="arrow next">></a>';
+        $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '" class="arrow next">></a>';
     } else {
         if ($_GET['search'] === 'name') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
     }
 }
 //현재페이지가 전체페이지보다 작다면 //[처음][이전][11]스트롱[12][13]...[19][20]
 if ($page < $total_page) {
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./adminpage_user.php?page=' . $total_page . '" class="arrow nnext">>></a>';
+        $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '" class="arrow nnext">>></a>';
     } else {
         if ($_GET['search'] === 'name') {
-            $str .= '<a href="./adminpage_user.php?page=' . $total_page . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_user.php?page=' . $total_page . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
-            $str .= '<a href="./adminpage_user.php?page=' . $total_page . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
+            $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
     }
 }
@@ -214,9 +214,9 @@ mysqli_close($con); // 데이터베이스 접속 종료
                         <br>페이지
                     </li>
                     <hr>
-                    <li>전체 정보</li>
-                    <li><b>전체 예약</b></li>
-                    <li>전체 문의</li>
+                    <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
+                    <li><a href="./adminpage_reservation.php?page=1"><b>전체 예약</b></a></li>
+                    <li><a href="./adminpage_inquiry_board.php?page=1">전체 문의</a></li>
                 </ul>
             </div>
         </aside>
@@ -243,14 +243,14 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 <?php
                 for ($i = 0; $i < count($list); $i++) {
                 ?>
-                    <form action="adminpage_user_delete.php" method="post">
+                    <form action="adminpage_reservation_delete.php" method="post">
                         <input type="hidden" name="reservation_no" value="<?php echo $list[$i]['reservation_no'] ?>">
                         <tr>
                             <td><?php echo $list[$i]['full_name'] ?></td>
                             <td><?php echo $list[$i]['reservation_no'] ?></td>
                             <td><?php echo $list[$i]['check_in'] ?></td>
                             <td><?php echo $list[$i]['check_out'] ?></td>
-                            <td><button type="button" class="btn btn-secondary btn1">취소</button></td>
+                            <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
                         </tr>
                     </form>
                 <?php } ?>

@@ -117,7 +117,7 @@ if ($total_page > 1) {
 //[처음][이전][11]스트롱[12][13]...[19][20]=>//[처음][이전][21]스트롱[22][23]...[29][30]
 if ($total_page > $end_page) {
     if (!isset($_GET['search'])) {
-        $str .= '<a href="./memo_login.php?page=' . ($end_page + 1) . '" class="arrow next">></a>';
+        $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '" class="arrow next">></a>';
     } else {
         if ($_GET['search'] === 'name') {
             $str .= '<a href="./adminpage_user.php?page=' . ($end_page + 1) . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
@@ -193,9 +193,9 @@ mysqli_close($con); // 데이터베이스 접속 종료
                         <br>페이지
                     </li>
                     <hr>
-                    <li>전체 정보</li>
-                    <li>전체 예약</li>
-                    <li>전체 문의</li>
+                    <li><a href="./adminpage_user.php?page=1"><b>전체 정보</b></a></li>
+                    <li><a href="./adminpage_reservation.php?page=1">전체 예약</a></li>
+                    <li><a href="./adminpage_inquiry_board.php?page=1">전체 문의</a></li>
                 </ul>
             </div>
         </aside>

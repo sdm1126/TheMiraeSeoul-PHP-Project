@@ -13,14 +13,12 @@ if (!$id || !$password) {
 
 $sql = " SELECT * FROM user WHERE id = '$id' "; // 회원 테이블에서 해당 아이디가 존재하는지 체크
 $result = mysqli_query($con, $sql);
-$mb = mysqli_fetch_assoc($result);
+$mb = mysqli_fetch_assoc($result);;
 
-$sql = " SELECT PASSWORD('$password') AS pass "; // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
+$sql = "SELECT UNHEX('" . $mb['password'] . "') as password;";
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
-$password = $row['pass'];
-
-if (!$mb['id'] || !($password === $mb['password'])) { // 존재하는 아이디인지, 입력한 패스워드가 회원 테이블에 저장된 패스워드와 동일한지 체크
+if (!$mb['id'] || !($password === $row['password'])) { // 존재하는 아이디인지, 입력한 패스워드가 회원 테이블에 저장된 패스워드와 동일한지 체크
 	echo "<script>alert('가입된 회원아이디가 아니거나 비밀번호가 틀립니다.\\n비밀번호는 대소문자를 구분합니다.');</script>";
 	echo "<script>location.replace('./login.php');</script>";
 	exit;

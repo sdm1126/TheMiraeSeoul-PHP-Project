@@ -182,21 +182,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
     <link rel="stylesheet" href="../css/aside.css">
     <link rel="stylesheet" href="../css/adminpage_reservation.css">
     <link rel="stylesheet" href="../css/page.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const search = document.querySelector('#search');
-            const root = document.querySelector('#root');
-            const nameId = document.querySelector('#nameId');
-            search.addEventListener('click', (event) => {
-                if (nameId.value.trim() === '') {
-                    location.replace('./adminpage_reservation.php?page=1');
-                } else {
-
-                    location.replace('./adminpage_reservation.php?page=1&search=' + root.value + '&nameId=' + nameId.value);
-                }
-            })
-        })
-    </script>
+    <script src="../js/adminpage_reservation.js"></script>
 </head>
 
 <body>

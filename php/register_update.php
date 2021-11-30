@@ -71,7 +71,7 @@ if (!$mobile3) {
 	exit;
 }
 
-$sql = " SELECT PASSWORD('$password') AS pass "; // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
+$sql = " SELECT HEX('$password') AS pass "; // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
 $password = $row['pass'];

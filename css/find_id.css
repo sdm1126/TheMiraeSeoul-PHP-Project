@@ -63,3 +63,10 @@ article .section3 input {
   height: 40px;
   font-weight: bold;
 }
+#find_id {
+  cursor: pointer;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}

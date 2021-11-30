@@ -243,7 +243,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
                         <tr>
                             <td><?php echo $list[$i]['no'] ?></td>
                             <td><?php echo $list[$i]['id'] ?></td>
-                            <td><a href="adminpage_inquiry_read.php?no=<?php echo $list[$i]['no'] ?>"><?php echo $list[$i]['title'] ?></a></td>
+                            <td><a href="adminpage_inquiry_read.php?no=<?php echo $list[$i]['no'] ?>&id=<?php echo $list[$i]['id'] ?>"><?php echo $list[$i]['title'] ?></a></td>
                             <td><?php echo $list[$i]['written_date'] ?></td>
                             <td><button type="submit" class="btn btn-secondary btn1">삭제</button></td>
                         </tr>

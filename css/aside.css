@@ -1,0 +1,25 @@
+aside {
+  width: 150px;
+  height: auto;
+  float: left;
+  background-color: #eaeaea;
+  padding: 10px 25px;
+}
+
+aside ul {
+  text-align: center;
+  list-style-type: none;
+}
+
+aside li {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  color: rgb(64, 64, 64);
+  font-weight: normal;
+}
+
+aside li.title {
+  font-size: 16px;
+  font-weight: bolder;
+}

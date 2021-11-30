@@ -12,8 +12,8 @@
 <body>
     <div class="container">
         <!-- header -->
-        <?php 
-            include('./header.php')
+        <?php
+        include('./header.php')
         ?>
 
         <!-- article -->
@@ -87,11 +87,20 @@
         </article>
 
         <!-- footer -->
-        <?php 
-            include('./footer.php')
+        <?php
+        include('./footer.php')
         ?>
     </div>
-
+    <SCript>
+        let id = document.querySelector('#id')
+        let password_new = document.querySelector('#password_new')
+        let password_check = document.querySelector('#password_check')
+        let email1 = document.querySelector('#email1')
+        let email2 = document.querySelector('#email2')
+        let mobile1 = document.querySelector('#mobile1')
+        let mobile2 = document.querySelector('#mobile2')
+        let mobile3 = document.querySelector('#mobile3')
+    </SCript>
 </body>
 
 </html>

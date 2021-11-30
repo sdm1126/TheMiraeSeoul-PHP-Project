@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <header>
     <div class="header-group">
         <div class="header-center">

@@ -6,6 +6,8 @@
 -->
 
 <?php
+    session_start();
+    $_SESSION['ss_mb_id'] = 'test_id_01';
     // 1. 데이터베이스 시간 설정
     date_default_timezone_set("Asia/Seoul");
 
@@ -74,5 +76,26 @@
     // 6-3. MySQL 인젝션 방어 함수
     function sql_escape($conn, $content) {
         return mysqli_real_escape_string($conn, $content);
+    }
+
+    function paging($current_page, $start_page, $end_page, $total_page, $a){
+        //$a = './mypage_inquiry_board.php?'; 문자열에 주의할 것
+        $paging_str = '';
+    
+        $paging_str .= $current_page > 1 ? '<a href="'.$a.'page=1" class="pg_page pg_start">처음</a>' : '';
+
+        $paging_str .= $start_page > 1 ? '<a href="'.$a.'page="' . ($start_page - 1) . '"class="pg_page pg_start">이전</a>' : '';
+    
+        for ($i = $start_page; $i <= $end_page; $i++) {
+            $paging_str .= $current_page != $i ? '<a href="'.$a.'page=' . $i . '" class="pg_page">' . $i . '</a>' : '<strong class="pg_current">' . $i . '</strong>';
+        }
+        
+        $paging_str .= $end_page < $total_page ? '<a href="'.$a.'page=' . ($end_page + 1) . '" class="pg_page pg_next">다음</a>' : '';
+
+        $paging_str .= $current_page < $total_page ? '<a href="'.$a.'page=' . $total_page . '" class="pg_page pg_end">맨끝</a>' : '';
+
+        $index_page = $paging_str !== '' ? "<nav class=\"pg_wrap\"><span class=\"pg\">{$paging_str}</span></nav>" : '';
+
+        return $index_page;
     }
 ?>

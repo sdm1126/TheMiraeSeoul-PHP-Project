@@ -22,10 +22,10 @@
                 <ul>
                     <li class="title">마이 페이지</li>
                     <hr>
-                    <li>내 정보</li>
-                    <li>내 예약</li>
-                    <li>내 문의</li>
-                    <li><b>회원탈퇴</b></li>
+                    <li><a href="./mypage_user.php">내 정보</a></li>
+                    <li><a href="./mypage_reservation.php">내 예약</a></li>
+                    <li><a href="./mypage_inquiry_board.php?page=1">내 문의</a></li>
+                    <li><a href="./mypage_resignation.php"><b>회원탈퇴</b></a></li>
                 </ul>
             </div>
         </aside>

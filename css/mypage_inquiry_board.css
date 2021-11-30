@@ -75,6 +75,10 @@ tr {
 
 .table table tr td:nth-child(2) {
   width: 500px;
+  /* 2021-11-29 수정 게시판 제목 */
+  max-width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .index {

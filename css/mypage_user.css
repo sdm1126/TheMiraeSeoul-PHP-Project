@@ -51,6 +51,10 @@ tr :nth-child(even) {
   font-size: 18px;
 }
 
+td input{
+  outline: none;
+}
+
 tr.gender > td > select {
   width: 100px;
 }

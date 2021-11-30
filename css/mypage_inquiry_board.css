@@ -75,13 +75,10 @@ tr {
 
 .table table tr td:nth-child(2) {
   width: 500px;
-<<<<<<< HEAD
   /* 2021-11-29 수정 게시판 제목 */
   max-width: 500px;
   white-space: nowrap;
   overflow: hidden;
-=======
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
 }
 
 .index {
@@ -89,7 +86,3 @@ tr {
   text-align: center;
   margin-bottom: 50px;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460

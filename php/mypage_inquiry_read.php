@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 <?php
     include_once('../db/db_connector.php');
 ?>
-=======
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,35 +18,23 @@
 <body>
     <div class="container">
         <?php
-<<<<<<< HEAD
         include('./header.php');
-=======
-            include('./header.php');
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
         ?>
         <aside>
             <div>
                 <ul>
                     <li class="title">마이 페이지</li>
                     <hr>
-<<<<<<< HEAD
                     <li><a href="./mypage_user.php">내 정보</a></li>
                     <li><a href="./mypage_reservation.php">내 예약</a></li>
                     <li><a href="./mypage_inquiry_board.php?page=1"><b>내 문의</b></a></li>
                     <li><a href="./mypage_resignation.php">회원탈퇴</a></li>
-=======
-                    <li>내 정보</li>
-                    <li>내 예약</li>
-                    <li><b>내 문의</b></li>
-                    <li>회원탈퇴</li>
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                 </ul>
             </div>
         </aside>
         <main>
             <article class="h2">
                 <h2>내 문의</h2>
-<<<<<<< HEAD
                 <?php
                     $list_number = $_GET['no'];
                     $mb_id = $_GET['id'];
@@ -82,17 +67,10 @@
             <hr>
             <article class="form">
                 <form action="./mypage_inquiry_update.php?no=<?=$list_number?>" method="post">
-=======
-            </article>
-            <hr>
-            <article class="form">
-                <form action="">
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                     <table>
                         <tr>
                             <!-- 첫번째 줄 시작 -->
                             <td class="title">성명</td>
-<<<<<<< HEAD
                             <td><?=$full_name?></td>
                         </tr><!-- 첫번째 줄 끝 -->
                         <tr>
@@ -109,38 +87,15 @@
                             <!-- 두번째 줄 시작 -->
                             <td class="title">내용</td>
                             <td><textarea name="content" id="content" cols="30" rows="10" readonly><?=$content?></textarea></td>
-=======
-                            <td>(개인 정보에서 넘어오게 함)</td>
-                        </tr><!-- 첫번째 줄 끝 -->
-                        <tr>
-                            <!-- 두번째 줄 시작 -->
-                            <td class="title">예약번호</td>
-                            <td><input type="text"></td>
-                        </tr><!-- 두번째 줄 끝 -->
-                        <tr>
-                            <!-- 두번째 줄 시작 -->
-                            <td class="title">제목</td>
-                            <td><input type="text"></td>
-                        </tr><!-- 두번째 줄 끝 -->
-                        <tr>
-                            <!-- 두번째 줄 시작 -->
-                            <td class="title" id="content">내용</td>
-                            <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                         </tr><!-- 두번째 줄 끝 -->
                         <tr>
                             <!-- 두번째 줄 시작 -->
                             <td class="title">휴대전화</td>
-<<<<<<< HEAD
                             <td><?=$mobile?></td>
-=======
-                            <td>(개인 정보에서 넘어오게 함)</td>
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                         </tr><!-- 두번째 줄 끝 -->
                         <tr>
                             <!-- 두번째 줄 시작 -->
                             <td class="title">이메일</td>
-<<<<<<< HEAD
                             <td><?=$email?></td>
                         </tr><!-- 두번째 줄 끝 -->
                     </table>
@@ -239,35 +194,4 @@
         }
     </script>
 </body>
-=======
-                            <td>(개인 정보에서 넘어오게 함)</td>
-                        </tr><!-- 두번째 줄 끝 -->
-                    </table>
-                </form>
-            </article>
-            <article class="button">
-                <div>
-                    <input type="submit" value="수 정">
-                    <input type="button" value="삭 제">
-                </div>
-            </article>
-            <article class="textarea">
-                <h3>댓 글</h3>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-            </article>
-            <article class="reply">
-                <div>
-                    <input type="button" value="등 록">
-                    <input type="button" value="수 정">
-                    <input type="button" value="삭 제">
-                </div>
-            </article>
-        </main>
-        <?php
-            include('./footer.php');
-        ?>
-    </div>
-</body>
-
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
 </html>

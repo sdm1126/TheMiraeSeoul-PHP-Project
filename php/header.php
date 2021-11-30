@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-<?php
-    session_start();
-?>
-
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
 <header>
     <div class="header-group">
         <div class="header-center">

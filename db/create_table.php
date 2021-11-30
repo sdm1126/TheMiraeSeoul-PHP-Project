@@ -24,11 +24,7 @@
                         full_name VARCHAR(40) NOT NULL DEFAULT '',
                         gender CHAR(3) NOT NULL DEFAULT '',
                         id VARCHAR(20) NOT NULL DEFAULT '',
-<<<<<<< HEAD
                         password VARCHAR(255) NOT NULL DEFAULT '',
-=======
-                        password VARCHAR(20) NOT NULL DEFAULT '',
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                         email1 VARCHAR(20) NOT NULL DEFAULT '',
                         email2 VARCHAR(20) NOT NULL DEFAULT '',
                         mobile1 CHAR(3) NOT NULL DEFAULT '',
@@ -51,11 +47,7 @@
                         full_name VARCHAR(40) NOT NULL DEFAULT '',
                         gender CHAR(3) NOT NULL DEFAULT '',
                         id VARCHAR(20) NOT NULL DEFAULT '',
-<<<<<<< HEAD
                         password VARCHAR(255) NOT NULL DEFAULT '',
-=======
-                        password VARCHAR(20) NOT NULL DEFAULT '',
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                         email1 VARCHAR(20) NOT NULL DEFAULT '',
                         email2 VARCHAR(20) NOT NULL DEFAULT '',
                         mobile1 CHAR(3) NOT NULL DEFAULT '',
@@ -103,19 +95,11 @@
                     $sql = "CREATE TABLE IF NOT EXISTS inquiry (
                         no INT(11) NOT NULL AUTO_INCREMENT,
                         id VARCHAR(20) NOT NULL DEFAULT '', 
-<<<<<<< HEAD
-=======
-                        reservation_number VARCHAR(255) DEFAULT '',
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                         title VARCHAR(255) NOT NULL DEFAULT '',
                         content VARCHAR(255) NOT NULL DEFAULT '',
                         attached_file VARCHAR(255) DEFAULT '',
                         written_date DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
                         PRIMARY KEY (no),
-<<<<<<< HEAD
-=======
-                        UNIQUE KEY (id),
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                         KEY (written_date)
                       )ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                       break;
@@ -172,7 +156,6 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-<<<<<<< HEAD
                 case 'comment':
                     $sql = "CREATE TABLE IF NOT EXISTS comment (
                         no INT(11) NOT NULL AUTO_INCREMENT,
@@ -184,8 +167,6 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-=======
->>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                 // 9. 기타
                 default:
                     echo "<script>alert('해당 테이블명을 찾을 수 없습니다.');</script>";

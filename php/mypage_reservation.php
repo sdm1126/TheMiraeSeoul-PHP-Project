@@ -15,17 +15,28 @@
 <body>
     <div class="container">
         <?php
+<<<<<<< HEAD
         include('./header.php');
+=======
+            include('./header.php');
+>>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
         ?>
         <aside>
             <div>
                 <ul>
                     <li class="title">마이 페이지</li>
                     <hr>
+<<<<<<< HEAD
                     <li><a href="./mypage_user.php">내 정보</a></li>
                     <li><a href="./mypage_reservation.php"><b>내 예약</b></a></li>
                     <li><a href="./mypage_inquiry_board.php?page=1">내 문의</a></li>
                     <li><a href="./mypage_resignation.php">회원탈퇴</a></li>
+=======
+                    <li>내 정보</li>
+                    <li><b>내 예약</b></li>
+                    <li>내 문의</li>
+                    <li>회원탈퇴</li>
+>>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                 </ul>
             </div>
         </aside>

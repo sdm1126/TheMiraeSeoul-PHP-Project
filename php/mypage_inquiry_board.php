@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 <?php
 include_once('../db/db_connector.php');
 ?>
 <!DOCTYPE html>
 <html lang="ko">
+=======
+<!DOCTYPE html>
+<html lang="en">
+>>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
 
 <head>
     <meta charset="UTF-8">
@@ -18,17 +23,28 @@ include_once('../db/db_connector.php');
 <body>
     <div class="container">
         <?php
+<<<<<<< HEAD
         include('./header.php');
+=======
+            include('./header.php');
+>>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
         ?>
         <aside>
             <div>
                 <ul>
                     <li class="title">마이 페이지</li>
                     <hr>
+<<<<<<< HEAD
                     <li><a href="./mypage_user.php">내 정보</a></li>
                     <li><a href="./mypage_reservation.php">내 예약</a></li>
                     <li><a href="./mypage_inquiry_board.php?page=1"><b>내 문의</b></a></li>
                     <li><a href="./mypage_resignation.php">회원탈퇴</a></li>
+=======
+                    <li>내 정보</li>
+                    <li>내 예약</li>
+                    <li><b>내 문의</b></li>
+                    <li>회원탈퇴</li>
+>>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
                 </ul>
             </div>
         </aside>
@@ -36,6 +52,7 @@ include_once('../db/db_connector.php');
             <div class="h2">
                 <h2>내 문의</h2>
             </div>
+<<<<<<< HEAD
             <?php
             $flag = false;
             $mb_id = $_SESSION['ss_mb_id'];
@@ -127,12 +144,23 @@ include_once('../db/db_connector.php');
                     <input type="text" name="search_str">
                     <input type="submit" value="조 회" class="submit" onsubmit="return false">
                 </form>
+=======
+            <hr>
+            <div class="search">
+                <select name="" id="">
+                    <option value="">제목</option>
+                    <option value="">작성일</option>
+                </select>
+                <input type="text">
+                <input type="submit" value="조 회">
+>>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
             </div>
             <div class="table">
                 <table>
                     <th>번호</th>
                     <th>제목</th>
                     <th>작성일</th>
+<<<<<<< HEAD
                     <?php
                     for ($i = 0; $i < count($list); $i++) {
                     ?>
@@ -155,4 +183,70 @@ include_once('../db/db_connector.php');
         ?>
     </div>
 </body>
+=======
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                    <tr>
+                        <td>001</td>
+                        <td>관리자 나오라고 해</td>
+                        <td>2021.11.18</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="index">
+                <span>
+                    <-- 1 2 3 4 -->
+                </span>
+            </div>
+        </main>
+        <?php
+            include('./footer.php');
+        ?>
+    </div>
+</body>
+
+>>>>>>> ded97b3b448de508e911d6108db4fb4fcfbfb460
 </html>

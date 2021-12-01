@@ -38,7 +38,7 @@ include_once('../db/db_connector.php');
             </div>
             <?php
             $flag = false;
-            $mb_id = $_SESSION['ss_mb_id'];
+            $mb_id = $_SESSION['session_id'];
             // $option = $_POST['option'];
             if(isset($_GET['page'])){
                 $current_page = $_GET['page'];

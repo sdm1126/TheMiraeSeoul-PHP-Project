@@ -65,11 +65,19 @@ if (isset($_SESSION['ss_mb_id'])) {
                         // 데이터베이스에 넣기
 
                         // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
-                        if(password_verify($password, $row['password'])){
+                        $sql = "SELECT UNHEX('" . $row['password'] . "') as password;";
+                        $result = mysqli_query($con, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        $unhex_password = $row['password'];
+
+                        if($unhex_password === $password){
                             header('location: login.php?error=used_password');
                             exit;
                         }else{
-                            $password = password_hash($password, PASSWORD_DEFAULT);
+                            $sql = " SELECT HEX('$password') AS pass "; // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
+                            $result = mysqli_query($con, $sql);
+                            $row = mysqli_fetch_assoc($result);
+                            $password = $row['pass'];
                         }
 
                         $sql = " UPDATE user SET password = '$password', 

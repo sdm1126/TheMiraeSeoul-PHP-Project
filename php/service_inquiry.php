@@ -27,6 +27,7 @@ if(isset($_SESSION['session_id'])){
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/aside.css">
+    <script src="../js/service_inquiry.js"></script>
 </head>
 
 <body>
@@ -51,7 +52,7 @@ if(isset($_SESSION['session_id'])){
             </article>
             <hr >
             <article class="main">
-                <form action="./inquiry_check.php" method="post">
+                <form action="./service_inquiry_update.php" method="post">
                     <table>
                         <tr>
                             <!-- 첫번째 줄 시작 -->

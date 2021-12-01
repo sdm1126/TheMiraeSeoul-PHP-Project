@@ -7,7 +7,7 @@
 
 <?php
     session_start();
-    $_SESSION['ss_mb_id'] = 'test_id_01';
+    $_SESSION['session_id'] = 'test_id_01';
     // 1. 데이터베이스 시간 설정
     date_default_timezone_set("Asia/Seoul");
 

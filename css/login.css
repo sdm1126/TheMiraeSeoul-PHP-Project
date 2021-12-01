@@ -51,4 +51,5 @@ article .section3 #findId,
   width: 150px;
   height: 40px;
   font-weight: bold;
+  cursor: pointer;
 }

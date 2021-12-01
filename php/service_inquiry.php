@@ -82,6 +82,7 @@ if(isset($_SESSION['session_id'])){
                 </article>
                 <article class="terms">
                     <h3>필수적 개인정보 수집 및 이용에 대한 동의</h3>
+                    <div id="message" style="color: red; font-size: 14px;">필수 동의 사항입니다</div>
                     <section>
                         <label for="check1">동의함</label>
                         <input type="checkbox" id="check1">
@@ -111,7 +112,7 @@ if(isset($_SESSION['session_id'])){
                     ※위 사항에 대한 동의를 거부할 수 있으나, 이에 대한 동의가 없을 경우 문의에 대한 안내 및 서비스 제공과 관련된 제반 절차 진행이 불가능 할 수 있음을 알려드립니다.
                 </textarea>
                 <article class="button">
-                   <input type="submit" value="등 록">
+                   <input type="submit" id="submit" value="등 록" disabled>
                 </article>
             </form>
         </main>
@@ -120,7 +121,7 @@ if(isset($_SESSION['session_id'])){
             ?>
     </div>
     <script>
-
+       
 
     </script>
 </body>

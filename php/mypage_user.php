@@ -6,7 +6,7 @@ if (isset($_SESSION['ss_mb_id'])) {
 
     if (empty($id)) {
         mysqli_close($con);
-        header("location: login.php?error=아이디가 비어있음");
+        header("location: login.php?error=user_id_empty");
         exit;
     } else {
         $sql = "SELECT COUNT(*) AS `total_count` FROM user WHERE id = '$id'";
@@ -15,6 +15,7 @@ if (isset($_SESSION['ss_mb_id'])) {
         if ($row['total_count'] !== '0') {
 ?>
             <!DOCTYPE html>
+
             <html lang="en">
 
             <head>
@@ -52,6 +53,7 @@ if (isset($_SESSION['ss_mb_id'])) {
                         $result = mysqli_query($con, $sql);
                         $row = mysqli_fetch_assoc($result);
                         ?>
+
                         <article class="h2">
                             <h2>내 정보</h2>
                         </article>
@@ -64,12 +66,15 @@ if (isset($_SESSION['ss_mb_id'])) {
                                     <td>이름(영문)</td>
                                     <td><?= $row['first_name'] ?></td>
                                 </tr>
+
                                 <form action="./mypage_inquiry_board.php" method="post">
+
                                     <tr class="gender">
                                         <td>성별</td>
                                         <td colspan="3">
                                             <span id="span_gender"><?= $row['gender'] ?></span>
                                             <select name="select_gender" id="" style="display: none" ;>
+
                                                 <option value="Mr.">Mr.</option>
                                                 <option value="Ms.">Ms.</option>
                                             </select>
@@ -79,6 +84,7 @@ if (isset($_SESSION['ss_mb_id'])) {
                                         <td>아이디</td>
                                         <td colspan="3">
                                             <input type="text" name="id" id="id" placeholder="영어 소문자, 숫자만 사용" value="<?= $row['id'] ?>" readonly>
+
                                             <div id="check_id"></div>
                                         </td>
                                     </tr>
@@ -103,6 +109,7 @@ if (isset($_SESSION['ss_mb_id'])) {
                                             <span>@</span>
                                             <input type="text" id="email2" value="<?= $row['email2'] ?>" readonly required>
                                             <select name="" id="" style="display: none;">
+
                                                 <option value="naver.com">naver.com</option>
                                                 <option value="gmail.com">gmail.com</option>
                                                 <option value="">직접 입력</option>
@@ -118,6 +125,7 @@ if (isset($_SESSION['ss_mb_id'])) {
                                             <input type="text" id="mobile2" value="<?= $row['mobile2'] ?>" readonly required>
                                             <span>-</span>
                                             <input type="text" id="mobile3" value="<?= $row['mobile3'] ?>" readonly required>
+
                                             <div></div>
                                         </td>
                                     </tr>
@@ -178,6 +186,7 @@ if (isset($_SESSION['ss_mb_id'])) {
                             } else {
                                 this.nextElementSibling.innerHTML = '<span style="color: red; font-size: 14px;">비밀번호가 일치하지 않습니다</span>'
                                 form_flag = false
+
                             }
                         })
 

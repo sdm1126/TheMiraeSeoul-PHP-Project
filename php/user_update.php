@@ -1,17 +1,23 @@
 <?php
     include_once('../db/db_connector.php');
 
-    $q = $_GET['q'];
-    // $mode = $_GET['mode'];
-        $sql = "SELECT COUNT(*) AS `total_count` FROM user WHERE id = '$q'";
+    $password = $_GET['q'];
+    $mode = $_GET['mode'];
+    $id = $_SESSION['ss_mb_id'];
+    
+    if($mode === 'password'){
+        
+        $sql = "SELECT password FROM user WHERE id = '$id'";
     
         $result = mysqli_query($con, $sql);
     
         $row = mysqli_fetch_assoc($result);
-    
-        if($row['total_count'] === '0'){
-            echo '<span style="color: blue; font-size: 14px;">사용가능한 아이디 입니다</span>';
+
+        if(!password_verify($password, $row['password'])){
+            echo '<span style="color: blue; font-size: 14px;">사용가능한 비밀번호입니다</span>';
         }else{
-            echo '<span style="color: red; font-size: 14px;">중복되는 아이디 입니다</span>'; 
+            echo '<span style="color: red; font-size: 14px;">이미 사용중인 비밀번호입니다</span>'; 
         }
+    }
+
 ?>

@@ -1,5 +1,20 @@
 <?php
-    include_once('../db/create_statement.php');
+include_once('../db/db_connector.php');
+if(isset($_SESSION['ss_mb_id'])){
+    
+    $id = sql_escape($con, $_SESSION['ss_mb_id']);
+
+    if(empty($id)){
+        mysqli_close($con);
+        header("location: login.php?error=user_id_empty");
+        exit;
+    }else{
+        $sql = "SELECT * FROM user WHERE id = '$id'";
+        $result = mysqli_query($con, $sql);
+        $row = mysqli_fetch_assoc($result);
+        if(mysqli_num_rows($result) > 0){
+            $moblie = $row['mobile1']."-".$row['mobile2']."-".$row['mobile3'];
+            $email = $row['email1']."@".$row['email2']; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +56,7 @@
                         <tr>
                             <!-- 첫번째 줄 시작 -->
                             <td class="title">성명</td>
-                            <td><input type="text" name="full_name"></td>
+                            <td><span name="full_name"><?=$row['full_name']?></span>
                         </tr><!-- 첫번째 줄 끝 -->
                         <tr>
                             <!-- 두번째 줄 시작 -->
@@ -56,12 +71,12 @@
                         <tr>
                             <!-- 두번째 줄 시작 -->
                             <td class="title">휴대전화</td>
-                            <td><input type="text" name="mobile"></td>
+                            <td><span name="mobile"><?=$moblie?></span></td>
                         </tr><!-- 두번째 줄 끝 -->
                         <tr>
                             <!-- 두번째 줄 시작 -->
                             <td class="title">이메일</td>
-                            <td><input type="text" name="email"></td>
+                            <td><span name="email"><?=$email?></span></td>
                         </tr><!-- 두번째 줄 끝 -->
                     </table>
                 </article>
@@ -104,5 +119,14 @@
             include('./footer.php');
             ?>
     </div>
+    <script>
+
+
+    </script>
 </body>
 </html>
+<?php
+        }
+    }
+}
+?>

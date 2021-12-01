@@ -14,12 +14,14 @@ if (isset($_SESSION['ss_mb_id'])) {
         $sql = "SELECT * FROM user WHERE id = '$id'";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
+        // 아이디가 존재한다면 넘어온 값 점검
         if (mysqli_num_rows($result) > 0) {
             if (
                 isset($_POST["password"]) && isset($_POST["email1"]) && isset($_POST["email2"]) && isset($_POST['mobile1'])
                 && isset($_POST['mobile2']) && isset($_POST['mobile3']) && isset($_POST['gender'])
             ) {
 
+                // 인젝션 방어
                 $password = sql_escape($con, $_POST['password']);
                 $email1 = sql_escape($con, $_POST['email1']);
                 $email2 = sql_escape($con, $_POST['email2']);
@@ -28,7 +30,7 @@ if (isset($_SESSION['ss_mb_id'])) {
                 $mobile3 = sql_escape($con, $_POST['mobile3']);
                 $gender = sql_escape($con, $_POST['gender']);
 
-                // 3. 공백 점검
+                // 공백 점검
                 if (empty($password)) {
                     mysqli_close($con);
                     header("location: login.php.php?error=패스워드가 비어있음");
@@ -64,13 +66,14 @@ if (isset($_SESSION['ss_mb_id'])) {
 
                         // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
                         if(password_verify($password, $row['password'])){
-                            header('location: login.php?error=사용중인 패스워드');
-                            return;
+                            header('location: login.php?error=used_password');
+                            exit;
                         }else{
                             $password = password_hash($password, PASSWORD_DEFAULT);
                         }
 
-                        $sql = " UPDATE user SET password = '$password', email1 = '$email1', 
+                        $sql = " UPDATE user SET password = '$password', 
+                                                email1 = '$email1', 
                                                 email2 = '$email2', 
                                                 mobile1 = '$mobile1', 
                                                 mobile2 = '$mobile2', 
@@ -80,7 +83,7 @@ if (isset($_SESSION['ss_mb_id'])) {
                         $result = mysqli_query($con, $sql) or die('fail' . mysqli_error($con));
                         if ($result) {
                             echo "<script>alert('수정완료!')</script>";
-                            echo "<script>location.replace('./mypage_inquiry_board.php')</script>";
+                            echo "<script>location.replace('./mypage_user.php')</script>";
                             mysqli_close($con);
                             return;
                         }
@@ -89,14 +92,14 @@ if (isset($_SESSION['ss_mb_id'])) {
                     }
                 }
             } else {
-                header('location: login.php?error=11');
+                header('location: login.php?error=empty_var');
             }
         } else {
-            header('location: login.php?error=중복 아이디');
+            header('location: login.php?error=not_member');
         }
     }
 } else {
-    header('location: login.php?error=session_id1');
+    header('location: login.php?error=session_error');
 }
 mysqli_close($con);
 ?>

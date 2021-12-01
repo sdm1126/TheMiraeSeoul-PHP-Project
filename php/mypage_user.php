@@ -58,7 +58,7 @@ if(isset($_SESSION['ss_mb_id'])){
                                     <td>이름(영문)</td>
                                     <td><?= $row['first_name'] ?></td>
                                 </tr>
-                                <form action="./mypage_user_update.php" method="post">
+                                <form action="./mypage_user_update.php" name="user_form" method="post">
                                     <tr class="gender">
                                         <td>성별</td>
                                         <td colspan="3">
@@ -128,29 +128,30 @@ if(isset($_SESSION['ss_mb_id'])){
                     ?>
                 </div>
                 <script>
-                    let password_flag = true
+                    let password_flag       = true
                     let password_check_flag = true
-                    let email_flag = true
-                    let mobile_flag = true
+                    let email_flag          = true
+                    let mobile_flag         = true
 
-                    let id = document.querySelector('#id')
-                    let password_new = document.querySelector('#password_new')
-                    let password_check = document.querySelector('#password_check')
-                    let email1 = document.querySelector('#email1')
-                    let email2 = document.querySelector('#email2')
-                    let mobile1 = document.querySelector('#mobile1')
-                    let mobile2 = document.querySelector('#mobile2')
-                    let mobile3 = document.querySelector('#mobile3')
+                    let id                  = document.querySelector('#id')
+                    let password_new        = document.querySelector('#password_new')
+                    let password_check      = document.querySelector('#password_check')
+                    let email1              = document.querySelector('#email1')
+                    let email2              = document.querySelector('#email2')
+                    let mobile1             = document.querySelector('#mobile1')
+                    let mobile2             = document.querySelector('#mobile2')
+                    let mobile3             = document.querySelector('#mobile3')
                     
-                    let passwords = document.querySelectorAll('.id_password')
-                    let selects = document.querySelectorAll('table select')
-                    let texts = document.querySelectorAll('table input[type="text"]')
-
-                    let button_update = document.querySelector('#update')
-                    let button_cancel = document.querySelector('#cancel')
-
+                    let passwords           = document.querySelectorAll('.id_password')
+                    let selects             = document.querySelectorAll('table select')
+                    let texts               = document.querySelectorAll('table input[type="text"]')
+                    
+                    let button_update       = document.querySelector('#update')
+                    let button_cancel       = document.querySelector('#cancel')
+                    
+                    // functions
                     let set_event = function(){
-
+                        
                         // 비밀번호 재설정 체크
                         password_new.addEventListener('keyup', function(){
                             let str = this.value
@@ -169,7 +170,7 @@ if(isset($_SESSION['ss_mb_id'])){
                                 this.parentElement.lastElementChild.innerHTML = '<span style="color: blue; font-size: 14px;">비밀번호가 일치합니다</span>'
                                 password_check_flag = true
                             }else{
-                            this.parentElement.lastElementChild.innerHTML = '<span style="color: red; font-size: 14px;">비밀번호가 일치하지 않습니다</span>'
+                                this.parentElement.lastElementChild.innerHTML = '<span style="color: red; font-size: 14px;">비밀번호가 일치하지 않습니다</span>'
                             password_check_flag = false
                             }
                         })
@@ -247,6 +248,7 @@ if(isset($_SESSION['ss_mb_id'])){
                         location.reload()
                     })
 
+
                     let reg_check = function(btn, str, reg, good, fail){
                         if(reg.test(str)){
                             btn.parentElement.lastElementChild.innerHTML = '<span style="color: blue; font-size: 14px;">' +good + '</span>'
@@ -289,8 +291,7 @@ if(isset($_SESSION['ss_mb_id'])){
                     }
                 </script>
             </body>
-            </html>
-          
+            </html> 
 <?php
         }
     }

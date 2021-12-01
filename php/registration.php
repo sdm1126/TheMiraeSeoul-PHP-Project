@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/registration.css">
     <script src="../js/registration.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -108,6 +109,21 @@
         let mobile1 = document.querySelector('#mobile1')
         let mobile2 = document.querySelector('#mobile2')
         let mobile3 = document.querySelector('#mobile3')
+
+        id.addEventListener('blur', (e) => {
+            var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+            if (!idReg.test($("input[name=id]").val())) {
+                alert("아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다.");
+                return;
+            }
+        });
+        password_new.addEventListener('focusout', (e) => {
+            var reg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/g;
+            if (!reg.test($("input[name=password]").val())) {
+                alert("비밀번호 정규식 최소 8 자, 하나 이상의 문자와 하나의 숫자 위반!!");
+                return false;
+            }
+        });
     </SCript>
 </body>
 

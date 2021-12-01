@@ -1,9 +1,9 @@
 <?php
 include_once('../db/db_connector.php');
 
-if (isset($_SESSION['ss_mb_id'])) {
+if (isset($_SESSION['session_id'])) {
 
-    $id = sql_escape($con, $_SESSION['ss_mb_id']);
+    $id = sql_escape($con, $_SESSION['session_id']);
 
     if (empty($id)) {
         mysqli_close($con);

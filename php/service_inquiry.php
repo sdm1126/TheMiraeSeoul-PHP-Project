@@ -49,6 +49,13 @@ if(isset($_SESSION['session_id'])){
         <main>
             <article class="head">
                 <h2>문 의 하 기</h2>
+                <?php
+                    if(isset($_GET['error'])){  
+                ?>
+                <span id="error" style="color: red; font-size: 14px;"><?=$_GET['error'] ?></span>
+                <?php
+                    }
+                ?>
             </article>
             <hr >
             <article class="main">
@@ -83,7 +90,7 @@ if(isset($_SESSION['session_id'])){
                 </article>
                 <article class="terms">
                     <h3>필수적 개인정보 수집 및 이용에 대한 동의</h3>
-                    <div id="message" style="color: red; font-size: 14px;">필수 동의 사항입니다</div>
+                    <span id="message" style="color: red; font-size: 14px;">필수 동의 사항입니다</span>
                     <section>
                         <label for="check1">동의함</label>
                         <input type="checkbox" id="check1">

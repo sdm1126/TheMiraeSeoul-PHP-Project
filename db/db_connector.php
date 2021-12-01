@@ -6,8 +6,8 @@
 -->
 
 <?php
+ini_set('max_execution_time', 300);
     session_start();
-    $_SESSION['session_id'] = 'test_id_01';
     // 1. 데이터베이스 시간 설정
     date_default_timezone_set("Asia/Seoul");
 
@@ -78,24 +78,69 @@
         return mysqli_real_escape_string($conn, $content);
     }
 
-    function paging($current_page, $start_page, $end_page, $total_page, $a){
-        //$a = './mypage_inquiry_board.php?'; 문자열에 주의할 것
-        $paging_str = '';
+    // function paging($current_page, $start_page, $end_page, $total_page, $a){
+    //     //$a = './mypage_inquiry_board.php?'; 문자열에 주의할 것
+    //     $paging_str = '';
     
-        $paging_str .= $current_page > 1 ? '<a href="'.$a.'page=1" class="pg_page pg_start">처음</a>' : '';
+    //     $paging_str .= ($current_page > 1) ? '<a href="'.$a.'page=1" class="pg_page pg_start">처음</a>'.PHP_EOL : '';
 
-        $paging_str .= $start_page > 1 ? '<a href="'.$a.'page="' . ($start_page - 1) . '"class="pg_page pg_start">이전</a>' : '';
+    //     $paging_str .= ($start_page > 1) ? '<a href="'.$a.'page=' . ($start_page - 1) . ' class="pg_page pg_start">이전</a>'.PHP_EOL : '';
     
-        for ($i = $start_page; $i <= $end_page; $i++) {
-            $paging_str .= $current_page != $i ? '<a href="'.$a.'page=' . $i . '" class="pg_page">' . $i . '</a>' : '<strong class="pg_current">' . $i . '</strong>';
-        }
+    //     for ($i = $start_page; $i <= $end_page; $i++) {
+    //         $paging_str .= ($current_page != $i) ? '<a href="'.$a.'page=' . $i . '" class="pg_page">' . $i . '</a>'.PHP_EOL : '<strong class="pg_current">' . $i . '</strong>'.PHP_EOL;
+    //     }
         
-        $paging_str .= $end_page < $total_page ? '<a href="'.$a.'page=' . ($end_page + 1) . '" class="pg_page pg_next">다음</a>' : '';
+    //     $paging_str .= ($end_page < $total_page) ? '<a href="'.$a.'page=' . ($end_page + 1) . '" class="pg_page pg_next">다음</a>'.PHP_EOL : '';
 
-        $paging_str .= $current_page < $total_page ? '<a href="'.$a.'page=' . $total_page . '" class="pg_page pg_end">맨끝</a>' : '';
+    //     $paging_str .= ($current_page < $total_page) ? '<a href="'.$a.'page=' . $total_page . '" class="pg_page pg_end">맨끝</a>'.PHP_EOL : '';
 
-        $index_page = $paging_str !== '' ? "<nav class=\"pg_wrap\"><span class=\"pg\">{$paging_str}</span></nav>" : '';
+    //     $index_page = ($paging_str !== '') ? "<nav class=\"pg_wrap\"><span class=\"pg\">{$paging_str}</span></nav>".PHP_EOL : '';
 
-        return $index_page;
+    //     return $index_page;
+    // }
+
+    // 페이지 매기기
+function get_paging($write_pages, $cur_page, $total_page, $url) // 한페이지에 보여줄 행, 현재페이지, 총페이지수, URL
+{
+    // URL이 예를 들어, 'memo_login&page=123'이 있으면 'memo_login&page=' 으로 변경(공통 적용하기 위함)
+    $url = preg_replace('/\&page=[0-9]*/', '', $url) . '&amp;page=';
+
+    $str = '';
+    // 1. 현재 페이지가 1페이지가 아니고, 2페이지 이상이라면 처음 가기를 등록한다.
+    ($cur_page > 1) ? $str .= '<a href="'.$url.'1" class="pg_page pg_start">처음</a>'.PHP_EOL : ''; // 'PHP_EOL'은 \n 이라는 뜻
+
+    // 2. 시작페이지와 끝페이지를 보여준다.(끝페이지가 중요)
+    // 현재 12면 시작11~끝20
+    $start_page = ( ( (int)( ($cur_page - 1 ) / $write_pages ) ) * $write_pages ) + 1;
+    $end_page = $start_page + $write_pages - 1;
+    if ($end_page >= $total_page) $end_page = $total_page;
+
+    // 3 (예) 10페이지 넘어가면 11페이지부터 '이전'이 생김, 이전 버튼 누르면 10페이지 보임)
+    if ($start_page > 1) $str .= '<a href="'.$url.($start_page-1).'" class="pg_page pg_prev">이전</a>'.PHP_EOL;
+
+    // 4. 전체 페이지가 2페이지 이상이면, 예) 현재 12페이지(=시작 11페이지, 끝 20페이지)
+    // [처음][이전][11][12][13]...[19][20]
+    if ($total_page > 1) {
+        for ($k=$start_page;$k<=$end_page;$k++) {
+            if ($cur_page != $k)
+                $str .= '<a href="'.$url.$k.'" class="pg_page">'.$k.'</a>'.PHP_EOL;
+            else
+                $str .= '<strong class="pg_current">'.$k.'</strong>'.PHP_EOL;
+        }
     }
-?>
+
+    // 5. 전체 페이지가 끝 페이지보다 클 때 다음 누르면 다음이 있으니까 다음 페이지로 이동(예) 시작11~끝20일때, 20에서 다음 누르면 21로 감)
+    if ($total_page > $end_page) $str .= '<a href="'.$url.($end_page+1).'" class="pg_page pg_next">다음</a>'.PHP_EOL;
+
+    // 6. 현재페이지가 전체 페이지보다 작다면 [처음][이전][11]스트롱[12]스트롱[13]...[19][20][다음][끝]
+    if ($cur_page < $total_page) {
+        $str .= '<a href="'.$url.$total_page.'" class="pg_page pg_end">맨끝</a>'.PHP_EOL;
+    }
+
+    if ($str)
+        return "<nav class=\"pg_wrap\"><span class=\"pg\">{$str}</span></nav>";
+    else
+        return "";
+}
+
+    

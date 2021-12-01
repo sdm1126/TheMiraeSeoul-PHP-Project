@@ -118,9 +118,9 @@
             }
         });
         password_new.addEventListener('focusout', (e) => {
-            var reg = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/g;
+            var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/g;
             if (!reg.test($("input[name=password]").val())) {
-                alert("비밀번호 정규식 최소 8 자, 하나 이상의 문자와 하나의 숫자 위반!!");
+                alert("비밀번호 정규식 최소 8 자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수 문자 위반!!");
                 return false;
             }
         });

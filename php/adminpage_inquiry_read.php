@@ -13,6 +13,12 @@ include_once('../db/db_connector.php');
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/aside.css">
+    <style>
+        a:hover {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,7 +41,7 @@ include_once('../db/db_connector.php');
         </aside>
         <main>
             <article class="h2">
-                <h2>전체 문의</h2>
+                <h2>내 문의</h2>
                 <?php
                 $list_number = $_GET['no'];
                 $mb_id = $_GET['id'];
@@ -103,7 +109,8 @@ include_once('../db/db_connector.php');
             </article>
             <article class="button">
                 <div>
-
+                    <input type="hidden" value="수 정" id="btn_modify" name="mode">
+                    <input type="hidden" value="삭 제" id="btn_delete" name="mode">
                 </div>
                 </form>
             </article>

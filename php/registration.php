@@ -126,14 +126,14 @@
                 return false;
             }
         });
-        firstName.addEventListener('focusout', (e) => {
+        firstName.addEventListener('blur', (e) => {
             var reg = /^[a-zA-Z]+$/g;
             if (!reg.test($("input[name=first_name]").val())) {
                 alert("성을 제대로 영문로 입력해주세요!!");
                 return false;
             }
         });
-        lastName.addEventListener('focusout', (e) => {
+        lastName.addEventListener('blur', (e) => {
             var reg = /^[a-zA-Z]+$/g;
             if (!reg.test($("input[name=second_name]").val())) {
                 alert("이름을 제대로 영문로 입력해주세요!!");

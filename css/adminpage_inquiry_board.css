@@ -85,3 +85,7 @@ table tr td:nth-child(3) {
   white-space: nowrap;
   overflow: hidden;
 }
+a:hover {
+  color: black;
+  text-decoration: none;
+}

@@ -78,3 +78,7 @@ h3 {
 footer {
   margin-top: 600px;
 }
+a:hover {
+  color: black;
+  text-decoration: none;
+}

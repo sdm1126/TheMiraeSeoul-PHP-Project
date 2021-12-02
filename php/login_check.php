@@ -24,6 +24,8 @@ if (!$mb['id'] || !($password === $row['password'])) { // 존재하는 아이디
 }
 
 $_SESSION['session_id'] = $id; // 아이디/비밀번호 확인 후 세션 생성
+$_SESSION['session_name'] = $mb['full_name'];
+
 
 mysqli_close($con); // 데이터베이스 접속 종료
 

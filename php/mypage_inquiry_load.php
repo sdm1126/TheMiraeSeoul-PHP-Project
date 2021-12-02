@@ -39,7 +39,7 @@
             //총 페이지 갯수 구하기
             $total_page = ($total_count !== 0)? ceil($total_count / $page_row) : (0);
 
-            //URL에 넣은 page값을 받아온다.
+            //URL에 넣은 page값을 받아온다. 0번부터 시작
             $first_index = ($current_page - 1) * $page_row;
             
             if($option === 'written_date'){

@@ -26,6 +26,7 @@ if (isset($_SESSION['session_id'])) {
                 <link rel="stylesheet" href="../css/mypage_inquiry_board.css">
                 <link rel="stylesheet" href="../css/header.css">
                 <link rel="stylesheet" href="../css/footer.css">
+                <link rel="stylesheet" href="../css/page.css">
                 <link rel="stylesheet" href="../css/aside.css">
             </head>
 
@@ -82,8 +83,10 @@ if (isset($_SESSION['session_id'])) {
                                 mysqli_close($con); // 데이터베이스 접속 종료
                                 ?>
                             </table>
-                            <div class="index">
-                                <p><?= $index_page ?></p>
+                            <div class="page_wrap">
+                                <div class="page_nation">
+                                    <p><?= $index_page ?></p>
+                                </div>
                             </div>
                         </div>
                     </main>
@@ -99,9 +102,9 @@ if (isset($_SESSION['session_id'])) {
 
                 document.querySelector('option[value="<?= $option ?>"]').selected = "selected"
 
-                search_str.addEventListener('keyup', function(){
+                search_str.addEventListener('keyup', function() {
                     let str = this.value
-                    if(select.options[select.selectedIndex].value === 'written_date'){
+                    if (select.options[select.selectedIndex].value === 'written_date') {
                         var xhttp
                         if (str == "") {
                             error.innerHTML = ""
@@ -117,8 +120,9 @@ if (isset($_SESSION['session_id'])) {
                         xhttp.send()
 
                     }
-                })             
+                })
             </script>
+
             </html>
 <?php
         }

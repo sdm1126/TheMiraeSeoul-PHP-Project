@@ -1,5 +1,18 @@
 <?php
 include_once('../db/db_connector.php');
+if (isset($_SESSION['session_id'])) {
+
+    $id = sql_escape($con, $_SESSION['session_id']);
+
+    if (empty($id)) {
+        mysqli_close($con);
+        header("location: login.php?error=user_id_empty");
+        exit;
+    } else {
+        $sql = "SELECT * FROM user WHERE id = '$id'";
+        $result = mysqli_query($con, $sql);
+        $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) > 0) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,9 +51,8 @@ include_once('../db/db_connector.php');
                 <h2>전체 문의</h2>
                 <?php
                 $list_number = $_GET['no'];
-                $mb_id = $_GET['id'];
 
-                $sql = "SELECT * FROM user WHERE id = '$mb_id'";
+                $sql = "SELECT * FROM user WHERE id = '$id'";
                 $result = mysqli_query($con, $sql);
                 $row = mysqli_fetch_assoc($result);
 
@@ -196,3 +208,8 @@ include_once('../db/db_connector.php');
 </body>
 
 </html>
+<?php
+        }
+    }
+}
+?>

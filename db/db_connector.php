@@ -88,7 +88,7 @@ function get_paging($write_pages, $cur_page, $total_page, $url) // 한페이지�
 
     $str = '';
     // 1. 현재 페이지가 1페이지가 아니고, 2페이지 이상이라면 처음 가기를 등록한다.
-    ($cur_page > 1) ? $str .= '<a href="' . $url . '1" class="pg_page pg_start">처음</a>' . PHP_EOL : ''; // 'PHP_EOL'은 \n 이라는 뜻
+    ($cur_page > 1) ? ($str .= '<a href="' . $url . '1" class="pg_page pg_start">처음</a>' . PHP_EOL) : ''; // 'PHP_EOL'은 \n 이라는 뜻
 
     // 2. 시작페이지와 끝페이지를 보여준다.(끝페이지가 중요)
     // 현재 12면 시작11~끝20

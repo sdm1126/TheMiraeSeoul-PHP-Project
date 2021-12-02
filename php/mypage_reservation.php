@@ -24,7 +24,7 @@
                     <hr>
                     <li><a href="./mypage_user.php">내 정보</a></li>
                     <li><a href="./mypage_reservation.php"><b>내 예약</b></a></li>
-                    <li><a href="./mypage_inquiry_board.php?page=1">내 문의</a></li>
+                    <li><a href="./mypage_inquiry_board.php?option=title&page=1">내 문의</a></li>
                     <li><a href="./mypage_resignation.php">회원탈퇴</a></li>
                 </ul>
             </div>

@@ -13,6 +13,7 @@ if (isset($_SESSION['session_id'])) {
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
         if (mysqli_num_rows($result) > 0) {
+            $option = $_GET['option'];
 ?>
             <!DOCTYPE html>
             <html lang="ko">
@@ -96,6 +97,8 @@ if (isset($_SESSION['session_id'])) {
                 let search_str = document.querySelector('#search_str')
                 let error = document.querySelector('#error')
 
+                document.querySelector('option[value="<?= $option ?>"]').selected = "selected"
+
                 search_str.addEventListener('keyup', function(){
                     let str = this.value
                     if(select.options[select.selectedIndex].value === 'written_date'){
@@ -116,7 +119,6 @@ if (isset($_SESSION['session_id'])) {
                     }
                 })             
             </script>
-
             </html>
 <?php
         }

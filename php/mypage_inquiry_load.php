@@ -37,7 +37,7 @@
             // 게시판 한 페이지에 들어갈 게시글
             $page_row = 10;
             //총 페이지 갯수 구하기
-            $total_page = ceil($total_count / $page_row);
+            $total_page = ($total_count !== 0)? ceil($total_count / $page_row) : (0);
 
             //URL에 넣은 page값을 받아온다.
             $first_index = ($current_page - 1) * $page_row;
@@ -63,7 +63,7 @@
             $url = 'http://' . $http_host . $request_uri;
 
             $start_page = (int)(($current_page -1) / $page_row) * $page_row  + 1;
-            $end_page = (($start_page + $page_row - 1) < $total_page) ? ($start_page + $page_row - 1) : $total_page;
+            $end_page = (($start_page + $page_row - 1) < $total_page) ? ($start_page + $page_row - 1) : ($total_page);
             
             // HTML 메뉴 코드 추가하기
             $index_page = get_paging($page_row, $current_page, $total_page, $url);

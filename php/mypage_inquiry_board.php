@@ -83,6 +83,7 @@ if (isset($_SESSION['session_id'])) {
                                 mysqli_close($con); // 데이터베이스 접속 종료
                                 ?>
                             </table>
+                            <br>
                             <div class="page_wrap">
                                 <div class="page_nation">
                                     <p><?= $index_page ?></p>

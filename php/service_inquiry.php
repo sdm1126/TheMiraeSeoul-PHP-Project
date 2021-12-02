@@ -59,7 +59,7 @@ if(isset($_SESSION['session_id'])){
             </article>
             <hr >
             <article class="main">
-                <form action="./service_inquiry_update.php" method="post">
+                <form action="./mypage_inquiry_update.php" method="post">
                     <table>
                         <tr>
                             <!-- 첫번째 줄 시작 -->
@@ -120,7 +120,7 @@ if(isset($_SESSION['session_id'])){
                     ※위 사항에 대한 동의를 거부할 수 있으나, 이에 대한 동의가 없을 경우 문의에 대한 안내 및 서비스 제공과 관련된 제반 절차 진행이 불가능 할 수 있음을 알려드립니다.
                 </textarea>
                 <article class="button">
-                   <input type="submit" id="submit" value="등 록" disabled>
+                   <input type="submit" id="submit" name="mode" value="등 록" disabled>
                 </article>
             </form>
         </main>

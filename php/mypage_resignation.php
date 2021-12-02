@@ -42,7 +42,7 @@
                 </ul>
             </article>
             <article class="button">
-                <input type="submit" value="탈 퇴">
+                <input type="button" id="submit" value="탈 퇴">
             </article>
         </main>
         <?php
@@ -50,5 +50,12 @@
         ?>
     </div>
 </body>
-
+<script>
+    let submit = document.querySelector('#submit')
+    submit.addEventListener('click', function(){
+        if(confirm("회원님의 모든 정보가 사라집니다. 탈퇴하시겠습니까?")){
+            location.replace('./mypage_resignation_delete.php');
+        }   
+    })
+</script>
 </html>

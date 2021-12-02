@@ -89,7 +89,7 @@ if (isset($_SESSION['session_id'])) {
                         <tr>
                             <!-- 첫번째 줄 시작 -->
                             <td class="title">아이디</td>
-                            <td><?= $mb_id ?></td>
+                            <td><?= $id ?></td>
                         </tr><!-- 첫번째 줄 끝 -->
                         <tr>
                             <!-- 두번째 줄 시작 -->

@@ -158,7 +158,7 @@ else
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/aside.css">
-    <script src="../js/notice.js "></script>
+    <script src="../js/service_notice.js "></script>
     <link rel="stylesheet" href="../css/page.css">
 </head>
 
@@ -175,7 +175,7 @@ else
                 <ul>
                     <li class="title">고객 서비스</li>
                     <hr>
-                    <li>공지사항</li>
+                    <li><b>공지사항</b></li>
                     <li>F A Q</li>
                     <li>문의하기</li>
                 </ul>

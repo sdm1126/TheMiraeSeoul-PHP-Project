@@ -100,7 +100,6 @@ $sql = " INSERT INTO user
 					 mobile2 = '$mobile2',
 					 mobile3 = '$mobile3',
 					 registered_date = '$datetime'";
-					 
 $result = mysqli_query($con, $sql);
 
 if ($result) {

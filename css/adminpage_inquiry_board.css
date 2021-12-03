@@ -1,0 +1,80 @@
+h1 {
+  font-size: 35px;
+}
+.section1 {
+  position: absolute;
+  width: 700px;
+  height: 160px;
+  margin-left: 180px;
+  margin-top: 30px;
+}
+.section2 {
+  position: absolute;
+  width: 700px;
+  height: auto;
+  margin-left: 180px;
+  margin-top: 180px;
+}
+#h2 {
+  margin-left: -560px;
+  font-size: 32px;
+  font-weight: bold;
+}
+hr {
+  height: 1px;
+  background-color: black;
+  border: 0;
+}
+td {
+  height: 40px;
+  text-align: center;
+}
+td.name {
+  width: 100px;
+  text-align: center;
+}
+td.title {
+  background-color: #eaeaea;
+  font-weight: bold;
+}
+td.id {
+  width: 200px;
+  text-align: center;
+}
+td.email {
+  width: 150px;
+  text-align: center;
+}
+td.phone {
+  width: 150px;
+  text-align: center;
+}
+td.sign_out {
+  width: 150px;
+  text-align: center;
+}
+h2 {
+  text-align: center;
+}
+h3 {
+  text-align: center;
+}
+h4 {
+  font-weight: bold;
+}
+.custom-select {
+  float: left;
+  width: 150px;
+}
+.custum-search {
+  float: left;
+  width: 150px;
+  margin-left: 30px;
+}
+.btn {
+  float: left;
+  margin-left: 40px;
+}
+footer {
+  margin-top: 600px;
+}

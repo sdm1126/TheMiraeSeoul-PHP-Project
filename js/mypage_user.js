@@ -141,7 +141,7 @@ let formCheck = function(button, str, mode) {
             id_flag = (button.parentElement.lastElementChild.innerHTML.includes('blue'))
         }
     }
-    xhttp.open("GET", "user_update.php?q=" + str + "&mode=" + mode, true)
+    xhttp.open("GET", "mypage_user_update_check.php?q=" + str + "&mode=" + mode, true)
     xhttp.send()
 }
 

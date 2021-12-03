@@ -2,18 +2,18 @@
 include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
 
 
-$first_name 					= trim($_POST['first_name']);
-$last_name 					= trim($_POST['second_name']);
-$full_name                  = $first_name . $last_name;
-$id 					= trim($_POST['id']);
+$first_name 		= trim($_POST['first_name']);
+$last_name 			= trim($_POST['second_name']);
+$full_name          = $first_name . $last_name;
+$id 				= trim($_POST['id']);
 $password			= trim($_POST['password']); // 첫번째 입력 패스워드
 $password_re		= trim($_POST['password_re']); // 두번째 입력 패스워드
 $email1				= trim($_POST['email1']); // 이메일
 $email2				= trim($_POST['email2']); // 이메일
 $gender				= $_POST['gender']; // 성별
-$mobile1					= $_POST['mobile1']; // 직업
-$mobile2					= $_POST['mobile2']; // 직업
-$mobile3					= $_POST['mobile3']; // 직업
+$mobile1			= $_POST['mobile1']; // 직업
+$mobile2			= $_POST['mobile2']; // 직업
+$mobile3			= $_POST['mobile3']; // 직업
 $datetime			= date('Y-m-d H:i:s', time()); // 가입일
 if (!$id) {
 	echo "<script>alert('아이디가 넘어오지 않았습니다.');</script>";
@@ -92,7 +92,7 @@ $sql = " INSERT INTO user
 					 first_name = '$first_name',
 					 full_name = '$full_name',
 					 gender = '$gender',
-					id = '$id',
+					 id = '$id',
 					 password = '$password',
 					 email1 = '$email1',
 					 email2 = '$email2',

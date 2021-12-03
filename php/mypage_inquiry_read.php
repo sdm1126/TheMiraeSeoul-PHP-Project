@@ -145,10 +145,16 @@ if (isset($_SESSION['session_id'])) {
                     <textarea name="content" class="comment_content" cols="30" rows="10" readonly><?=$comment[$i]['content']?></textarea>
                 </article>
                 <article class="reply">
+                    <?php
+                        if($comment[$i]['id'] === $id || "admin" === $id){
+                    ?>
                     <div>
                         <input type="button" class="comment_update" name="mode" value="수 정">
                         <input type="button" class="comment_delete" name="mode" value="삭 제">
                     </div> 
+                    <?php
+                        }
+                        ?>
                 </form>
                 </article>
                 <?php } 

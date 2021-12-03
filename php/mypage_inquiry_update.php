@@ -20,21 +20,18 @@ if (isset($_SESSION['session_id'])) {
             if (isset($_POST["title"]) && isset($_POST["content"]) && isset($_POST['mode'])) {
 
                 $mode = $_POST['mode'];
-                $no = $_GET['no'];
 
-                // 인젝션 방어
-                $title              = sql_escape($con, $_POST['title']);
-                $content            = sql_escape($con, $_POST['content']);
+                // 인젝션 방어 앞 뒤 공백 제거
+                $title              = sql_escape($con, trim($_POST['title']));
+                $content            = sql_escape($con, trim($_POST['content']));
                 $written_date       = date('Y-m-d H:i:s', time());
             
-                // 공백 점검
-                if (empty($title)) {
+                 // 공백 점검
+                if (empty($title) || empty($content)) {
                     mysqli_close($con);
-                    alert_back('제목이 비어있습니다');
-                    exit;
-                } else if (empty($content)) {
-                    mysqli_close($con);
-                    alert_back('내용이 비어있습니다');
+                    // 뒤로가기 + 새로 고침 기능을 한꺼번에
+                    echo "<script>alert('제목 또는 내용이 비어있습니다')</script>";
+                    echo "<script>location.href = document.referrer;</script>";
                     exit;
                 } else {
 
@@ -47,12 +44,14 @@ if (isset($_SESSION['session_id'])) {
                                 attached_file = '0',
                                 written_date = '$written_date' ";
                             break;
-
+    
                         case '확 인' :
+                            $no = $_GET['no'];
                             $sql = "UPDATE inquiry SET title = '$title', content = '$content' WHERE no = $no";
                             break;
-
+    
                         case '삭 제' :
+                            $no = $_GET['no'];
                             $sql = "DELETE FROM inquiry WHERE no = $no";
                             break;
                     }
@@ -62,8 +61,8 @@ if (isset($_SESSION['session_id'])) {
                             echo "<script>location.replace('./mypage_inquiry_board.php?option=title&page=1');</script>";
                             mysqli_close($con);
                             return;
-                        }     
-                }
+                        }        
+                }           
             } else {
                 header('location: login.php?error=empty_var');
             }

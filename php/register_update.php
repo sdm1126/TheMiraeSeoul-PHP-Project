@@ -56,17 +56,17 @@ if (!$email2) {
 	exit;
 }
 if (!$mobile1) {
-	echo "<script>alert('이메일이 넘어오지 않았습니다.');</script>";
+	echo "<script>alert('전화번호가 넘어오지 않았습니다.');</script>";
 	echo "<script>location.replace('./registration.php');</script>";
 	exit;
 }
 if (!$mobile2) {
-	echo "<script>alert('이메일이 넘어오지 않았습니다.');</script>";
+	echo "<script>alert('전화번호가 넘어오지 않았습니다.');</script>";
 	echo "<script>location.replace('./registration.php');</script>";
 	exit;
 }
 if (!$mobile3) {
-	echo "<script>alert('이메일이 넘어오지 않았습니다.');</script>";
+	echo "<script>alert('전화번호가 넘어오지 않았습니다.');</script>";
 	echo "<script>location.replace('./registration.php');</script>";
 	exit;
 }

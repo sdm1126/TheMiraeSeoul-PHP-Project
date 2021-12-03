@@ -1,6 +1,6 @@
 <?php
 include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
-error_reporting(E_ALL & ~E_WARNING);
+
 $nameId;
 if (!isset($_GET['search'])) {
     $sql = " SELECT COUNT(*) AS `cnt` FROM reservation"; // member 테이블에 등록되어있는 회원의 수를 구함
@@ -8,9 +8,9 @@ if (!isset($_GET['search'])) {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
         $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where full_name ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
-    } else if ($_GET['search'] === 'reservation_no') {
+    } else if ($_GET['search'] === 'no') {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where reservation_no ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where no ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else {
         $nameId = $_GET['nameId'];
         $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where check_in ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
@@ -33,19 +33,19 @@ if ($page < 1) {
 $from_record = ($page - 1) * $page_rows; // 시작 열을 구함
 
 $list = array(); // 회원 정보를 담을 배열 선언
-//해당되는 페이지 레코드를 가져온다.
+//해당되는 페이지 레코드를 가져온다.    
 if (!isset($_GET['search'])) {
     $sql = " SELECT * FROM reservation ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
 } else {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
         $sql = " SELECT * FROM reservation where full_name ='{$nameId}' ORDER BY full_name desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
-    } else if ($_GET['search'] === 'reservation_no') {
+    } else if ($_GET['search'] === 'no') {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM reservation where reservation_no ='{$nameId}'"; // 회원 정보를 조회
+        $sql = " SELECT * FROM reservation where no ='{$nameId}'"; // 회원 정보를 조회
     } else {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM reservation where check_in ='{$nameId}' ORDER BY reservation_no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM reservation where check_in ='{$nameId}' ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     }
 }
 
@@ -65,8 +65,8 @@ if ($page > 1) {
     } else {
         if ($_GET['search'] === 'name') {
             $str .= '<a href="./adminpage_reservation.php?page=1&search=name&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
-        } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_reservation.php?page=1&search=reservation_no&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+        } else if ($_GET['search'] === 'no') {
+            $str .= '<a href="./adminpage_reservation.php?page=1&search=no&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         } else {
             $str .= '<a href="./adminpage_reservation.php?page=1&search=check_in&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
         }
@@ -88,8 +88,8 @@ if ($start_page > 1) {
 
         if ($_GET['search'] === 'name') {
             $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
-        } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
+        } else if ($_GET['search'] === 'no') {
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '&search=no&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
             $str .= '<a href="./adminpage_reservation.php?page=' . ($start_page - 1) . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
@@ -114,10 +114,10 @@ if ($total_page > 1) {
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
-        } else if ($_GET['search'] === 'reservation_no') {
+        } else if ($_GET['search'] === 'no') {
             for ($k = $start_page; $k <= $end_page; $k++) {
                 if ($page != $k)
-                    $str .= '<a href="./adminpage_reservation.php?page=' . $k . '&search=reservation_no&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
+                    $str .= '<a href="./adminpage_reservation.php?page=' . $k . '&search=no&nameId=' . $nameId . '" class="pg_page">' . $k . '</a>';
                 else
                     $str .= '<a class="active">' . $k . '</a>';
             }
@@ -139,8 +139,8 @@ if ($total_page > $end_page) {
     } else {
         if ($_GET['search'] === 'name') {
             $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
-        } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
+        } else if ($_GET['search'] === 'no') {
+            $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '&search=no&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
             $str .= '<a href="./adminpage_reservation.php?page=' . ($end_page + 1) . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
@@ -153,8 +153,8 @@ if ($page < $total_page) {
     } else {
         if ($_GET['search'] === 'name') {
             $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '&search=name&nameId=' . $nameId . '" class="arrow prev"><</a>';
-        } else if ($_GET['search'] === 'reservation_no') {
-            $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '&search=reservation_no&nameId=' . $nameId . '" class="arrow prev"><</a>';
+        } else if ($_GET['search'] === 'no') {
+            $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '&search=no&nameId=' . $nameId . '" class="arrow prev"><</a>';
         } else {
             $str .= '<a href="./adminpage_reservation.php?page=' . $total_page . '&search=check_in&nameId=' . $nameId . '" class="arrow prev"><</a>';
         }
@@ -176,7 +176,8 @@ mysqli_close($con); // 데이터베이스 접속 종료
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/aside.css">
@@ -211,7 +212,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
             <hr>
             <select class="custom-select" id="root">
                 <option value="name">성명</option>
-                <option value="reservation_no">예약번호</option>
+                <option value="no">예약번호</option>
                 <option value="check_in">체크인</option>
             </select>
             <input type="text" class="custum-search form-control" id="nameId">
@@ -229,16 +230,16 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 <?php
                 for ($i = 0; $i < count($list); $i++) {
                 ?>
-                    <form action="adminpage_reservation_delete.php" method="post">
-                        <input type="hidden" name="reservation_no" value="<?php echo $list[$i]['reservation_no'] ?>">
-                        <tr>
-                            <td><?php echo $list[$i]['full_name'] ?></td>
-                            <td><?php echo $list[$i]['no'] ?></td>
-                            <td><?php echo $list[$i]['check_in'] ?></td>
-                            <td><?php echo $list[$i]['check_out'] ?></td>
-                            <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
-                        </tr>
-                    </form>
+                <form action="adminpage_reservation_delete.php" method="post">
+                    <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                    <tr>
+                        <td><?php echo $list[$i]['full_name'] ?></td>
+                        <td><?php echo $list[$i]['no'] ?></td>
+                        <td><?php echo $list[$i]['check_in'] ?></td>
+                        <td><?php echo $list[$i]['check_out'] ?></td>
+                        <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
+                    </tr>
+                </form>
                 <?php } ?>
                 <?php if (count($list) == 0) {
                     echo '<tr><td colspan="9">등록된 예약이 없습니다.</td></tr>';

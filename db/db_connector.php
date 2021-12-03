@@ -1,13 +1,6 @@
-<!-- 
-<데이터베이스와의 통신 고정 순서>
-1. 쿼리문 준비($sql)
-2. 쿼리문 전송(mysqli_query($con, $sql)) 후 결과($result) 받기
-3. 결과로 값 불러오기(mysqli_fetch_row(인덱스)/assoc(연관배열)/array(인덱스 및 연관배열)) 
--->
-
 <?php
-ini_set('max_execution_time', 300);
 session_start();
+
 // 1. 데이터베이스 시간 설정
 date_default_timezone_set("Asia/Seoul");
 
@@ -49,7 +42,7 @@ if ($database_flag === false) {
     }
 }
 
-// 5. (쿼리문을 보낼 기본)데이터베이스 선택 및 오류처리
+// 5. (쿼리문을 보낼 기본) 데이터베이스 선택 및 오류처리
 // 5-1. 선택
 $dbcon = mysqli_select_db($con, "theMiraeSeoul") or die("데이터베이스 선택 실패" . mysqli_error($con));
 // 5-2. 오류처리
@@ -59,16 +52,14 @@ if (!$dbcon) {
 
 // 6. 공용 함수 생성
 // 6-1. 메세지 표시 후 뒤로가기 함수
-function alert_back($message)
-{
+function alert_back($message) {
     echo "<script>alert($message);</script>";
     echo "<script>history.go(-1);</script>";
     exit;
 }
 
 // 6-2. 데이터 결함 방어 함수
-function input_check($data)
-{
+function input_check($data) {
     $data = trim($data); // 공백 방어
     $data = stripslashes($data); // 슬래시 방어
     $data = htmlspecialchars($data); // 특수문자 방어
@@ -76,23 +67,23 @@ function input_check($data)
 }
 
 // 6-3. MySQL 인젝션 방어 함수
-function sql_escape($conn, $content)
-{
-    return mysqli_real_escape_string($conn, $content);
+function sql_escape($con, $content) {
+    return mysqli_real_escape_string($con, $content);
 }
-// 페이지 매기기
-function get_paging($write_pages, $cur_page, $total_page, $url) // 한페이지에 보여줄 행, 현재페이지, 총페이지수, URL
-{
+
+// 6-4. 게시판 페이지 설정 함수
+// 한 페이지 행 수, 현재 페이지, 총 페이지, URL
+function get_paging($write_pages, $current_page, $total_page, $url) { 
     // URL이 예를 들어, 'memo_login&page=123'이 있으면 'memo_login&page=' 으로 변경(공통 적용하기 위함)
     $url = preg_replace('/\&page=[0-9]*/', '', $url) . '&amp;page=';
 
     $str = '';
     // 1. 현재 페이지가 1페이지가 아니고, 2페이지 이상이라면 처음 가기를 등록한다.
-    ($cur_page > 1) ? ($str .= '<a href="' . $url . '1" class="arrow pprev">처음</a>' . PHP_EOL) : ''; // 'PHP_EOL'은 \n 이라는 뜻
+    ($current_page > 1) ? ($str .= '<a href="' . $url . '1" class="arrow pprev">처음</a>' . PHP_EOL) : ''; // 'PHP_EOL'은 \n 이라는 뜻
 
     // 2. 시작페이지와 끝페이지를 보여준다.(끝페이지가 중요)
     // 현재 12면 시작11~끝20
-    $start_page = (((int)(($cur_page - 1) / $write_pages)) * $write_pages) + 1;
+    $start_page = (((int)(($current_page - 1) / $write_pages)) * $write_pages) + 1;
     $end_page = $start_page + $write_pages - 1;
     if ($end_page >= $total_page) $end_page = $total_page;
 
@@ -103,7 +94,7 @@ function get_paging($write_pages, $cur_page, $total_page, $url) // 한페이지�
     // [처음][이전][11][12][13]...[19][20]
     if ($total_page > 1) {
         for ($k = $start_page; $k <= $end_page; $k++) {
-            if ($cur_page != $k)
+            if ($current_page != $k)
                 $str .= '<a href="' . $url . $k . '" class="">' . $k . '</a>' . PHP_EOL;
             else
                 $str .= '<a href="' . $url . $k . '" class="active">' . $k . '</a>' . PHP_EOL;
@@ -114,7 +105,7 @@ function get_paging($write_pages, $cur_page, $total_page, $url) // 한페이지�
     if ($total_page > $end_page) $str .= '<a href="' . $url . ($end_page + 1) . '" class="arrow next">다음</a>' . PHP_EOL;
 
     // 6. 현재페이지가 전체 페이지보다 작다면 [처음][이전][11]스트롱[12]스트롱[13]...[19][20][다음][끝]
-    if ($cur_page < $total_page) {
+    if ($current_page < $total_page) {
         $str .= '<a href="' . $url . $total_page . '" class="arrow nnext">맨끝</a>' . PHP_EOL;
     }
 

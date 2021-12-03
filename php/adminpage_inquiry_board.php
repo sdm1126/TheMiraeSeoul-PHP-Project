@@ -23,7 +23,7 @@ $total_count = $row['cnt'];
 // 페이지당 목록 수
 $page_rows = 5;
 //보여줘야할 페이지
-$page = $_GET['page'];
+$page = isset($_GET["page"]) ? $_GET["page"] : 1;
 // 전체 페이지 계산
 $total_page  = ceil($total_count / $page_rows);
 

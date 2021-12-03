@@ -99,10 +99,8 @@ $sql = " INSERT INTO user
 					 mobile1 = '$mobile1',
 					 mobile2 = '$mobile2',
 					 mobile3 = '$mobile3',
-					 registered_date = '$datetime',
-					 modified_date = '$datetime' ;";
+					 registered_date = '$datetime';";
 $result = mysqli_query($con, $sql);
-
 if ($result) {
 	echo "<script>location.replace('./login.php');</script>";
 	exit;

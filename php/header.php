@@ -26,7 +26,9 @@
             <li>다이닝</li>
             <li>부대시설</li>
             <li>고객서비스</li>
-            <li>예 약</li>
+            <a href="./reservation1.php">
+                <li>예 약</li>
+            </a>
         </ul>
     </nav>
 </header>

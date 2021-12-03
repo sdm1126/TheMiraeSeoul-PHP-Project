@@ -35,7 +35,7 @@ $from_record = ($page - 1) * $page_rows; // 시작 열을 구함
 $list = array(); // 회원 정보를 담을 배열 선언
 //해당되는 페이지 레코드를 가져온다.
 if (!isset($_GET['search'])) {
-    $sql = " SELECT * FROM reservation ORDER BY reservation_no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+    $sql = " SELECT * FROM reservation ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
 } else {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
@@ -233,7 +233,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
                         <input type="hidden" name="reservation_no" value="<?php echo $list[$i]['reservation_no'] ?>">
                         <tr>
                             <td><?php echo $list[$i]['full_name'] ?></td>
-                            <td><?php echo $list[$i]['reservation_no'] ?></td>
+                            <td><?php echo $list[$i]['no'] ?></td>
                             <td><?php echo $list[$i]['check_in'] ?></td>
                             <td><?php echo $list[$i]['check_out'] ?></td>
                             <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>

@@ -59,6 +59,7 @@ if (isset($_SESSION['session_id'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -113,7 +114,8 @@ if (isset($_SESSION['session_id'])) {
                         <tr>
                             <!-- 두번째 줄 시작 -->
                             <td class="title">내용</td>
-                            <td><textarea name="content" id="content" cols="30" rows="10" readonly><?=$content?></textarea></td>
+                            <td><textarea name="content" id="content" cols="30" rows="10"
+                                    readonly><?=$content?></textarea></td>
                         </tr><!-- 두번째 줄 끝 -->
                         <tr>
                             <!-- 두번째 줄 시작 -->
@@ -126,12 +128,12 @@ if (isset($_SESSION['session_id'])) {
                             <td><?=$email?></td>
                         </tr><!-- 두번째 줄 끝 -->
                     </table>
-                </article>
-                <article class="button">
-                    <div>
-                        <input type="button" value="수 정" id="btn_modify" name="mode">
-                        <input type="button" value="삭 제" id="btn_delete" name="mode">
-                    </div>
+            </article>
+            <article class="button">
+                <div>
+                    <input type="button" value="수 정" id="btn_modify" name="mode">
+                    <input type="button" value="삭 제" id="btn_delete" name="mode">
+                </div>
                 </form>
             </article>
             <!-- 댓글 불러오기 -->
@@ -142,91 +144,93 @@ if (isset($_SESSION['session_id'])) {
                 <h3><?=$comment[$i]['id']?></h3>
                 <!-- 이미 작성된 댓글 no값으로 댓글 테이블의 PK값을 준다 -->
                 <form action="./mypage_comment_update.php?no=<?=$comment[$i]['no']?>" method="post">
-                    <textarea name="content" class="comment_content" cols="30" rows="10" readonly><?=$comment[$i]['content']?></textarea>
-                </article>
-                <article class="reply">
-                    <?php
+                    <textarea name="content" class="comment_content" cols="30" rows="10"
+                        readonly><?=$comment[$i]['content']?></textarea>
+            </article>
+            <article class="reply">
+                <?php
                         if($comment[$i]['id'] === $id || "admin" === $id){
                     ?>
-                    <div>
-                        <input type="button" class="comment_update" name="mode" value="수 정">
-                        <input type="button" class="comment_delete" name="mode" value="삭 제">
-                    </div> 
-                    <?php
+                <div>
+                    <input type="button" class="comment_update" name="mode" value="수 정">
+                    <input type="button" class="comment_delete" name="mode" value="삭 제">
+                </div>
+                <?php
                         }
                         ?>
                 </form>
-                </article>
-                <?php } 
+            </article>
+            <?php } 
                 ?>
             <article class="textarea">
                 <h3>답 변</h3>
                 <!-- 작성될 댓글 어느 게시글에 작성될지 모르기 때문에 게시글 PK를 값으로 준다 -->
                 <form action="./mypage_comment_update.php?no=<?=$list_number?>" method="post">
                     <textarea name="content" id="" cols="30" rows="10"></textarea>
-                </article>
-                <article class="reply">
-                    <div>
-                        <input type="submit" id="comment_insert" name="mode" value="등 록">
-                    </div> 
+            </article>
+            <article class="reply">
+                <div>
+                    <input type="submit" id="comment_insert" name="mode" value="등 록">
+                </div>
                 </form>
-                </article>
+            </article>
         </main>
         <?php
         include('./footer.php');
         ?>
     </div>
     <script>
-        let btn_modify = document.querySelector('#btn_modify')
-        let btn_delete = document.querySelector('#btn_delete')
-        let title = document.querySelector('#title')
-        let content = document.querySelector('#content')
+    let btn_modify = document.querySelector('#btn_modify')
+    let btn_delete = document.querySelector('#btn_delete')
+    let title = document.querySelector('#title')
+    let content = document.querySelector('#content')
 
-        let comment_insert = document.querySelector('#comment_insert')
-        let comment_update = document.querySelectorAll('.comment_update')
-        let comment_delete = document.querySelectorAll('.comment_delete')
-        let comment_content = document.querySelectorAll('.comment_content')
+    let comment_insert = document.querySelector('#comment_insert')
+    let comment_update = document.querySelectorAll('.comment_update')
+    let comment_delete = document.querySelectorAll('.comment_delete')
+    let comment_content = document.querySelectorAll('.comment_content')
 
-        function delete_button_change(button){
-            if(button.value === "삭 제"){
-                if(confirm('정말 삭제하시겠습니까?')){
-                   button.type = "submit";
-                }
-            }else if(button.value === "취 소"){
-                location.reload()
+    function delete_button_change(button) {
+        if (button.value === "삭 제") {
+            if (confirm('정말 삭제하시겠습니까?')) {
+                button.type = "submit";
             }
+        } else if (button.value === "취 소") {
+            location.reload()
         }
+    }
 
-        btn_modify.addEventListener('click', () => {
-           if(btn_modify.value === "수 정"){
-               btn_modify.value = "확 인"
-               btn_delete.value = "취 소"
-               title.readOnly = false
-               content.readOnly = false
-           }else if(btn_modify.value === "확 인"){
-                btn_modify.type = "submit"
-           }
+    btn_modify.addEventListener('click', () => {
+        if (btn_modify.value === "수 정") {
+            btn_modify.value = "확 인"
+            btn_delete.value = "취 소"
+            title.readOnly = false
+            content.readOnly = false
+        } else if (btn_modify.value === "확 인") {
+            btn_modify.type = "submit"
+        }
+    })
+
+    btn_delete.addEventListener('click', () => {
+        delete_button_change(btn_delete)
+    })
+
+    for (let i = 0; i < comment_update.length; i++) {
+        comment_update[i].addEventListener('click', () => {
+            if (comment_update[i].value === "수 정") {
+                comment_update[i].value = "확 인"
+                comment_delete[i].value = "취 소"
+                comment_content[i].readOnly = false
+            } else if (comment_update[i].value === "확 인") {
+                comment_update[i].type = "submit"
+            }
         })
 
-        btn_delete.addEventListener('click', () => {
-           delete_button_change(btn_delete)
+        comment_delete[i].addEventListener('click', function() {
+            delete_button_change(comment_delete[i])
         })
-
-        for(let i = 0; i < comment_update.length; i++){
-            comment_update[i].addEventListener('click', () => {
-               if(comment_update[i].value === "수 정"){
-                   comment_update[i].value = "확 인"
-                   comment_delete[i].value = "취 소"
-                   comment_content[i].readOnly = false
-               }else if(comment_update[i].value === "확 인"){
-                   comment_update[i].type = "submit"
-               }
-            })
-
-            comment_delete[i].addEventListener('click', function(){
-                delete_button_change(comment_delete[i])
-            })
-        }
+    }
     </script>
 </body>
+
 </html>

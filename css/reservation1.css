@@ -4,10 +4,21 @@ article .section1,
 .section2 {
   border-bottom: 1px solid black;
   display: flex;
+  position: relative;
   margin-top: 30px;
   width: 900px;
   height: auto;
   padding-bottom: 20px;
+  padding-right: 20px;
+}
+
+article .section1 span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 /* article - section3 */
@@ -53,25 +64,25 @@ article .section3-1 span,
   font-weight: bold;
 }
 
-article .section3-1 #date1,
-#date2 {
+article .section3-1 #check_in,
+.section3-1 #check_out {
   width: 180px;
   height: 30px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-article .section3-2 #number1,
-#number2,
-.section3-4 #number3,
-#number4 {
+article .section3-2 #adult,
+#child,
+.section3-4 #adult_breakfast,
+#child_breakfast {
   width: 90px;
   height: 30px;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-article .section3-3-group {
+article .section3-3-sub {
   text-align: center;
 }
 
@@ -83,6 +94,7 @@ article .section3-3 .section3-3-left,
   width: 270px;
   height: 200px;
   text-align: left;
+  margin-left: 10px;
 }
 
 article .section3-3 .section3-3-left img {
@@ -93,12 +105,12 @@ article .section3-3 .section3-3-left img {
 
 article .section3-3 .section3-3-center h3,
 h4 {
-  margin: 35px;
+  margin: 30px;
 }
 
-article .section3-3 .section3-3-right input {
+article .section3-3 .section3-3-right .room_type {
   margin-top: 30px;
-  margin-right: 25px;
+  margin-right: 30px;
 }
 
 /* article - section4 */
@@ -109,7 +121,7 @@ article .section4 {
   height: auto;
 }
 
-article .section4 button {
+article .section4 input {
   font-weight: bold;
   margin-top: 30px;
   width: 100px;

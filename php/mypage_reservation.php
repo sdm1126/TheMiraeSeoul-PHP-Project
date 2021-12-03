@@ -15,17 +15,17 @@
 <body>
     <div class="container">
         <?php
-            include('./header.php');
+        include('./header.php');
         ?>
         <aside>
             <div>
                 <ul>
                     <li class="title">마이 페이지</li>
                     <hr>
-                    <li>내 정보</li>
-                    <li><b>내 예약</b></li>
-                    <li>내 문의</li>
-                    <li>회원탈퇴</li>
+                    <li><a href="./mypage_user.php">내 정보</a></li>
+                    <li><a href="./mypage_reservation.php"><b>내 예약</b></a></li>
+                    <li><a href="./mypage_inquiry_board.php?option=title&page=1">내 문의</a></li>
+                    <li><a href="./mypage_resignation.php">회원탈퇴</a></li>
                 </ul>
             </div>
         </aside>

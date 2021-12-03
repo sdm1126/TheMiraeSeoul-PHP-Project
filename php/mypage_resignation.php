@@ -22,10 +22,10 @@
                 <ul>
                     <li class="title">마이 페이지</li>
                     <hr>
-                    <li>내 정보</li>
-                    <li>내 예약</li>
-                    <li>내 문의</li>
-                    <li><b>회원탈퇴</b></li>
+                    <li><a href="./mypage_user.php">내 정보</a></li>
+                    <li><a href="./mypage_reservation.php">내 예약</a></li>
+                    <li><a href="./mypage_inquiry_board.php?option=title&page=1">내 문의</a></li>
+                    <li><a href="./mypage_resignation.php"><b>회원탈퇴</b></a></li>
                 </ul>
             </div>
         </aside>
@@ -42,7 +42,7 @@
                 </ul>
             </article>
             <article class="button">
-                <input type="submit" value="탈 퇴">
+                <input type="button" id="submit" value="탈 퇴">
             </article>
         </main>
         <?php
@@ -50,5 +50,12 @@
         ?>
     </div>
 </body>
-
+<script>
+    let submit = document.querySelector('#submit')
+    submit.addEventListener('click', function(){
+        if(confirm("회원님의 모든 정보가 사라집니다. 탈퇴하시겠습니까?")){
+            location.replace('./mypage_resignation_delete.php');
+        }   
+    })
+</script>
 </html>

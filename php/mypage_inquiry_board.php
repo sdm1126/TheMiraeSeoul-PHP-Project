@@ -52,8 +52,8 @@ if (isset($_SESSION['session_id'])) {
         <h2>내 문의</h2>
       </div>
       <?php
-                        include_once('./mypage_inquiry_load.php');
-                        ?>
+      include_once('./mypage_inquiry_load.php');
+      ?>
       <hr>
       <div class="search">
         <form action="./mypage_inquiry_board.php" method="get">
@@ -72,8 +72,8 @@ if (isset($_SESSION['session_id'])) {
           <th>제목</th>
           <th>작성일</th>
           <?php
-                                for ($i = 0; $i < count($list); $i++) {
-                                ?>
+          for ($i = 0; $i < count($list); $i++) {
+          ?>
           <tr>
             <td><?= $list[$i]['num'] ?></td>
             <td>
@@ -82,8 +82,8 @@ if (isset($_SESSION['session_id'])) {
             <td><?= substr($list[$i]['written_date'], 0, 10) ?></td>
           </tr>
           <?php }
-                                mysqli_close($con); // 데이터베이스 접속 종료
-                                ?>
+          mysqli_close($con); // 데이터베이스 접속 종료
+          ?>
         </table>
         <br>
         <div class="page_wrap">
@@ -94,14 +94,15 @@ if (isset($_SESSION['session_id'])) {
       </div>
     </main>
     <?php
-                    include('./footer.php');
-                    ?>
+    include('./footer.php');
+    ?>
   </div>
 </body>
 <script>
 let select = document.querySelector('#select')
 let search_str = document.querySelector('#search_str')
 let error = document.querySelector('#error')
+let submit = document.querySelector('#submit')
 
 document.querySelector('option[value="<?= $option ?>"]').selected = "selected"
 
@@ -122,6 +123,14 @@ search_str.addEventListener('keyup', function() {
     xhttp.open("GET", "search_str_check.php?q=" + str, true)
     xhttp.send()
 
+  }
+})
+
+submit.addEventListener('click', function(){
+  if (select.options[select.selectedIndex].value === 'written_date'){
+      if(error.innerHTML){
+        search_str.value = ''
+      }
   }
 })
 </script>

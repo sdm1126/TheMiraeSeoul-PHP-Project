@@ -32,7 +32,7 @@
                     <table>
                         <tr class="name">
                             <td>성(영문)</td>
-                            <td><input type="text" name="first_name" id="first_name"></td>
+                            <td><input type="text" name="first_name" id="first_name" onfocusout="first_name_function()"></td>
                             <td>이름(영문)</td>
                             <td><input type="text" name="second_name" id="second_name"></td>
                         </tr>
@@ -54,7 +54,7 @@
                         <tr class="password">
                             <td>비밀번호</td>
                             <td colspan="3">
-                                <input type="password" placeholder="비밀번호 입력" name="password" id="password_new">
+                                <input type="password" placeholder="최소 8 자,문자,숫자,특수 문자포함" name="password" id="password_new">
                             </td>
                         </tr>
                         <tr class="password_confirm">
@@ -100,47 +100,6 @@
         include('./footer.php')
         ?>
     </div>
-    <SCript>
-        let firstName = document.querySelector('#first_name')
-        let lastName = document.querySelector('#second_name')
-        let id = document.querySelector('#id')
-        let password_new = document.querySelector('#password_new')
-        let password_check = document.querySelector('#password_check')
-        let email1 = document.querySelector('#email1')
-        let email2 = document.querySelector('#email2')
-        let mobile1 = document.querySelector('#mobile1')
-        let mobile2 = document.querySelector('#mobile2')
-        let mobile3 = document.querySelector('#mobile3')
-
-        id.addEventListener('focusout', (e) => {
-            var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
-            if (!idReg.test($("input[name=id]").val())) {
-                alert("아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다.");
-                return;
-            }
-        });
-        password_new.addEventListener('focusout', (e) => {
-            var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/g;
-            if (!reg.test($("input[name=password]").val())) {
-                alert("비밀번호 정규식 최소 8 자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수 문자 위반!!");
-                return false;
-            }
-        });
-        firstName.addEventListener('blur', (e) => {
-            var reg = /^[a-zA-Z]+$/g;
-            if (!reg.test($("input[name=first_name]").val())) {
-                alert("성을 제대로 영문로 입력해주세요!!");
-                return false;
-            }
-        });
-        lastName.addEventListener('blur', (e) => {
-            var reg = /^[a-zA-Z]+$/g;
-            if (!reg.test($("input[name=second_name]").val())) {
-                alert("이름을 제대로 영문로 입력해주세요!!");
-                return false;
-            }
-        });
-    </SCript>
 </body>
 
 </html>

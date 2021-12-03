@@ -1,24 +1,28 @@
 function fregisterform_submit(form) {
     var reg_first = /^[a-zA-Z]+$/g;
     if (!reg_first.test($("input[name=first_name]").val())) {
+        form.first_name.focus();
         alert("성을 제대로 영문로 입력해주세요!!");
         return false;
     }
     var reg_last = /^[a-zA-Z]+$/g;
-            if (!reg_last.test($("input[name=second_name]").val())) {
-                alert("이름을 제대로 영문로 입력해주세요!!");
-                return false;
+    if (!reg_last.test($("input[name=second_name]").val())) {
+          alert("이름을 제대로 영문로 입력해주세요!!");
+          form.second_name.focus();
+            return false;
             }
-            var reg_password = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/g;
-            if (!reg_password.test($("input[name=password]").val())) {
-                alert("비밀번호 정규식 최소 8 자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수 문자 위반!!");
-                return false;
-            }
-            var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
-            if (!idReg.test($("input[name=id]").val())) {
-                alert("아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다.");
-                return;
-            }
+   var reg_password = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/g;
+    if (!reg_password.test($("input[name=password]").val())) {
+         alert("비밀번호 정규식 최소 8 자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수 문자 위반!!");
+         form.id.focus();
+         return false;
+       }
+   var idReg = /^[a-z]+[a-z0-9]{5,19}$/g;
+    if (!idReg.test($("input[name=id]").val())) {
+        alert("아이디는 영문자로 시작하는 6~20자 영문자 또는 숫자이어야 합니다.");
+        form.id.focus();
+     return;
+    }
             
 
   if (form.first_name.value.length < 1) { // 회원아이디 검사
@@ -40,7 +44,7 @@ function fregisterform_submit(form) {
 
   if (form.password.value.length < 3) {
       alert("비밀번호를 3글자 이상 입력하십시오.");
-      form.mb_password.focus();
+      form.password.focus();
       return false;
   }
 

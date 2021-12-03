@@ -37,7 +37,12 @@ article .section2 input {
 article .id input {
   width: 240px;
 }
-
+#password_new {
+  width: 240px;
+}
+#password_check {
+  width: 240px;
+}
 article .phone input {
   width: 120px;
 }

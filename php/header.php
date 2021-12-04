@@ -1,5 +1,7 @@
-<?php 
+<?php
+    include_once $_SERVER['DOCUMENT_ROOT']."/theMiraeSeoul/db/db_connector.php";
 
+    $session_id = (isset($_SESSION["session_id"])) ? $_SESSION["session_id"] : null;
 ?>
 
 <header>
@@ -11,9 +13,23 @@
         </div>
         <div class="header-right">
             <div class="header-right-top">
-                <span>로그인</span>
-                <span>회원가입</span>
-                <span>마이 페이지</span>
+                <!-- 로그인 했을 경우 -->
+                <?php if(isset($session_id)) { ?>
+                <a href="./logout.php"><span>로그아웃</span></a>
+                <!-- 로그인 하지 않았을 경우 -->
+                <?php } else {?>
+                <a href="./login.php"><span>로그인&nbsp</span></a>
+                <?php } ?>
+
+                <a href="./registration.php"><span>회원가입</span></a>
+
+                <!-- 관리자로 로그인 했을 경우 -->
+                <?php if($session_id === "admin") { ?>
+                <a href="./adminpage_user.php"><span>관리자 페이지</span></a>
+                <!-- 관리자로 로그인 하지 않았을 경우 -->
+                <?php } else {?>
+                <a href="./mypage_user.php"><span>마이 페이지</span></a>
+                <?php } ?>
             </div>
             <div class="header-right-bottom">
                 <span>문의전화 02-441-6006</span>

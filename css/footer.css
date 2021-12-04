@@ -25,6 +25,10 @@ footer .footer-left {
   text-align: center;
 }
 
+footer .footer-left img {
+  width: 180px;
+}
+
 footer .footer-center {
   float: left;
   width: 300px;

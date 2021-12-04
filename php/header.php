@@ -1,10 +1,12 @@
+<?php 
+
+?>
+
 <header>
     <div class="header-group">
         <div class="header-center">
             <a href="./main.php">
-                <h1>The Mirae
-                    <h2>Seoul</h2>
-                </h1>
+                <img src="../image/main.png">
             </a>
         </div>
         <div class="header-right">
@@ -21,11 +23,21 @@
     </div>
     <nav>
         <ul>
-            <li>호 텔</li>
-            <li>객 실</li>
-            <li>다이닝</li>
-            <li>부대시설</li>
-            <li>고객 서비스</li>
+            <a href="./hotel.php">
+                <li>호 텔</li>
+            </a>
+            <a href="./room_double.php">
+                <li>객 실</li>
+            </a>
+            <a href="./dining.php">
+                <li>다이닝</li>
+            </a>
+            <a href="./facilities.php">
+                <li>부대시설</li>
+            </a>
+            <a href="./service_notice_board.php">
+                <li>고객 서비스</li>
+            </a>
             <a href="./reservation1.php">
                 <li>예 약</li>
             </a>

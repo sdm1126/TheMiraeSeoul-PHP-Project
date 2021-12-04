@@ -50,7 +50,6 @@ article .section2 #submit {
 article .section3 {
   width: 900px;
   height: 300px;
-  margin-bottom: 10px;
 }
 
 article .section3 img {
@@ -68,16 +67,19 @@ article .section3 .section3-left {
   width: 300px;
   float: left;
   text-align: left;
+  margin-bottom: 30px;
 }
 
 article .section3 .section3-center {
   width: 300px;
   float: left;
   text-align: left;
+  margin-bottom: 30px;
 }
 
 article .section3 .section3-right {
   width: 300px;
   float: right;
   text-align: left;
+  margin-bottom: 30px;
 }

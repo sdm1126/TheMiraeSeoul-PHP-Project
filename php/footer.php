@@ -3,9 +3,7 @@
     <link rel="stylesheet" href="../css/dialog.css">
     <div class="footer-left">
         <a href="./main.php">
-            <h1>The Mirae
-                <h2>Seoul</h2>
-            </h1>
+            <img src="../image/main.png">
         </a>
     </div>
     <div class="footer-center">

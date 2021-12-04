@@ -41,7 +41,7 @@ function create_procedure($con, $procedure_name) {
                     INSERT INTO deal VALUES (NULL, '../image/relaxing_package.jpg', 'Relaxing Package', '3~15층 객실 + 입욕제', '2021-01-01', '2021-12-31');
                     INSERT INTO deal VALUES (NULL, '../image/streaming_package.jpg', 'Streaming Package', '3~15층 객실 + 셋톱박스 대여 + CGV 팝콘(L)', '2021-01-01', '2021-12-31');
                     INSERT INTO deal VALUES (NULL, '../image/everland_package.jpg', 'Everland Package', '3~15층 객실 + 에버랜드 티켓 2~3매', '2021-11-11', '2022-03-31');
-                    INSERT INTO deal VALUES (NULL, '../imagwinter_package.jpg', 'Winter Package', '3~15층 객실 + 담요 + 머그컵', '2021-12-10', '2022-02-28');
+                    INSERT INTO deal VALUES (NULL, '../image/winter_package.jpg', 'Winter Package', '3~15층 객실 + 담요 + 머그컵', '2021-12-10', '2022-02-28');
                     INSERT INTO deal VALUES (NULL, '../image/christmas_package.jpg', 'Christmas Package', '3~15층 객실 + 산타모자 인형', '2021-12-20', '2021-12-31'); 
                     END";
                     break;
@@ -116,7 +116,7 @@ function create_procedure($con, $procedure_name) {
                     break;
 
             default : 
-                echo "<script>alert('해당 프로지서가 없습니다.');</script>";
+                echo "<script>alert('해당 프로시저가 없습니다.');</script>";
                 break;
         }
 

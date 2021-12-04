@@ -6,7 +6,6 @@
 }
 
 .container {
-  border: 1px solid black;
   width: 960px;
   height: auto;
   margin: 0 auto;
@@ -36,18 +35,26 @@ header .header-group .header-center {
   position: absolute;
   transform: translate(200%, 0%);
   width: 180px;
-  height: 90px;
+  height: auto;
+  text-align: center;
+}
+
+header .header-group .header-center img {
+  position: absolute;
+  transform: translate(-50%, -10%);
+  width: 180px;
+  height: auto;
   text-align: center;
 }
 
 header .header-group .header-right {
   position: absolute;
   transform: translate(200%, 0%);
-  margin-top: 30px;
+  margin-top: 20px;
   font-weight: bold;
   font-size: 12px;
   width: 300px;
-  height: 90px;
+  height: auto;
 }
 
 header .header-group .header-right .header-right-top {
@@ -84,4 +91,8 @@ header nav ul li {
   list-style-type: none;
   line-height: 30px;
   text-align: center;
+}
+
+header nav ul li a {
+  display: block;
 }

@@ -19,9 +19,8 @@
                 <!-- 로그인 하지 않았을 경우 -->
                 <?php } else {?>
                 <a href="./login.php"><span>로그인&nbsp</span></a>
-                <?php } ?>
-
                 <a href="./registration.php"><span>회원가입</span></a>
+                <?php } ?>
 
                 <!-- 관리자로 로그인 했을 경우 -->
                 <?php if($session_id === "admin") { ?>

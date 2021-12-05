@@ -38,7 +38,7 @@
             </article>
             <article class="main">
                 <section class="section1">
-                    <img src="../image/image.jpg" />
+                    <img src="../image/dining_restaurant.jpg" />
                 </section>
             </article>
             <article class="dining1">

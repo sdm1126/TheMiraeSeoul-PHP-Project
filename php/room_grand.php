@@ -42,7 +42,7 @@
             <hr>
             <article class="main">
                 <section class="section1">
-                    <img src="../image/image.jpg" />
+                    <img src="../image/room_grand.jpg" />
                 </section>
             </article>
             <article class="room1">

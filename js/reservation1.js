@@ -93,6 +93,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 1-1 체크인 일자 선택 시,
+    $("#check_in").on("focus", function() {
+        search_deal();
+    });
+
     $("#check_in").on("change", function() {
         search_deal();
     });
@@ -271,3 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         search_tariff();
     });
 })
+
+function focus_check_in() {
+    $("#check_in").focus();
+}

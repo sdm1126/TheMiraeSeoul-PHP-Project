@@ -26,16 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
         $("#check_out").attr("readonly", true);
     });
 
-    // 1-3. 체크인 선택 시, 최소 체크아웃 일자 설정
+    // 1-3. 메인 화면에서 예약 화면으로 이동하여 체크인 포커스 시, 최대 체크인 일자 설정
+    $("#check_in").on("focus", function () {
+        let number_check_out = $("#check_out").datepicker("getDate"); // number형
+        let date_max_check_in = new Date((number_check_out - (24 * 60 * 60 * 1000))); // Date형
+        let max_check_in = date_max_check_in.getFullYear() + "-" + (date_max_check_in.getMonth() + 1) + "-" + date_max_check_in.getDate(); // string형
+        // $('#check_in').datepicker("option", "endDate", max_check_in);
+        $("#check_in").datepicker("option", "maxDate", max_check_in);
+    }); 
+
+    // 1-4. 체크인 선택 시, 최소 체크아웃 일자 설정
     $("#check_in").on("change", function () {
         let number_check_in = $(this).datepicker("getDate"); // number형
         let date_min_check_out = new Date((number_check_in + (24 * 60 * 60 * 1000))); // Date형
         let min_check_out = date_min_check_out.getFullYear() + "-" + (date_min_check_out.getMonth() + 1) + "-" + date_min_check_out.getDate(); // string형
+
         $("#check_out").datepicker("option", "startDate", min_check_out);
-        // $('#check_out').datepicker("option", "minDate", min_check_out);
+        // $('#check_out').datepicker("option", "minDate", min_check_out_next);
     });
     
-    // 1-4. 체크아웃 선택 시, 최대 체크인 일자 설정
+    // 1-5. 체크아웃 선택 시, 최대 체크인 일자 설정
     $("#check_out").on("change", function () {
         let number_check_out = $(this).datepicker("getDate"); // number형
         let date_max_check_in = new Date((number_check_out - (24 * 60 * 60 * 1000))); // Date형
@@ -276,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })
 
+// 메인 화면에서 예약 화면으로 이동 시 체크인 포커스 함수
 function focus_check_in() {
     $("#check_in").focus();
 }

@@ -35,11 +35,6 @@ h2 {
   height: 30px;
 }
 
-.search input[type="submit"] {
-  width: 50px;
-  height: 30px;
-  font-weight: bold;
-}
 
 .table {
   width: 700px;
@@ -79,8 +74,12 @@ tr {
   overflow: hidden;
 }
 
-.index {
-  width: 700px;
-  text-align: center;
-  margin-bottom: 50px;
+.btn{
+  width: 50px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.btn-excel{
+  width: 100px;
 }

@@ -43,12 +43,6 @@ h2 {
   height: 30px;
 }
 
-.search input[type="submit"] {
-  width: 50px;
-  height: 30px;
-  font-weight: bold;
-}
-
 .table {
   width: 700px;
   margin-bottom: 50px;
@@ -79,4 +73,14 @@ tr {
   max-width: 300px;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.btn{
+  width: 50px;
+  height: 30px;
+  font-weight: bold;
+}
+
+.btn-excel{
+  width: 100px;
 }

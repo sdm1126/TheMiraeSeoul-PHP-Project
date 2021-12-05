@@ -31,9 +31,9 @@
             <div class="article-group">
                 <section class="section1">
                     <section class="section1_slides">
-                        <a><img src="../image/main_lobby.jpg" alt="slide1" /></a>
-                        <a><img src="../image/main_restaurant.jpg" alt="slide2" /></a>
-                        <a><img src="../image/room_grand.jpg" alt="slide3" /></a>
+                        <a href="#"><img src="../image/main_lobby.jpg" alt="slide1" /></a>
+                        <a href="#"><img src="../image/main_restaurant.jpg" alt="slide2" /></a>
+                        <a href="#"><img src="../image/room_grand.jpg" alt="slide3" /></a>
                     </section>
                     <section class="section1_nav">
                         <a class="prev">prev</a>

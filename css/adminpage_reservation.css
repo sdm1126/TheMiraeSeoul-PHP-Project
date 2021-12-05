@@ -31,6 +31,7 @@ h2 {
 .search {
   margin-top: 20px;
   margin-bottom: 20px;
+  position: relative;
 }
 
 .search select {
@@ -83,4 +84,6 @@ tr {
 
 .btn-excel{
   width: 100px;
+  position: absolute;
+  right: 0;
 }

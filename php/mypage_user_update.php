@@ -90,7 +90,7 @@ if (isset($_SESSION['session_id'])) {
 
                         $result = mysqli_query($con, $sql) or die('fail' . mysqli_error($con));
                         if ($result) {
-                            echo "<script>alert('수정완료!')</script>";
+                            echo "<script>alert('수정이 완료되었습니다')</script>";
                             echo "<script>location.replace('./mypage_user.php')</script>";
                             mysqli_close($con);
                             return;

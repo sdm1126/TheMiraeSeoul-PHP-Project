@@ -83,8 +83,7 @@
                     '$cc_expiry_month',
                     '$cc_expiry_year',
                     '$special_request',
-                    now(),
-                    '예약됨'
+                    now()
                 );";
 
                 // 6. 예약 정상 추가 체크

@@ -216,7 +216,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 </select>
                 <input type="text" class="custum-search form-control" id="nameId">
                 <button type="button" class="btn btn-secondary" id="search">조회</button>
-                <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">엑셀 출력</button>
+                <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">로그 출력</button>
             </article>
             <article class="table">
                 <table>

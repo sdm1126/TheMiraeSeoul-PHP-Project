@@ -1,5 +1,8 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT']."/theMiraeSeoul/db/db_connector.php";
+
+    $check_in = (isset($_POST['check_in'])) ? $_POST['check_in'] : null;
+    $check_out = (isset($_POST['check_out'])) ? $_POST['check_out'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +22,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!-- JQuery UI JS -->
 </head>
 
-<body>
+<body onload="focus_check_in()">
     <div class="container">
         <!-- header -->
         <?php
@@ -47,9 +50,18 @@
                             <h3>일정 선택</h3>
                             <fieldset>
                                 <span>체크인</span>
+                                <?php if(isset($check_in)) { ?>
+                                <input type="text" id="check_in" name="check_in" value=<?php echo $check_in ?> />
+                                <?php } else { ?>
                                 <input type="text" id="check_in" name="check_in" placeholder="일자 선택" />
+                                <?php } ?>
+
                                 <span>체크아웃</span>
+                                <?php if(isset($check_out)) { ?>
+                                <input type="text" id="check_out" name="check_out" value=<?php echo $check_out ?> />
+                                <?php } else { ?>
                                 <input type="text" id="check_out" name="check_out" placeholder="일자 선택" />
+                                <?php } ?>
                             </fieldset>
                         </div>
 

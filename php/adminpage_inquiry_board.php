@@ -176,7 +176,6 @@ mysqli_close($con); // 데이터베이스 접속 종료
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/aside.css">
@@ -196,8 +195,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
         <aside>
             <div>
                 <ul>
-                    <li class="title">관리자
-                        <br>페이지
+                    <li class="title">관리자 페이지
                     </li>
                     <hr>
                     <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
@@ -206,63 +204,55 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 </ul>
             </div>
         </aside>
-        <div class="section1">
-            <h2 id="h2">전 체 문 의</h2>
+        <main>
+            <article class="h2">
+                <h2 id="h2">전 체 문 의</h2>
+            </article>
             <hr>
-            <select class="custom-select" id="root">
-                <option value="id">아이디</option>
-                <option value="title">제목</option>
-            </select>
-            <input type="text" class="custum-search form-control" id="nameId">
-            <button type="button" class="btn btn-secondary" id="search">조회</button>
-            <button type="button" class="btn btn-secondary" id="search_excel">검색 출력</button>
-            <button type="button" class="btn btn-secondary" id="all_excel">전체 출력</button>
-        </div>
-        <div class="section2">
-            <table border="1">
-                <tr>
-                    <td class="name title">
-                        <h4>번호</h4>
-                    </td>
-                    <td class="id title">
-                        <h4>아이디</h4>
-                    </td>
-                    <td class="email title">
-                        <h4>제목</h4>
-                    </td>
-                    <td class="phone title">
-                        <h4>작성일자</h4>
-                    </td>
-                    <td class="sign_out title">
-                        <h4>삭제</h4>
-                    </td>
-                </tr>
-                <?php
-                for ($i = 0; $i < count($list); $i++) {
-                ?>
-                    <form action="adminpage_inquiry_board_delete.php" method="post">
-                        <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
-                        <tr>
-                            <td><?php echo $list[$i]['no'] ?></td>
-                            <td><?php echo $list[$i]['id'] ?></td>
-                            <td><a href="adminpage_inquiry_read.php?no=<?php echo $list[$i]['no'] ?>&id=<?php echo $list[$i]['id'] ?>"><?php echo $list[$i]['title'] ?></a></td>
-                            <td><?php echo $list[$i]['written_date'] ?></td>
-                            <td><button type="submit" class="btn btn-secondary btn1">삭제</button></td>
-                        </tr>
-                    </form>
-                <?php } ?>
-                <?php if (count($list) == 0) {
-                    echo '<tr><td colspan="9">등록된 문의가 없습니다.</td></tr>';
-                } ?>
-            </table>
-            <div class="page_wrap">
-                <div class="page_nation">
-                    <p><?php echo $write_page; ?>
-                        <!-- 페이지 -->
-                    </p>
+            <article class="search">
+                <select class="custom-select" id="root">
+                    <option value="id">아이디</option>
+                    <option value="title">제목</option>
+                </select>
+                <input type="text" class="custum-search form-control" id="nameId">
+                <button type="button" class="btn btn-secondary" id="search">조회</button>
+                <button type="button" class="btn btn-secondary" id="search_excel">엑셀 출력</button>
+            </article>
+            <article class="table">
+                <table>
+                    <th>번호</th>
+                    <th>아이디</th>
+                    <th>제목</th>
+                    <th>작성일자</th>
+                    <th>삭제</th>
+                    <?php
+                    for ($i = 0; $i < count($list); $i++) {
+                    ?>
+                        <form action="adminpage_inquiry_board_delete.php" method="post">
+                            <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                            <tr>
+                                <td><?php echo $list[$i]['no'] ?></td>
+                                <td><?php echo $list[$i]['id'] ?></td>
+                                <td><a href="adminpage_inquiry_read.php?no=<?php echo $list[$i]['no'] ?>&id=<?php echo $list[$i]['id'] ?>"><?php echo $list[$i]['title'] ?></a></td>
+                                <td><?php echo $list[$i]['written_date'] ?></td>
+                                <td><button type="submit" class="btn btn-secondary btn1">삭제</button></td>
+                            </tr>
+                        </form>
+                    <?php } ?>
+                    <?php if (count($list) == 0) {
+                        echo '<tr><td colspan="9">등록된 문의가 없습니다.</td></tr>';
+                    } ?>
+                </table>
+                <br>
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        <p><?php echo $write_page; ?>
+                            <!-- 페이지 -->
+                        </p>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </article>
+        </main>
 
 
         <!-- footer -->

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const search = document.querySelector('#search');
     const search_excel = document.querySelector('#search_excel');
-    const all_excel = document.querySelector('#all_excel');
     const root = document.querySelector('#root');
     const nameId = document.querySelector('#nameId');
     search.addEventListener('click', (event) => {
@@ -24,6 +23,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     search_excel.addEventListener('click', excel)
-    all_excel.addEventListener('click', excel)
 })
 

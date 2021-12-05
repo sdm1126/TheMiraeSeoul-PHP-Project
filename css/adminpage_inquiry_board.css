@@ -1,91 +1,86 @@
-h1 {
-  font-size: 35px;
-}
-.section1 {
-  position: absolute;
-  width: 700px;
-  height: 160px;
-  margin-left: 180px;
-  margin-top: 30px;
-}
-.section2 {
-  position: absolute;
+main {
   width: 700px;
   height: auto;
-  margin-left: 180px;
-  margin-top: 180px;
+  float: right;
 }
-#h2 {
-  margin-left: -560px;
+
+.h2 {
+  width: 360px;
+  height: 48px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+hr {
+  background-color: black;
+}
+
+h2 {
+  font-weight: bold;
   font-size: 32px;
+}
+
+.search {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.search select {
+  width: 80px;
+  height: 30px;
+}
+
+.search input[type="text"] {
+  width: 200px;
+  height: 30px;
+}
+
+.search input[type="submit"] {
+  width: 50px;
+  height: 30px;
   font-weight: bold;
 }
-hr {
-  height: 1px;
-  background-color: black;
-  border: 0;
+
+.table {
+  width: 700px;
+  margin-bottom: 50px;
 }
+
+.table table,
+th,
+tr,
 td {
+  border: 1px solid gainsboro;
+  border-collapse: collapse;
+}
+
+.table table th,
+tr {
+  width: 100px;
   height: 40px;
   text-align: center;
 }
-td.name {
-  width: 100px;
-  text-align: center;
-}
-td.title {
+
+.table th {
   background-color: #eaeaea;
-  font-weight: bold;
 }
-td.id {
+
+.table table th:nth-child(3), tr td:nth-child(3) {
+  width: 300px;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.table table th:nth-child(4), tr td:nth-child(4) {
   width: 200px;
-  text-align: center;
-}
-td.email {
-  width: 150px;
-  text-align: center;
-}
-td.phone {
-  width: 150px;
-  text-align: center;
-}
-td.sign_out {
-  width: 150px;
-  text-align: center;
-}
-h2 {
-  text-align: center;
-}
-h3 {
-  text-align: center;
-}
-h4 {
-  font-weight: bold;
-}
-.custom-select {
-  float: left;
-  width: 150px;
-}
-.custum-search {
-  float: left;
-  width: 150px;
-  margin-left: 30px;
-}
-.btn {
-  float: left;
-  margin-left: 40px;
-}
-footer {
-  margin-top: 600px;
-}
-table tr td:nth-child(3) {
-  width: 200px;
-  /* 2021-11-29 수정 게시판 제목 */
   max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
 }
-a:hover {
-  color: black;
-  text-decoration: none;
+
+.index {
+  width: 700px;
+  text-align: center;
+  margin-bottom: 50px;
 }

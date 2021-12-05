@@ -84,6 +84,9 @@ if (isset($_SESSION['session_id'])) {
           </tr>
           <?php }
           mysqli_close($con); // 데이터베이스 접속 종료
+          if (count($list) == 0) {
+              echo '<tr><td colspan="9">등록된 문의가 없습니다.</td></tr>';
+            } 
           ?>
         </table>
         <br>

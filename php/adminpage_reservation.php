@@ -176,8 +176,6 @@ mysqli_close($con); // 데이터베이스 접속 종료
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/aside.css">
@@ -197,8 +195,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
         <aside>
             <div>
                 <ul>
-                    <li class="title">관리자
-                        <br>페이지
+                    <li class="title">관리자 페이지
                     </li>
                     <hr>
                     <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
@@ -207,54 +204,55 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 </ul>
             </div>
         </aside>
-        <div class="section1">
-            <h2 id="h2">전 체 예 약</h2>
+        <main>
+            <div class="h2">
+                <h2 id="h2">전 체 예 약</h2>
+            </div>
             <hr>
-            <select class="custom-select" id="root">
-                <option value="name">성명</option>
-                <option value="no">예약번호</option>
-                <option value="check_in">체크인</option>
-            </select>
-            <input type="text" class="custum-search form-control" id="nameId">
-            <button type="button" class="btn btn-secondary" id="search">조회</button>
-            <button type="button" class="btn btn-secondary" id="search_excel">검색 출력</button>
-            <button type="button" class="btn btn-secondary" id="all_excel">전체 출력</button>
-        </div>
-        <div class="section2">
-            <table border="1">
-                <tr>
-                    <td class="name title">성명</td>
-                    <td class="id title">예약번호</td>
-                    <td class="email title">체크인</td>
-                    <td class="phone title">체크아웃</td>
-                    <td class="sign_out title">취소</td>
-                </tr>
-                <?php
-                for ($i = 0; $i < count($list); $i++) {
-                ?>
-                <form action="adminpage_reservation_delete.php" method="post">
-                    <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
-                    <tr>
-                        <td><?php echo $list[$i]['full_name'] ?></td>
-                        <td><?php echo $list[$i]['no'] ?></td>
-                        <td><?php echo $list[$i]['check_in'] ?></td>
-                        <td><?php echo $list[$i]['check_out'] ?></td>
-                        <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
-                    </tr>
-                </form>
-                <?php } ?>
-                <?php if (count($list) == 0) {
-                    echo '<tr><td colspan="9">등록된 예약이 없습니다.</td></tr>';
-                } ?>
-            </table>
-            <div class="page_wrap">
-                <div class="page_nation">
-                    <p><?php echo $write_page;  ?>
-                        <!-- 페이지 -->
-                    </p>
+            <div class="search">
+                <select class="custom-select" id="root">
+                    <option value="name">성명</option>
+                    <option value="no">예약번호</option>
+                    <option value="check_in">체크인</option>
+                </select>
+                <input type="text" class="custum-search form-control" id="nameId">
+                <button type="button" class="btn btn-secondary" id="search">조회</button>
+                <button type="button" class="btn btn-secondary" id="search_excel">엑셀 출력</button>
+            </div>
+            <div class="table">
+                <table>
+                    <th>성명</th>
+                    <th>예약번호</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>취소</th>
+                    <?php
+                    for ($i = 0; $i < count($list); $i++) {
+                    ?>
+                        <form action="adminpage_reservation_delete.php" method="post">
+                            <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                            <tr>
+                                <td><?php echo $list[$i]['full_name'] ?></td>
+                                <td><?php echo $list[$i]['no'] ?></td>
+                                <td><?php echo $list[$i]['check_in'] ?></td>
+                                <td><?php echo $list[$i]['check_out'] ?></td>
+                                <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
+                            </tr>
+                        </form>
+                    <?php } ?>
+                    <?php if (count($list) == 0) {
+                        echo '<tr><td colspan="9">등록된 예약이 없습니다.</td></tr>';
+                    } ?>
+                </table>
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        <p><?php echo $write_page;  ?>
+                            <!-- 페이지 -->
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
 
 
         <!-- footer -->

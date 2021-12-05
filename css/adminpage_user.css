@@ -1,84 +1,95 @@
-h1 {
-  font-size: 35px;
-}
-.section1 {
-  position: absolute;
-  width: 700px;
-  height: 160px;
-  margin-left: 180px;
-  margin-top: 30px;
-}
-.section2 {
-  position: absolute;
+main {
   width: 700px;
   height: auto;
-  margin-left: 180px;
-  margin-top: 180px;
+  float: right;
 }
+
+div.h2 {
+  width: 360px;
+  height: 48px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 hr {
-  height: 1px;
   background-color: black;
-  border: 0;
 }
-#h2 {
-  margin-left: -560px;
+
+h2 {
+  font-weight: bold;
   font-size: 32px;
+}
+
+.span {
+  width: 700px;
+  display: flex;
+  justify-content: right;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.search {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.search select {
+  width: 80px;
+  height: 30px;
+}
+
+.search input[type="text"] {
+  width: 200px;
+  height: 30px;
+}
+
+.search input[type="submit"] {
+  width: 50px;
+  height: 30px;
   font-weight: bold;
 }
+
+.table {
+  width: 700px;
+  margin-bottom: 50px;
+}
+
+.table table,
+th,
+tr,
 td {
+  border: 1px solid gainsboro;
+  border-collapse: collapse;
+}
+
+.table table th,
+tr {
+  width: 100px;
   height: 40px;
   text-align: center;
 }
-td.title {
+
+.table th {
   background-color: #eaeaea;
-  font-weight: bold;
 }
-td.name {
+
+.table table th:nth-child(4), tr td:nth-child(4) {
+  width: 400px;
+  /* 2021-11-29 수정 게시판 제목 */
+  max-width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.table table th:nth-child(5), tr td:nth-child(5) {
   width: 100px;
+  /* 2021-11-29 수정 게시판 제목 */
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.index {
+  width: 700px;
   text-align: center;
-}
-td.id {
-  width: 200px;
-  text-align: center;
-}
-td.email {
-  width: 150px;
-  text-align: center;
-}
-td.phone {
-  width: 150px;
-  text-align: center;
-}
-td.sign_out {
-  width: 150px;
-  text-align: center;
-}
-h2 {
-  text-align: center;
-}
-h3 {
-  text-align: center;
-}
-h4 {
-  font-weight: bold;
-}
-.custom-select {
-  float: left;
-  width: 150px;
-}
-.custum-search {
-  float: left;
-  width: 150px;
-  margin-left: 30px;
-}
-.btn {
-  float: left;
-  margin-left: 40px;
-}
-footer {
-  margin-top: 600px;
-}
-a:hover {
-  color: black;
-  text-decoration: none;
+  margin-bottom: 50px;
 }

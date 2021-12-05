@@ -222,6 +222,9 @@ else
                 echo "<td>{$list[$i]['read_count']}</td>";
                 echo "</tr>";
               }
+              if (count($list) == 0) {
+                echo '<tr><td colspan="9">등록된 문의가 없습니다.</td></tr>';
+              } 
           }else {
             //게시판이 하나도 없을 때 list값이 없다고 오류가 나오는걸 방지하기 위해 공백을 줘서 에러 메세지를 없앰
             $list = "";

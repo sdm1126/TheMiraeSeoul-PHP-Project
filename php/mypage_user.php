@@ -135,10 +135,16 @@ if(isset($_SESSION['session_id'])){
             </html> 
 <?php
         }else{
-            alert_back('등록된 회원이 아닙니다!');
+            echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+            echo "<script>location.replace('./login.php');</script>";
+            mysqli_close($con);
+            exit;
         }
     }
  }else{
-     alert_back('권한이 없는 아이디입니다!');
+    echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+    echo "<script>location.replace('./login.php');</script>";
+    mysqli_close($con);
+    exit;
  }
  ?>

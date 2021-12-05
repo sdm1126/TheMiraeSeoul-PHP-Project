@@ -96,18 +96,30 @@ if (isset($_SESSION['session_id'])) {
                             return;
                         }
                     } else {
-                        header('location: login.php?error=preg_check_error');
+                        echo "<script>alert('형식에 맞지 않습니다');</script>";
+                        echo "<script>location.replace('./mypage_user.php');</script>";
+                        mysqli_close($con);
+                        exit;
                     }
                 }
             } else {
-                header('location: login.php?error=empty_var');
+                echo "<script>alert('값을 입력하세요');</script>";
+                echo "<script>location.replace('./mypage_user.php');</script>";
+                mysqli_close($con);
+                exit;
             }
         } else {
-            header('location: login.php?error=not_member');
+            echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+            echo "<script>location.replace('./login.php');</script>";
+            mysqli_close($con);
+            exit;
         }
     }
 } else {
-    header('location: login.php?error=session_error');
+    echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+    echo "<script>location.replace('./login.php');</script>";
+    mysqli_close($con);
+    exit;
 }
 mysqli_close($con);
 ?>

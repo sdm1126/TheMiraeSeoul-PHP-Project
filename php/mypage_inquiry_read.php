@@ -219,19 +219,22 @@ if (isset($_SESSION['session_id'])) {
 </html>
 <?php
           }else{
-            mysqli_close($con); // 데이터베이스 접속 종료
-            alert_back('권한이 없습니다');
+            echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+            echo "<script>location.replace('./login.php');</script>";
+            mysqli_close($con);
             exit;
         }
     }else{
-        mysqli_close($con); // 데이터베이스 접속 종료
-        alert_back('회원정보와 일치하지 않습니다');
+        echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+        echo "<script>location.replace('./login.php');</script>";
+        mysqli_close($con);
         exit;
     }
 }
 }else{
-mysqli_close($con); // 데이터베이스 접속 종료
-alert_back('세션 오류');
-exit;
+    echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+    echo "<script>location.replace('./login.php');</script>";
+    mysqli_close($con);
+    exit;
 }
 ?>

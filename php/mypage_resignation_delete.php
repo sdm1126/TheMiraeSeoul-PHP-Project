@@ -29,11 +29,17 @@ if (isset($_SESSION['session_id'])) {
                         
                 }
         } else {
-            header('location: login.php?error=not_member');
+          echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+          echo "<script>location.replace('./login.php');</script>";
+          mysqli_close($con);
+          exit;
         }
     }
 } else {
-    header('location: login.php?error=session_error');
+    echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+    echo "<script>location.replace('./login.php');</script>";
+    mysqli_close($con);
+    exit;
 }
 mysqli_close($con);
 ?>

@@ -137,7 +137,17 @@ if(isset($_SESSION['session_id'])){
 
 </html>
 <?php
+        }else{
+            echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+            echo "<script>location.replace('./login.php');</script>";
+            mysqli_close($con);
+            exit;
         }
     }
+}else{
+    echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+    echo "<script>location.replace('./login.php');</script>";
+    mysqli_close($con);
+    exit;
 }
 ?>

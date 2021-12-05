@@ -1,3 +1,19 @@
+<?php
+include_once('../db/db_connector.php');
+if (isset($_SESSION['session_id'])) {
+
+    $id = sql_escape($con, $_SESSION['session_id']);
+
+    if (empty($id)) {
+        mysqli_close($con);
+        header("location: login.php?error=user_id_empty");
+        exit;
+    } else {
+        $sql = "SELECT * FROM user WHERE id = '$id'";
+        $result = mysqli_query($con, $sql);
+        $row = mysqli_fetch_assoc($result);
+        if (mysqli_num_rows($result) > 0) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,3 +75,18 @@
     })
 </script>
 </html>
+<?php
+        }else{
+          echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+          echo "<script>location.replace('./login.php');</script>";
+          mysqli_close($con);
+          exit;
+        }
+    }
+}else{
+  echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+  echo "<script>location.replace('./login.php');</script>";
+  mysqli_close($con);
+  exit;
+}
+?>

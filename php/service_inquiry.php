@@ -41,9 +41,9 @@ if(isset($_SESSION['session_id'])){
                 <ul>
                     <li class="title">고객 서비스</li>
                     <hr>
-                    <li>고객서비스</li>
-                    <li>F A Q</li>
-                    <li>문의하기</li>
+                    <li><a href="../php/service_notice_board.php">공지사항</a></li>
+                    <li><a href="../php/service_faq.php">F A Q</a></li>
+                    <li><a href="../php/service_inquiry.php"><b>문의하기</b></a></li>
                 </ul>
             </div>
         </aside>

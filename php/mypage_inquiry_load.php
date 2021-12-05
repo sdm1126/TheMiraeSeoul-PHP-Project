@@ -57,7 +57,6 @@
                 $list[$i]['num'] = $total_count - $first_index - $i;
             }
             
-            //================================================ 여기까지가 테이블 세팅=========================================
             $http_host = $_SERVER['HTTP_HOST'];
             $request_uri = $_SERVER['REQUEST_URI'];
             $url = 'http://' . $http_host . $request_uri;

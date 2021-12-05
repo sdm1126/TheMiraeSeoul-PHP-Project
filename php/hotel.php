@@ -28,45 +28,37 @@
                 <h1>소 개</h1>
                 <table>
                     <tr>
-                        <!-- 첫번째 줄 시작 -->
                         <td class="title">개 관 일</td>
                         <td>2021년 6월 11일</td>
-                    </tr><!-- 첫번째 줄 끝 -->
+                    </tr>
                     <tr>
-                        <!-- 두번째 줄 시작 -->
                         <td class="title">주 소</td>
-                        <td>서울특별시 성동구 왕십리로 303(지번주소: 성동구 행당동 284)</td>
-                    </tr><!-- 두번째 줄 끝 -->
+                        <td>서울특별시 성동구 왕십리로 303(지번주소: 성동구 행당동 284)<br><button id="popup">지도보기</button</td>
+                    </tr>
                     <tr>
-                        <!-- 두번째 줄 시작 -->
                         <td class="title">대표전화</td>
                         <td>02-441-6006</td>
-                    </tr><!-- 두번째 줄 끝 -->
+                    </tr>
                     <tr>
-                        <!-- 두번째 줄 시작 -->
                         <td class="title" id="content">객실예약</td>
                         <td>02-441-7007</td>
-                    </tr><!-- 두번째 줄 끝 -->
+                    </tr>
                     <tr>
-                        <!-- 두번째 줄 시작 -->
                         <td class="title">홈페이지</td>
                         <td> http://www.mrhi.or.kr/</td>
-                    </tr><!-- 두번째 줄 끝 -->
+                    </tr>
                     <tr>
-                        <!-- 두번째 줄 시작 -->
                         <td class="title">구 조</td>
                         <td> 지하 4층 ~ 지상 15층</td>
-                    </tr><!-- 두번째 줄 끝 -->
+                    </tr>
                     <tr>
-                        <!-- 두번째 줄 시작 -->
                         <td class="title">객 실 수</td>
                         <td> 총 61室</td>
-                    </tr><!-- 두번째 줄 끝 -->
+                    </tr>
                     <tr>
-                        <!-- 두번째 줄 시작 -->
                         <td class="title">시 설</td>
                         <td> 객실, 레스토랑, 피트니스 센터</td>
-                    </tr><!-- 두번째 줄 끝 -->
+                    </tr>
                 </table>
             </article>
         </main>
@@ -76,5 +68,17 @@
         ?>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let pop = document.querySelector('#popup')
+        let  popup = function (){
+                var url = "hotel_popup.php";
+                var name = "popup test";
+                var option = "width = 510, height = 410, top = 100, left = 200, location = no"
+                window.open(url, name, option);
+            }
+        pop.addEventListener('click', popup)
+        })
+</script>
 
 </html>

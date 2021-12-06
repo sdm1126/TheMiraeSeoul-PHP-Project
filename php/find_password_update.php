@@ -53,12 +53,12 @@ if (!$mobile3) {
     exit;
 }
 
-
+//이름 등의 정보로 비밀번호를 찾아오기
 $sql = " SELECT * FROM user WHERE first_name = '$first_name' AND last_name='{$last_name}' AND mobile2 ='{$mobile2}' AND mobile1 ='{$mobile1}'AND mobile3 ='{$mobile3}'
 AND email1='{$email1}'AND email2='{$email2}'AND email2='{$email2}' and id = '$id'"; // 회원가입을 시도하는 아이디가 사용중인 아이디인지 체크
 $result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
-
+//비밀번호를 복호화해서 가져오기
 $sql = "SELECT UNHEX('" . $row['password'] . "') as password;";
 $result = mysqli_query($con, $sql);
 

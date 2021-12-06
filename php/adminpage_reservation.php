@@ -2,6 +2,7 @@
 include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
 $search;
 $nameId;
+//1.서치값에 따라 페이지수 결정
 if (!isset($_GET['search'])) {
     $sql = " SELECT COUNT(*) AS `cnt` FROM reservation"; // member 테이블에 등록되어있는 회원의 수를 구함
 } else {

@@ -39,7 +39,7 @@ if (isset($_SESSION['session_id'])) {
                     <li class="title">마이 페이지</li>
                     <hr>
                     <li><a href="./mypage_user.php">내 정보</a></li>
-                    <li><a href="./mypage_reservation.php">내 예약</a></li>
+                    <li><a href="./mypage_reservation.php?page=1&option=no">내 예약</a></li>
                     <li><a href="./mypage_inquiry_board.php?option=title&page=1">내 문의</a></li>
                     <li><a href="./mypage_resignation.php"><b>회원탈퇴</b></a></li>
                 </ul>
@@ -67,13 +67,14 @@ if (isset($_SESSION['session_id'])) {
     </div>
 </body>
 <script>
-    let submit = document.querySelector('#submit')
-    submit.addEventListener('click', function(){
-        if(confirm("회원님의 모든 정보가 사라집니다. 탈퇴하시겠습니까?")){
-            location.replace('./mypage_resignation_delete.php');
-        }   
-    })
+let submit = document.querySelector('#submit')
+submit.addEventListener('click', function() {
+    if (confirm("회원님의 모든 정보가 사라집니다. 탈퇴하시겠습니까?")) {
+        location.replace('./mypage_resignation_delete.php');
+    }
+})
 </script>
+
 </html>
 <?php
         }else{

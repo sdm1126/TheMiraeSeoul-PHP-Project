@@ -1,3 +1,4 @@
+<!-- 세션 체크 -->
 <?php
 include_once('../db/db_connector.php');
 
@@ -55,6 +56,7 @@ if (isset($_SESSION['session_id'])) {
                     }
                         // 데이터베이스에 넣기
                         $result = mysqli_query($con, $sql) or die('fail' . mysqli_error($con));
+                        // 성공시
                         if ($result) {
                             echo "<script>history.back();</script>";
                             mysqli_close($con);

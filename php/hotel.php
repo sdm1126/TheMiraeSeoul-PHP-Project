@@ -73,6 +73,7 @@
     </div>
 </body>
 <script>
+    // 클릭시 팝업창 열림
     document.addEventListener('DOMContentLoaded', function() {
         let pop = document.querySelector('#popup')
         let popup = function() {

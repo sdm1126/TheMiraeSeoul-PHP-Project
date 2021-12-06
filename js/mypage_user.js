@@ -1,9 +1,12 @@
+// html 코드가 모두 로드된 뒤 다음 코드 실행하는 이벤트
 document.addEventListener('DOMContentLoaded', () => {
+// 페이지 이동 방지 플래그
 let password_flag       = true
 let password_check_flag = true
 let email_flag          = true
 let mobile_flag         = true
 
+// 요소들
 let password_new        = document.querySelector('#password_new')
 let password_check      = document.querySelector('#password_check')
 let email1              = document.querySelector('#email1')
@@ -16,6 +19,7 @@ let passwords           = document.querySelectorAll('.id_password')
 let selects             = document.querySelectorAll('table select')
 let texts               = document.querySelectorAll('table input[type="text"]')
 
+// 버튼
 let button_update       = document.querySelector('#update')
 let button_cancel       = document.querySelector('#cancel')
 
@@ -32,6 +36,7 @@ let set_event = function(){
         }
     })
 
+    // 비밀번호 확인 체크 
     password_check.addEventListener('keyup', function(){
         let str = this.value
         if(str === ''){
@@ -58,6 +63,7 @@ let set_event = function(){
         email_flag = !email1.parentElement.lastElementChild.innerHTML.includes('red')
     })
 
+    // 이메일 주소부분 체크
     email2.addEventListener('keyup', function(){
         let str = this.value
         let reg_email2 = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i
@@ -90,14 +96,17 @@ let set_event = function(){
     })
 }
 
+// select값에 따라 문자 변경
 selects[0].addEventListener('change', function(){
     document.querySelector('#span_gender').innerHTML = this.value
 })
 
+// select 값에 따라 이메일 변경
 selects[1].addEventListener('change', function(){
     document.querySelector('#email2').value = this.value
 })
 
+// 수정, 취소 버튼 속성 변경
 button_update.addEventListener('click', function() {
     if (button_update.value === "수 정") {
         change_attr(false)
@@ -113,11 +122,12 @@ button_update.addEventListener('click', function() {
     }
 })
 
+// 취소 버튼 클릭 이벤트
 button_cancel.addEventListener('click', function() {
     location.reload()
 })
 
-
+// 정규 표현식 체크 함수
 let reg_check = function(btn, str, reg, good, fail){
     if(reg.test(str)){
         btn.parentElement.lastElementChild.innerHTML = '<span style="color: blue; font-size: 14px;">' +good + '</span>'
@@ -128,6 +138,7 @@ let reg_check = function(btn, str, reg, good, fail){
     }
 }
 
+// ajax로 사용하던 비밀번호인지 체크 
 let formCheck = function(button, str, mode) {
     var xhttp
     if (str == "") {
@@ -145,6 +156,7 @@ let formCheck = function(button, str, mode) {
     xhttp.send()
 }
 
+// 입력창 속성 변경 함수
 let change_attr = function(flag) {
     let str = ""
     if (flag) str = "none"

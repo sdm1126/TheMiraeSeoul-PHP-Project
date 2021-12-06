@@ -9,9 +9,12 @@
 </head>
 
 <body>
+    <!-- 카카오 지도 api사용  -->
     <div id="map" style="width:500px; height:400px;"></div>
+    <!-- api키 사용 -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	68e8af711c74c952741b25914a3cae6c"></script>
     <script>
+        // 현재 위치
         let cur_location = new kakao.maps.LatLng(37.5610288807307, 127.03470402664523)
         var container = document.querySelector('#map'); 
         var options = {

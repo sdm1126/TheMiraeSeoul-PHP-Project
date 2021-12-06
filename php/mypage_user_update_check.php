@@ -1,3 +1,4 @@
+<!-- ajax로 실행하는 php문 -->
 <?php
     include_once('../db/db_connector.php');
 
@@ -7,10 +8,12 @@
     
     if($mode === 'password'){
         
+        // 비밀번호 가져오기
         $sql = "SELECT password FROM user WHERE id = '$id'";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
 
+        // 비밀번호 암호화 해서 비교하기
         $sql = "SELECT UNHEX('" . $row['password'] . "') as password;";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);

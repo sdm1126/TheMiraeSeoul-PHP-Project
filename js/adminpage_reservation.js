@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
           location.replace('./adminpage_reservation.php?page=1&search=' + root.value + '&nameId=' + nameId.value);
       }
   })
-
+ 
+  // 현재 url값을 구해서 그 값을 기준으로 값을 넘겨줌
   const excel = function(){
     let url = new URL(window.location.href)
     let root_value = url.searchParams.get('search')

@@ -1,18 +1,23 @@
+<!-- 세션 체크  -->
 <?php
 include_once('../db/db_connector.php');
+// 로그인 여부
 if(isset($_SESSION['session_id'])){
-    
+
     $id = sql_escape($con, $_SESSION['session_id']);
 
+    // 아이디가 비어있는지 체크
     if(empty($id)){
         mysqli_close($con);
         header("location: login.php?error=user_id_empty");
         exit;
     }else{
+        // 아이디가 데이터베이스에 있는 아이디인지 체크
         $sql = "SELECT * FROM user WHERE id = '$id'";
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
         if(mysqli_num_rows($result) > 0){
+            
             $moblie = $row['mobile1']."-".$row['mobile2']."-".$row['mobile3'];
             $email = $row['email1']."@".$row['email2']; 
 ?>
@@ -50,43 +55,31 @@ if(isset($_SESSION['session_id'])){
         <main>
             <article class="head">
                 <h2>문 의 하 기</h2>
-                <?php
-                    if(isset($_GET['error'])){  
-                ?>
-                <span id="error" style="color: red; font-size: 14px;"><?=$_GET['error'] ?></span>
-                <?php
-                    }
-                ?>
             </article>
             <hr>
             <article class="main">
                 <form action="./mypage_inquiry_update.php" method="post">
                     <table>
                         <tr>
-                            <!-- 첫번째 줄 시작 -->
                             <td class="title">성명</td>
                             <td><span name="full_name"><?=$row['full_name']?></span>
-                        </tr><!-- 첫번째 줄 끝 -->
+                        </tr>
                         <tr>
-                            <!-- 두번째 줄 시작 -->
                             <td class="title">제목</td>
                             <td><input type="text" name="title"></td>
-                        </tr><!-- 두번째 줄 끝 -->
+                        </tr>
                         <tr>
-                            <!-- 두번째 줄 시작 -->
                             <td class="title" id="content">내용</td>
                             <td><textarea cols="30" rows="10" name="content"></textarea></td>
-                        </tr><!-- 두번째 줄 끝 -->
+                        </tr>
                         <tr>
-                            <!-- 두번째 줄 시작 -->
                             <td class="title">휴대전화</td>
                             <td><span name="mobile"><?=$moblie?></span></td>
-                        </tr><!-- 두번째 줄 끝 -->
+                        </tr>
                         <tr>
-                            <!-- 두번째 줄 시작 -->
                             <td class="title">이메일</td>
                             <td><span name="email"><?=$email?></span></td>
-                        </tr><!-- 두번째 줄 끝 -->
+                        </tr>
                     </table>
             </article>
             <article class="terms">

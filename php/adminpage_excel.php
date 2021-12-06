@@ -1,8 +1,10 @@
 <?php
     include_once('../db/db_connector.php');
 
+// 엑셀로 파일을 받기 위한 코드
 header( "Content-type: application/vnd.ms-excel; charset=utf-8");
-header( "Content-Disposition: attachment; filename = excel_test.xls" );     //filename = 저장되는 파일명을 설정합니다.
+//filename = 저장되는 파일명을 설정합니다.
+header( "Content-Disposition: attachment; filename = excel_test.xls" );     
 header( "Content-Description: PHP4 Generated Data" );
 
 // 가져올 테이블 이름을 구함
@@ -20,6 +22,7 @@ while($row = mysqli_fetch_assoc($result)){
     $column[] = $row['Field'];
 }
 
+// 엑셀파일 1행에 테이블 컬럼명 출력하기
 $EXCEL_FILE = "
 <table border='1'>
     <tr>";
@@ -28,6 +31,7 @@ $EXCEL_FILE = "
     }
     $EXCEL_FILE .= "</tr>";
 
+    // 테이블 값 출력
     $sql = "SELECT * FROM {$tableName} ";
     if(isset($_GET['search']) && isset($_GET['nameId'])){
         $sql .= " WHERE $search LIKE '%{$nameId}%' ";

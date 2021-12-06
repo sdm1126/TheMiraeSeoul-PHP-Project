@@ -1,3 +1,4 @@
+<!-- 세션 체크 -->
 <?php
 include_once('../db/db_connector.php');
 
@@ -35,14 +36,15 @@ if (isset($_SESSION['session_id'])) {
                     exit;
                 } else {
 
+                    // POST로 넘어온 mode값에 따라  query문 변경
                     switch($mode){
                         case '등 록' :
                             $sql = " INSERT INTO inquiry
-                                SET id = '$id',
-                                title = '$title',
+                                SET id  = '$id',
+                                title   = '$title',
                                 content = '$content',
                                 attached_file = '0',
-                                written_date = '$written_date' ";
+                                written_date  = '$written_date' ";
                             break;
     
                         case '확 인' :
@@ -57,6 +59,7 @@ if (isset($_SESSION['session_id'])) {
                     }
                         // 데이터베이스에 넣기
                         $result = mysqli_query($con, $sql) or die('fail' . mysqli_error($con));
+                        // 성공시
                         if ($result) {
                             echo "<script>location.replace('./mypage_inquiry_board.php?option=title&page=1');</script>";
                             mysqli_close($con);

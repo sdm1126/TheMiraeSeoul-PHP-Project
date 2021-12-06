@@ -73,7 +73,7 @@ tr {
   background-color: #eaeaea;
 }
 
-.table table th:nth-child(2), tr td:nth-child(2) {
+.table table th:nth-child(2){
   width: 500px;
   /* 2021-11-29 수정 게시판 제목 */
   max-width: 500px;

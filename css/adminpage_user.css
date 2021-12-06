@@ -68,14 +68,14 @@ tr {
   background-color: #eaeaea;
 }
 
-.table table th:nth-child(4), tr td:nth-child(4) {
+.table table th:nth-child(4){
   width: 400px;
   /* 2021-11-29 수정 게시판 제목 */
   max-width: 400px;
   white-space: nowrap;
   overflow: hidden;
 }
-.table table th:nth-child(5), tr td:nth-child(5) {
+.table table th:nth-child(5){
   width: 100px;
   /* 2021-11-29 수정 게시판 제목 */
   max-width: 100px;

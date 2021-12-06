@@ -222,7 +222,8 @@ mysqli_close($con); // 데이터베이스 접속 종료
                 </select>
                 <input type="text" class="custum-search form-control" id="nameId">
                 <button type="button" class="btn btn-secondary" id="search">조회</button>
-                <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">로그 출력</button>
+                <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">로그
+                    출력</button>
             </div>
             <div class="table">
                 <table>
@@ -234,16 +235,16 @@ mysqli_close($con); // 데이터베이스 접속 종료
                     <?php
                     for ($i = 0; $i < count($list); $i++) {
                     ?>
-                        <form action="adminpage_reservation_delete.php" method="post">
-                            <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
-                            <tr>
-                                <td><?php echo $list[$i]['full_name'] ?></td>
-                                <td><?php echo $list[$i]['no'] ?></td>
-                                <td><?php echo $list[$i]['check_in'] ?></td>
-                                <td><?php echo $list[$i]['check_out'] ?></td>
-                                <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
-                            </tr>
-                        </form>
+                    <form action="adminpage_reservation_delete.php" method="post">
+                        <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                        <tr>
+                            <td><?php echo $list[$i]['full_name'] ?></td>
+                            <td><?php echo $list[$i]['no'] ?></td>
+                            <td><?php echo $list[$i]['check_in'] ?></td>
+                            <td><?php echo $list[$i]['check_out'] ?></td>
+                            <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
+                        </tr>
+                    </form>
                     <?php } ?>
                     <?php if (count($list) == 0) {
                         echo '<tr><td colspan="9">등록된 예약이 없습니다.</td></tr>';

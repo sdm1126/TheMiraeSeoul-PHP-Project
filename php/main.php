@@ -70,15 +70,13 @@
                     $latest_index = count($list) - 1;
                 ?>
                 <section class="section3">
-                    <?php for($i=0; $i < 3; $i++) { ?>
+                    <?php for($i = 0; $i < 3; $i++) { ?>
                     <section class="section3-sub">
-                        <a href="../php/reservation1.php">
                         <img src=<?php echo $list[$latest_index - $i]['deal_image'] ?> /><br>
                         <span><?php echo $list[$latest_index - $i]['deal_name'] ?></span><br>
                         <span><?php echo $list[$latest_index - $i]['deal_content'] ?></span><br>
                         <span><?php echo $list[$latest_index - $i]['deal_start'] ?> ~
                             <?php echo $list[$latest_index - $i]['deal_end'] ?></span>
-                            </a>
                     </section>
                     <?php } ?>
                 </section>

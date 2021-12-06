@@ -58,20 +58,12 @@ function alert_back($message) {
     exit;
 }
 
-// 6-2. 데이터 결함 방어 함수
-function input_check($data) {
-    $data = trim($data); // 공백 방어
-    $data = stripslashes($data); // 슬래시 방어
-    $data = htmlspecialchars($data); // 특수문자 방어
-    return $data;
-}
-
-// 6-3. MySQL 인젝션 방어 함수
+// 6-2. MySQL 인젝션 방어 함수
 function sql_escape($con, $content) {
     return mysqli_real_escape_string($con, $content);
 }
 
-// 6-4. 게시판 페이지 설정 함수
+// 6-3. 게시판 페이지 설정 함수
 // 한 페이지 행 수, 현재 페이지, 총 페이지, URL
 function get_paging($write_pages, $current_page, $total_page, $url) { 
     // URL이 예를 들어, 'memo_login&page=123'이 있으면 'memo_login&page=' 으로 변경(공통 적용하기 위함)

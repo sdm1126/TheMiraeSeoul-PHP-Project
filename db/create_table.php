@@ -75,7 +75,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-                // 6. 댓글
+                // 5. 댓글
                 case 'comment':
                     $sql = "CREATE TABLE IF NOT EXISTS comment (
                         no INT(11) NOT NULL AUTO_INCREMENT,
@@ -87,7 +87,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
       
-                // 5. 객실예약
+                // 6. 객실예약
                 case 'reservation':
                     $sql = "CREATE TABLE IF NOT EXISTS reservation (
                        no INT(11) NOT NULL AUTO_INCREMENT,
@@ -109,11 +109,12 @@
                        cc_expiry_year CHAR(4) NOT NULL DEFAULT '',
                        special_request VARCHAR(255) NOT NULL DEFAULT '',
                        reservation_date DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-                       PRIMARY KEY (no)
+                       PRIMARY KEY (no),
+                       KEY(reservation_date)
                     )ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-                // 6. 객실상품
+                // 7. 객실상품
                 case 'deal':
                     $sql = "CREATE TABLE IF NOT EXISTS deal (
                         no INT(11) NOT NULL AUTO_INCREMENT,
@@ -126,7 +127,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-                // 7. 객실수량    
+                // 8. 객실수량    
                 case 'inventory':
                     $sql = "CREATE TABLE IF NOT EXISTS inventory (
                         inventory_date DATE NOT NULL DEFAULT '0000-00-00',
@@ -138,7 +139,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-                // 8. 객실요금
+                // 9. 객실요금
                 case 'tariff':
                     $sql = "CREATE TABLE IF NOT EXISTS tariff (
                         tariff_date DATE NOT NULL DEFAULT '0000-00-00',
@@ -156,7 +157,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-                // 9. 회원 기록
+                // 10. 회원 기록
                 case 'user_log':
                     $sql = "CREATE TABLE IF NOT EXISTS user_log (
                         no INT(11) NOT NULL AUTO_INCREMENT,
@@ -179,7 +180,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-                // 10. 예약 기록
+                // 11. 예약 기록
                 case 'reservation_log':
                     $sql = "CREATE TABLE IF NOT EXISTS reservation_log (
                         no INT(11) NOT NULL AUTO_INCREMENT,
@@ -208,7 +209,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
-                // 11. 기타
+                // 12. 기타
                 default:
                     echo "<script>alert('해당 테이블을 찾을 수 없습니다.');</script>";
                     break;

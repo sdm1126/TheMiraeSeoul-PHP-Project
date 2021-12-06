@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="../css/hotel.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <script src="https://kit.fontawesome.com/1980604be0.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container">
         <!-- header -->
         <?php
-            include('./header.php');
+        include('./header.php');
         ?>
 
         <!-- article -->
@@ -33,7 +34,10 @@
                     </tr>
                     <tr>
                         <td class="title">주 소</td>
-                        <td>서울특별시 성동구 왕십리로 303(지번주소: 성동구 행당동 284)<br><button id="popup">지도보기</button</td>
+                        <td>서울특별시 성동구 왕십리로 303(지번주소: 성동구 행당동 284)<br>
+                        <div class="popup">
+                            <a id="popup"><i class="fas fa-map-marker-alt">위치 보기</i></a></td>
+                        </div>
                     </tr>
                     <tr>
                         <td class="title">대표전화</td>
@@ -64,21 +68,21 @@
         </main>
         <!-- footer -->
         <?php
-            include('./footer.php');
+        include('./footer.php');
         ?>
     </div>
 </body>
 <script>
-    document.addEventListener('DOMContentLoaded', function(){
+    document.addEventListener('DOMContentLoaded', function() {
         let pop = document.querySelector('#popup')
-        let  popup = function (){
-                var url = "hotel_popup.php";
-                var name = "popup test";
-                var option = "width = 510, height = 410, top = 100, left = 200, location = no"
-                window.open(url, name, option);
-            }
+        let popup = function() {
+            var url = "hotel_popup.php";
+            var name = "popup test";
+            var option = "width = 500, height = 400, top = 100, left = 200, location = no"
+            window.open(url, name, option);
+        }
         pop.addEventListener('click', popup)
-        })
+    })
 </script>
 
 </html>

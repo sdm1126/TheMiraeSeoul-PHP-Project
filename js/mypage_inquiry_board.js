@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     let error = document.querySelector('#error')
     let submit = document.querySelector('#submit')
     
-    
-    
     search_str.addEventListener('keyup', function() {
       let str = this.value
       if (select.options[select.selectedIndex].value === 'written_date') {

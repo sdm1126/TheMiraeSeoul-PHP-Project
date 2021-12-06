@@ -16,16 +16,10 @@
                 $search_str = $_GET['search_str'];
             }else{
                 $search_str = '';
-                $flag = true;
             }
             
 
-            $sql = "SELECT COUNT(*) AS `total_count` FROM inquiry WHERE id = '$id' ";
-            if($option === 'written_date'){
-                $sql .= "AND DATE($option) LIKE '%$search_str%' ";
-            }else{
-                $sql .= "AND $option LIKE '%$search_str%' ";
-            }
+            $sql = "SELECT COUNT(*) AS `total_count` FROM inquiry WHERE id = '$id' AND $option LIKE '%$search_str%' ";
             // 1. 총 게시글을 구한다
             // 쿼리문 실행
             $result = mysqli_query($con, $sql);
@@ -41,14 +35,8 @@
 
             //URL에 넣은 page값을 받아온다. 0번부터 시작
             $first_index = ($current_page - 1) * $page_row;
-            
-            if($option === 'written_date'){
-                $sql = "AND  DATE($option) LIKE '%$search_str%' ";
-            }else{
-                $sql = "AND  $option LIKE '%$search_str%' ";
-            }
            
-            $sql = "SELECT * FROM inquiry WHERE id = '$id'" .$sql. "ORDER BY written_date desc LIMIT {$first_index}, {$page_row} ";
+            $sql = "SELECT * FROM inquiry WHERE id = '$id' AND  $option LIKE '%$search_str%' ORDER BY written_date desc LIMIT {$first_index}, {$page_row} ";
             
             $result = mysqli_query($con, $sql);
             $list = array();

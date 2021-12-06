@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="map" style="width:500px;height:400px;"></div>
+    <div id="map" style="width:500px; height:400px;"></div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	68e8af711c74c952741b25914a3cae6c"></script>
     <script>
         let cur_location = new kakao.maps.LatLng(37.5610288807307, 127.03470402664523)

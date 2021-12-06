@@ -1,8 +1,36 @@
 <?php
     include_once $_SERVER['DOCUMENT_ROOT']."/theMiraeSeoul/db/db_connector.php";
+    
+    // 1. 로그인 체크
+    if (!isset($_SESSION["session_id"]) && !isset($_SESSION["session_name"])) {
+        echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
+        echo "<script>location.replace('./login.php');</script>";
+        mysqli_close($con);
+        exit();
+        
+    } else {
+        $id = $_SESSION["session_id"];
+        $full_name = $_SESSION["session_name"];
+    }
 
-    $check_in = (isset($_POST['check_in'])) ? $_POST['check_in'] : null;
-    $check_out = (isset($_POST['check_out'])) ? $_POST['check_out'] : null;
+    // 2. isset 체크
+    if(isset($_POST["check_in"])  && 
+       isset($_POST["check_out"])) {
+            
+        // 3. injection 체크
+        $check_in        = mysqli_real_escape_string($con, $_POST["check_in"]);
+        $check_out       = mysqli_real_escape_string($con, $_POST["check_out"]);
+
+        //  4. strlen 체크
+        if     (!strlen($check_in))  { alert_back("체크인 데이터가 존재하지 않습니다.");    mysqli_close($con); exit(); } 
+        else if(!strlen($check_out)) { alert_back("체크아웃 데이터가 존재하지 않습니다.");  mysqli_close($con); exit(); }
+        
+    } else {
+        echo "<script>alert('잘못된 접근입니다. 다시 시도 부탁드립니다.');</script>";
+        echo "<script>location.replace('./main.php');</script>";
+        mysqli_close($con);
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +58,6 @@
         ?>
 
         <!-- article -->
-        <!-- 로그인 했을 경우 -->
-        <?php if (isset($_SESSION["session_id"]) && isset($_SESSION["session_name"])) { ?>
         <form action="reservation2.php" method="post">
             <article>
                 <div class="article-group">
@@ -82,7 +108,6 @@
                             <h3>상품 선택</h3>
                             <div class="section3-3-sub">
                                 <!-- Ajax 통신으로 reservation1_search_deal.php로부터 값 받기 -->
-                                <h2 style=color:red>우선 체크인, 체크아웃을 선택해주세요.</h2>
                             </div>
                         </div>
 
@@ -108,14 +133,6 @@
                 </div>
             </article>
         </form>
-
-        <!-- 로그인 하지 않았을 경우 -->
-        <?php } else {
-            echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
-            echo "<script>location.replace('./login.php');</script>";
-            mysqli_close($con);
-            exit(); 
-        } ?>
 
         <!-- footer -->
         <?php

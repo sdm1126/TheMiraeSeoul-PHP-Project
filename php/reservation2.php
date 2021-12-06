@@ -7,6 +7,7 @@
         echo "<script>location.replace('./login.php');</script>";
         mysqli_close($con);
         exit();
+        
     } else {
         $id = $_SESSION["session_id"];
         $full_name = $_SESSION["session_name"];
@@ -64,7 +65,7 @@
         }
         
     } else {
-        echo "<script>alert('예약이 정상적으로 완료되지 않았습니다. 다시 시도 부탁드립니다.');</script>";
+        echo "<script>alert('잘못된 접근입니다. 다시 시도 부탁드립니다.');</script>";
         echo "<script>location.replace('./main.php');</script>";
         mysqli_close($con);
         exit();
@@ -96,8 +97,6 @@
         ?>
 
         <!-- article -->
-        <!-- 로그인 했을 경우 -->
-        <?php if (isset($_SESSION["session_id"]) && isset($_SESSION["session_name"])) { ?>
         <form action="reservation_insert.php" method="post">
             <article>
                 <div class="article-group">
@@ -221,14 +220,6 @@
                 </div>
             </article>
         </form>
-
-        <!-- 로그인 하지 않았을 경우 -->
-        <?php } else {
-            echo "<script>alert('로그인 후 이용 부탁드립니다.');</script>";
-            echo "<script>location.replace('./login.php');</script>";
-            mysqli_close($con);
-            exit(); 
-        } ?>
 
         <!-- footer -->
         <?php

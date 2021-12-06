@@ -53,9 +53,6 @@
             <a href="./service_notice_board.php">
                 <li>고객 서비스</li>
             </a>
-            <a href="./reservation1.php">
-                <li>예 약</li>
-            </a>
         </ul>
     </nav>
 </header>

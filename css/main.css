@@ -122,9 +122,12 @@ article .section2 #check_in,
 }
 
 article .section2 #button {
+  border: 1px solid white;
+  border-radius: 10%;
   width: 90px;
-  height: 30px;
+  height: 40px;
   margin-left: 20px;
+  background-color: beige;
   font-weight: bold;
 }
 

@@ -2,14 +2,17 @@
 include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
 error_reporting(E_ALL & ~E_WARNING);
 $nameId;
+$search;
 if (!isset($_GET['search'])) {
     $sql = " SELECT COUNT(*) AS `cnt` FROM user"; // member 테이블에 등록되어있는 회원의 수를 구함
 } else {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
+        $search = $_GET['search'];
         $sql = " SELECT COUNT(*) AS `cnt` FROM user where full_name ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else {
         $nameId = $_GET['nameId'];
+        $search = $_GET['search'];
         $sql = " SELECT COUNT(*) AS `cnt` FROM user where id ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
     }
 }
@@ -161,6 +164,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
     <link rel="stylesheet" href="../css/adminpage_user.css">
     <link rel="stylesheet" href="../css/page.css">
     <script src="../js/adminpage_user.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -239,6 +243,9 @@ mysqli_close($con); // 데이터베이스 접속 종료
         include('./footer.php');
         ?>
     </div>
+    <script>
+        $("#root").val('<?= $search ?>').prop("selected", true);
+    </script>
 </body>
 
 </html>

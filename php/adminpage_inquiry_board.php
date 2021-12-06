@@ -1,17 +1,21 @@
 <?php
-include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
+include_once("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
 error_reporting(E_ALL & ~E_WARNING);
 $nameId;
+$search;
 if (!isset($_GET['search'])) {
     $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry"; // member 테이블에 등록되어있는 회원의 수를 구함
 } else {
     if ($_GET['search'] === 'id') {
+        $search = $_GET['search'];
         $nameId = $_GET['nameId'];
         $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry where id ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else if ($_GET['search'] === 'title') {
+        $search = $_GET['search'];
         $nameId = $_GET['nameId'];
         $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry where title like '%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else {
+        $search = $_GET['search'];
         $nameId = $_GET['nameId'];
         $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry where written_date ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
     }
@@ -182,6 +186,8 @@ mysqli_close($con); // 데이터베이스 접속 종료
     <link rel="stylesheet" href="../css/adminpage_inquiry_board.css">
     <link rel="stylesheet" href="../css/page.css">
     <script src="../js/adminpage_inquiry_board.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -210,7 +216,7 @@ mysqli_close($con); // 데이터베이스 접속 종료
             </article>
             <hr>
             <article class="search">
-                <select class="custom-select" id="root">
+                <select class="custom-select" id="root" name="option">
                     <option value="id">아이디</option>
                     <option value="title">제목</option>
                 </select>
@@ -260,6 +266,9 @@ mysqli_close($con); // 데이터베이스 접속 종료
         include('./footer.php');
         ?>
     </div>
+    <script>
+        $("#root").val('<?= $search ?>').prop("selected", true);
+    </script>
 </body>
 
 </html>

@@ -53,12 +53,12 @@ if(isset($_SESSION['session_id'])){
             </div>
         </aside>
         <main>
+            <form action="./mypage_inquiry_update.php" method="post" enctype="multipart/form-data">
             <article class="head">
                 <h2>문 의 하 기</h2>
             </article>
             <hr>
             <article class="main">
-                <form action="./mypage_inquiry_update.php" method="post">
                     <table>
                         <tr>
                             <td class="title">성명</td>
@@ -80,8 +80,12 @@ if(isset($_SESSION['session_id'])){
                             <td class="title">이메일</td>
                             <td><span name="email"><?=$email?></span></td>
                         </tr>
+                        <tr>
+                            <td class="title">첨부 파일</td>
+                            <td><input type="file" name="upfile"></td>
+                        </tr>
                     </table>
-            </article>
+                </article>
             <article class="terms">
                 <h3>필수적 개인정보 수집 및 이용에 대한 동의</h3>
                 <span id="message" style="color: red; font-size: 14px;">필수 동의 사항입니다</span>

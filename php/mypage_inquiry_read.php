@@ -33,6 +33,7 @@ if (isset($_SESSION['session_id'])) {
             if ($row['id'] === $id) {
                 $title = $row['title'];
                 $content = $row['content'];
+                $attached_file = ($row['attached_file'] !== "")? ($row['attached_file']) : "";
 
                 // 댓글 불러오기 게시글 번호를 컬럼으로 준 뒤 그 값을 가지고 있는 값들을 부름
                 $sql = "SELECT * FROM comment WHERE inquiry_number = $list_number";
@@ -109,6 +110,15 @@ if (isset($_SESSION['session_id'])) {
                                         <tr>
                                             <td class="title">이메일</td>
                                             <td><?= $email ?></td>
+                                        </tr>
+                                        <tr>
+                                            <?php
+                                            if($attached_file !== ""){
+                                            ?>
+                                            <td class="title">첨부 파일</td>
+                                            <td><a href="../php/download_files.php?file=<?=$attached_file?>">다운로드</a></td>
+                                            <?php }
+                                            ?>
                                         </tr>
                                     </table>
                             </article>

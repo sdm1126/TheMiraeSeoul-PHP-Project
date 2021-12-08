@@ -156,7 +156,7 @@ if (isset($_SESSION['session_id'])) {
                         mysqli_close($con); // 데이터베이스 접속 종료
                         ?>
                         <article class="textarea">
-                            <h3>답 변</h3>
+                            <h3>댓 글</h3>
                             <form action="./mypage_comment_update.php?id=<?= $mb_id ?>&no=<?= $list_number ?>" method="post">
                                 <textarea name="content" id="" cols="30" rows="10"></textarea>
                         </article>

@@ -2,7 +2,7 @@
 include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
 $id = $_POST['id'];
 
-$sql = " delete from user where id = '{$id}' "; // 입력한 비밀번호를 MySQL password() 함수를 이용해 암호화해서 가져옴
+$sql = " delete from user where id = '{$id}' "; // 넘어온 post값으로 id검색
 $result = mysqli_query($con, $sql);
 
 if ($result) {

@@ -2,7 +2,7 @@
 include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
 
 
-$first_name 		= trim($_POST['first_name']);
+$first_name 		= trim($_POST['first_name']); //아름
 $last_name 			= trim($_POST['second_name']);
 $full_name          = $first_name . $last_name;
 $id 				= trim($_POST['id']);
@@ -11,9 +11,9 @@ $password_re		= trim($_POST['password_re']); // 두번째 입력 패스워드
 $email1				= trim($_POST['email1']); // 이메일
 $email2				= trim($_POST['email2']); // 이메일
 $gender				= $_POST['gender']; // 성별
-$mobile1			= $_POST['mobile1']; // 직업
-$mobile2			= $_POST['mobile2']; // 직업
-$mobile3			= $_POST['mobile3']; // 직업
+$mobile1			= $_POST['mobile1']; // 휴대전화
+$mobile2			= $_POST['mobile2']; // 휴대전화
+$mobile3			= $_POST['mobile3']; // 휴대전화
 $datetime			= date('Y-m-d H:i:s', time()); // 가입일
 if (!$id) {
 	echo "<script>alert('아이디가 넘어오지 않았습니다.');</script>";
@@ -85,7 +85,7 @@ if (mysqli_num_rows($result) > 0) { // 만약 사용중인 아이디라면 알�
 	echo "<script>location.replace('./registration.php');</script>";
 	exit;
 }
-
+//
 $sql = " INSERT INTO user
 				SET no = null,
 					 last_name = '$last_name',
@@ -103,6 +103,7 @@ $sql = " INSERT INTO user
 $result = mysqli_query($con, $sql);
 
 if ($result) {
+	echo "<script>alert('회원가입 되었습니다.');</script>";
 	echo "<script>location.replace('./login.php');</script>";
 	exit;
 }

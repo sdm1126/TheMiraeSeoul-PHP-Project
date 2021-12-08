@@ -10,11 +10,11 @@ if (!isset($_GET['search'])) {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
         $search = $_GET['search'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM user where full_name ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM user where full_name like'%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else {
         $nameId = $_GET['nameId'];
         $search = $_GET['search'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM user where id ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM user where id like '%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     }
 }
 
@@ -40,10 +40,10 @@ if (!isset($_GET['search'])) {
 } else {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM user where full_name ='{$nameId}' ORDER BY full_name desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM user where full_name like'%{$nameId}%' ORDER BY full_name desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     } else {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM user where id ='{$nameId}' ORDER BY id desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM user where id like'%{$nameId}%' ORDER BY id desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     }
 }
 

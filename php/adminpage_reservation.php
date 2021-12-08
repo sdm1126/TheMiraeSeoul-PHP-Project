@@ -9,15 +9,15 @@ if (!isset($_GET['search'])) {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
         $search = $_GET['search'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where full_name ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where full_name like '%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else if ($_GET['search'] === 'no') {
         $nameId = $_GET['nameId'];
         $search = $_GET['search'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where no ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where no like '%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else {
         $nameId = $_GET['nameId'];
         $search = $_GET['search'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where check_in ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM reservation where check_in like '%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     }
 }
 
@@ -43,13 +43,13 @@ if (!isset($_GET['search'])) {
 } else {
     if ($_GET['search'] === 'name') {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM reservation where full_name ='{$nameId}' ORDER BY full_name desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM reservation where full_name like '%{$nameId}%' ORDER BY full_name desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     } else if ($_GET['search'] === 'no') {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM reservation where no ='{$nameId}'"; // 회원 정보를 조회
+        $sql = " SELECT * FROM reservation where no like'%{$nameId}%'"; // 회원 정보를 조회
     } else {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM reservation where check_in ='{$nameId}' ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM reservation where check_in like'%{$nameId}%' ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     }
 }
 
@@ -235,16 +235,16 @@ mysqli_close($con); // 데이터베이스 접속 종료
                     <?php
                     for ($i = 0; $i < count($list); $i++) {
                     ?>
-                    <form action="adminpage_reservation_delete.php" method="post">
-                        <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
-                        <tr>
-                            <td><?php echo $list[$i]['full_name'] ?></td>
-                            <td><?php echo $list[$i]['no'] ?></td>
-                            <td><?php echo $list[$i]['check_in'] ?></td>
-                            <td><?php echo $list[$i]['check_out'] ?></td>
-                            <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
-                        </tr>
-                    </form>
+                        <form action="adminpage_reservation_delete.php" method="post">
+                            <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                            <tr>
+                                <td><?php echo $list[$i]['full_name'] ?></td>
+                                <td><?php echo $list[$i]['no'] ?></td>
+                                <td><?php echo $list[$i]['check_in'] ?></td>
+                                <td><?php echo $list[$i]['check_out'] ?></td>
+                                <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
+                            </tr>
+                        </form>
                     <?php } ?>
                     <?php if (count($list) == 0) {
                         echo '<tr><td colspan="9">등록된 예약이 없습니다.</td></tr>';

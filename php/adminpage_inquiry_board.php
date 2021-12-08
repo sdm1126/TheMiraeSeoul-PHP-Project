@@ -9,7 +9,7 @@ if (!isset($_GET['search'])) {
     if ($_GET['search'] === 'id') {
         $search = $_GET['search'];
         $nameId = $_GET['nameId'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry where id ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry where id like '%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     } else if ($_GET['search'] === 'title') {
         $search = $_GET['search'];
         $nameId = $_GET['nameId'];
@@ -17,7 +17,7 @@ if (!isset($_GET['search'])) {
     } else {
         $search = $_GET['search'];
         $nameId = $_GET['nameId'];
-        $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry where written_date ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+        $sql = " SELECT COUNT(*) AS `cnt` FROM inquiry where written_date like'%" . $nameId . "%'"; // member 테이블에 등록되어있는 회원의 수를 구함
     }
 }
 
@@ -43,7 +43,7 @@ if (!isset($_GET['search'])) {
 } else {
     if ($_GET['search'] === 'id') {
         $nameId = $_GET['nameId'];
-        $sql = " SELECT * FROM inquiry where id ='{$nameId}' ORDER BY written_date desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
+        $sql = " SELECT * FROM inquiry where id like '%{$nameId}%' ORDER BY written_date desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     } else if ($_GET['search'] === 'title') {
         $nameId = $_GET['nameId'];
         $sql = " SELECT * FROM inquiry where title like '%{$nameId}%' ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회

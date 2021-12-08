@@ -129,6 +129,7 @@
 
                     <section class="section4">
                         <!-- Ajax 통신으로 reservation1_search_tariff.php로부터 값 받기 -->
+                        <h4 style="color:red">상품, 타입을 선택해주세요.</h4>
                     </section>
                 </div>
             </article>

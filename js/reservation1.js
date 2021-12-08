@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Check if check-in date and check-out date are selected
         if(check_in === "1970-01-01" || check_out === "1970-01-01") {
-            document.querySelector(".section3-3-sub").innerHTML = "<h2 style=\"color: red\">체크인, 체크아웃 날짜를 모두 선택해주세요.</h2>";
+            document.querySelector(".section3-3-sub").innerHTML = "<h4 style=\"color: red\">체크인, 체크아웃 날짜를 모두 선택해주세요.</h4>";
             return;
         }
 
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Check if deal and type are selected
         if(room_type === undefined) {
-            document.querySelector(".section4").innerHTML = "<h2 style=\"color: red\">상품, 타입을 선택해주세요.</h2>";
+            document.querySelector(".section4").innerHTML = "<h4 style=\"color: red\">상품, 타입을 선택해주세요.</h2>";
             return;
         }
 
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(check_in === "1970-01-01" && check_out === "1970-01-01") {
             search_tariff();
         } else {
-            document.querySelector(".section4").innerHTML = "<h2 style=\"color: red\">상품, 타입을 선택해주세요.</h2>";
+            document.querySelector(".section4").innerHTML = "<h4 style=\"color: red\">상품, 타입을 선택해주세요.</h4>";
         }
     });
 
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(check_in === "1970-01-01" && check_out === "1970-01-01") {
             search_tariff();
         } else {
-            document.querySelector(".section4").innerHTML = "<h2 style=\"color: red\">상품, 타입을 선택해주세요.</h2>";
+            document.querySelector(".section4").innerHTML = "<h4 style=\"color: red\">상품, 타입을 선택해주세요.</h2>";
         }
     });
 

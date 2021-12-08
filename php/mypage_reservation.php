@@ -123,9 +123,9 @@
             </div>
         </aside>
 
-        <!-- article -->
+        <!-- main -->
         <main>
-            <!-- article1 -->
+            <!-- main1 -->
             <article class="h2">
                 <h2>내 예약</h2>
                 <div class="span">
@@ -134,7 +134,7 @@
             </article>
             <hr>
 
-            <!-- article2 -->
+            <!-- main2 -->
             <form action="./mypage_reservation.php" method="get">
                 <article class="search">
                     <select name="select" id="select">
@@ -147,7 +147,7 @@
                 </article>
             </form>
 
-            <!-- article3 -->
+            <!-- main3 -->
             <article class="table">
                 <table>
                     <th id="no">예약번호</th>
@@ -172,7 +172,7 @@
                 </table>
             </article>
 
-            <!-- article4 -->
+            <!-- main4 -->
             <article class="index">
                 <div class="page_wrap">
                     <div class="page_nation">

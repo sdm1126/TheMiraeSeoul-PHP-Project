@@ -120,37 +120,37 @@
                         END";
                     break;
                 
-                case 'reservation_log_update':
-                    $sql = "CREATE TRIGGER reservation_log_update
-                        AFTER UPDATE
-                        ON reservation
-                        FOR EACH ROW
-                        BEGIN
-                        INSERT into reservation_log VALUES (
-                            null,
-                            new.id,
-                            new.full_name,
-                            new.check_in,
-                            new.check_out,
-                            new.adult,
-                            new.child,
-                            new.deal_name,
-                            new.room_type,
-                            new.adult_breakfast,
-                            new.child_breakfast,
-                            new.total_tariff,
-                            new.room_night,
-                            new.cc_company,
-                            new.cc_number,
-                            new.cc_expiry_month,
-                            new.cc_expiry_year,
-                            new.special_request,
-                            new.reservation_date,
-                            '수정됨',
-                            now()
-                        );
-                        END";
-                    break;
+                // case 'reservation_log_update':
+                //     $sql = "CREATE TRIGGER reservation_log_update
+                //         AFTER UPDATE
+                //         ON reservation
+                //         FOR EACH ROW
+                //         BEGIN
+                //         INSERT into reservation_log VALUES (
+                //             null,
+                //             new.id,
+                //             new.full_name,
+                //             new.check_in,
+                //             new.check_out,
+                //             new.adult,
+                //             new.child,
+                //             new.deal_name,
+                //             new.room_type,
+                //             new.adult_breakfast,
+                //             new.child_breakfast,
+                //             new.total_tariff,
+                //             new.room_night,
+                //             new.cc_company,
+                //             new.cc_number,
+                //             new.cc_expiry_month,
+                //             new.cc_expiry_year,
+                //             new.special_request,
+                //             new.reservation_date,
+                //             '수정됨',
+                //             now()
+                //         );
+                //         END";
+                //     break;
 
                 case 'reservation_log_delete':
                     $sql = "CREATE TRIGGER reservation_log_delete
@@ -183,7 +183,7 @@
                         );
                         END";
                     break;
-
+    
                 default:
                     echo "<script>alert('해당 트리거가 없습니다.');</script>";
                     break;

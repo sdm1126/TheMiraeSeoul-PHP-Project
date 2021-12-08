@@ -63,21 +63,20 @@
             
             // 5-2. 회원 정보가 존재할 경우
             } else {
-                $sql = "INSERT INTO reservation";
-                $sql .= " VALUES(
+                $sql = "CALL `reservation_insert_procedure`(
                     null, 
                     '$id', 
                     '$full_name', 
-                    '$check_in', 
+                    '$check_in',
                     '$check_out', 
-                    '$adult', 
-                    '$child', 
+                    $adult, 
+                    $child, 
                     '$deal_name', 
                     '$room_type', 
-                    '$adult_breakfast', 
-                    '$child_breakfast', 
-                    '$total_tariff', 
-                    '$room_night',
+                    $adult_breakfast, 
+                    $child_breakfast,
+                    $total_tariff, 
+                    $room_night,
                     '$cc_company',
                     '$cc_number',
                     '$cc_expiry_month',
@@ -106,6 +105,7 @@
             }
         }
 
+    // isset 체크 통과 실패 시
     } else {
         echo "<script>alert('예약이 정상적으로 완료되지 않았습니다. 다시 시도 부탁드립니다.');</script>";
         echo "<script>location.replace('./main.php');</script>";

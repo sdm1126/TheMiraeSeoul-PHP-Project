@@ -20,18 +20,18 @@
 
     // 프로시저
     create_procedure($con, "user_procedure");
-    // create_procedure($con, "faq_procedure");
+    create_procedure($con, "faq_procedure");
+    create_procedure($con, "reservation_insert_procedure");
+    create_procedure($con, "reservation_delete_procedure");
     create_procedure($con, "deal_procedure");
     create_procedure($con, "tariff_procedure");
+    create_procedure($con, "inventory_procedure");
 
     // 트리거
     create_trigger($con, "user_log_insert");
     create_trigger($con, "user_log_update");
     create_trigger($con, "user_log_delete");
     create_trigger($con, "reservation_log_insert");
-    create_trigger($con, "reservation_log_update");
+    // create_trigger($con, "reservation_log_update");
     create_trigger($con, "reservation_log_delete");
-    // create_trigger($con, "inventory_insert");
-    // create_trigger($con, "inventory_update");
-    // create_trigger($con, "inventory_delete");
 ?>

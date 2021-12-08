@@ -168,8 +168,16 @@
                     <?php } ?>
                     <!-- PHP문 반복 끝 -->
                 </table>
-                <p><?php echo $index_page; ?></p>
             </div>
+
+            <!-- main4 -->
+            <article class="index">
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        <p><?php echo $index_page; ?></p>
+                    </div>
+                </div>
+            </article>
         </main>
 
         <!-- footer -->

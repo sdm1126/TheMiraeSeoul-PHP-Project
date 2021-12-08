@@ -2,8 +2,8 @@
 include("../db/db_connector.php");  // DB연결을 위한 같은 경로의 dbconn.php를 인클루드합니다.
 
 
-$first_name                     = trim($_POST['first_name']);
-$last_name                     = trim($_POST['last_name']);
+$first_name                     = trim($_POST['first_name']); //이름
+$last_name                     = trim($_POST['last_name']); //성
 $email1                = trim($_POST['email1']); // 이메일
 $email2                = trim($_POST['email2']); // 이메일
 $mobile1                    = $_POST['mobile1']; // 직업
@@ -47,7 +47,7 @@ if (!$mobile3) {
     exit;
 }
 
-
+//이름 등의 정보로 아이디를 찾아오기
 $sql = " SELECT * FROM user WHERE first_name = '$first_name' AND last_name='{$last_name}' AND mobile2 ='{$mobile2}' AND mobile1 ='{$mobile1}'AND mobile3 ='{$mobile3}'
 AND email1='{$email1}'AND email2='{$email2}'"; // 회원가입을 시도하는 아이디가 사용중인 아이디인지 체크
 $result = mysqli_query($con, $sql);

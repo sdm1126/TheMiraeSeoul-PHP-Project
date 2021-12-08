@@ -110,7 +110,14 @@ if(isset($_SESSION['session_id'])){
           </div>
         </article>
         <textarea disabled name="" id="terms1_text" cols="30" rows="10"> 미래호텔 고객의 문의 및 의견과 관련하여 귀사가 아래와 같이 본인의 개인정보를 수집 및 이용하는데 동의합니다.
-                    
+            <article class="terms">
+                <h3>선택적 개인정보 수집 및 이용에 대한 동의</h3>
+                <div>
+                    <label for="check2">동의함</label>
+                    <input type="checkbox" id="check2">
+                </div>
+            </article>
+            <textarea disabled name="" id="terms1_text" cols="30" rows="10"> 미래호텔 고객의 문의 및 의견과 관련하여 귀사가 아래와 같이 본인의 개인정보를 수집 및 이용하는데 동의합니다.   
                     필수적인 개인정보의 수집 ㆍ이용에 관한 사항
                     ① 수집ㆍ이용 항목 | 성명(국문·영문), 이메일, 휴대전화
                     ② 수집ㆍ이용 목적 | 문의에 대한 안내 및 서비스 제공
@@ -130,6 +137,21 @@ if(isset($_SESSION['session_id'])){
 
 
   </script>
+  =======
+  <article class="button">
+    <input type="submit" id="submit" name="mode" value="등 록" disabled>
+  </article>
+  </form>
+  </main>
+  <?php
+            include('./footer.php');
+            ?>
+  </div>
+  <script>
+
+
+  </script>
+  >>>>>>> origin/master
 </body>
 
 </html>

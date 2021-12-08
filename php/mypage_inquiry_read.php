@@ -150,7 +150,7 @@ if (isset($_SESSION['session_id'])) {
       <?php }
                             ?>
       <article class="textarea">
-        <h3>댓 글</h3>
+        <h3>답 변</h3>
         <!-- 작성될 댓글 어느 게시글에 작성될지 모르기 때문에 게시글 PK를 값으로 준다 -->
         <form action="./mypage_comment_update.php?no=<?= $list_number ?>" method="post">
           <textarea name="content" id="" cols="30" rows="10"></textarea>

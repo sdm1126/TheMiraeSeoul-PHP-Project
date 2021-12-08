@@ -30,9 +30,9 @@
         <ul>
           <li class="title">고객 서비스</li>
           <hr>
-          <li><a href="./service_notice_board.php">공지사항</a></li>
-          <li><b><a href="./service_faq.php">F A Q</a></b></li>
-          <li><a href="./service_inquiry.php">문의하기</a></li>
+          <li><a href="../php/service_notice_board.php">공지사항</a></li>
+          <li><a href="../php/service_faq.php"><b>F A Q</b></a></li>
+          <li><a href="../php/service_inquiry.php">문의하기</a></li>
         </ul>
       </div>
     </aside>

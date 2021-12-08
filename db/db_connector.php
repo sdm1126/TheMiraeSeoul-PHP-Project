@@ -55,7 +55,7 @@ if (!$dbcon) {
 function alert_back($message) {
     echo "<script>alert($message);</script>";
     echo "<script>history.go(-1);</script>";
-    exit;
+    exit();
 }
 
 // 6-2. MySQL 인젝션 방어 함수

@@ -155,7 +155,7 @@ else
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="../css/service_notification_board.css">
+  <link rel="stylesheet" href="../css/service_notice_board.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/aside.css">
@@ -231,10 +231,12 @@ else
                 ?>
         </table>
       </div>
-      <article class="index">
-        <div class="page_wrap">
-          <div class="page_nation">
-            <p><?php echo $write_page; ?></p>
+      <article class="button">
+        <div class="paging">
+          <div class="page_wrap">
+            <div class="page_nation">
+              <p><?php echo $write_page; ?></p>
+            </div>
           </div>
         </div>
         <div>
@@ -244,41 +246,13 @@ else
           <?php } ?>
         </div>
       </article>
+
     </main>
 
     <!-- footer -->
     <?php
-            include('./footer.php');      
+      include('./footer.php');      
     ?>
-  </div>
-
-  </table>
-  </div>
-  <article class="button">
-    <div class="paging">
-      <div class="page_wrap">
-        <div class="page_nation">
-          <p><?php echo $write_page;  ?>
-            <!-- 페이지 -->
-          </p>
-        </div>
-      </div>
-    </div>
-    <div>
-      <?php
-          if(isset($_SESSION['session_id'])&& $_SESSION['session_id'] === 'admin'){ ?>
-      <a href="../php/service_notice_read.php?mode=글쓰기"><input type="button" value="글쓰기"></a>
-      <?php } ?>
-    </div>
-  </article>
-
-  </main>
-
-  <!-- footer -->
-  <?php
-            include('./footer.php');
-        ?>
-  </div>
 
 </body>
 

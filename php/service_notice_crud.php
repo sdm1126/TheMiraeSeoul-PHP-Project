@@ -2,7 +2,6 @@
     //데이터 베이스 연동 및 members 테이블 생성( 테이블이 존재하면 생략)
     include_once $_SERVER['DOCUMENT_ROOT']."/TheMiraeSeoul/db/db_connector.php";
     include_once $_SERVER['DOCUMENT_ROOT']."/TheMiraeSeoul/db/create_table.php";
-    include_once('../db/db_connector.php');
     create_table($con,'notice');
 
     $mode = $_POST['mode'];
@@ -26,7 +25,7 @@
                 exit();
             }else {
                 if( preg_match($special_pattern, $title) ){  //받은 아이디에 특수기호가있으면
-                    alert_back(1);  //메세지로출력
+                    alert_back('제목에 특수문자는 사용할 수 없습니다');  //메세지로출력
                     exit;
                 }
                 $sql = "insert into notice(no, title, content, written_date, read_count) ";

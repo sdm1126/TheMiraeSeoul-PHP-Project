@@ -94,10 +94,10 @@ tr {
   font-weight: bold;
 }
 
-.button {
+.paging {
   text-align: center;
 }
-.button a {
+.paging a {
   /*
   display: inline-block 인라인 요소의 특징과 블록 요소의 특징을 모두 갖는다
   크기를 가질 수 있으며 텍스트 정렬도 적용받는다

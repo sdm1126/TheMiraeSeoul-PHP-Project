@@ -49,7 +49,7 @@
                     </tr>
                     <tr>
                         <td class="title">홈페이지</td>
-                        <td> http://www.mrhi.or.kr/</td>
+                        <td><a href="http://www.mrhi.or.kr/" target="_blank">http://www.mrhi.or.kr/</a> </td>
                     </tr>
                     <tr>
                         <td class="title">구 조</td>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td class="title">객 실 수</td>
-                        <td> 총 61室</td>
+                        <td title="더블, 트윈, 트리플 30실 그랜드 1실"> 총 91室</td>
                     </tr>
                     <tr>
                         <td class="title">시 설</td>

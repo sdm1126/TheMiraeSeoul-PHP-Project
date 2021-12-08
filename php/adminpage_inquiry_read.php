@@ -59,7 +59,7 @@ if (isset($_SESSION['session_id'])) {
                             $list_number = $_GET['no'];
                             $mb_id = $_GET['id'];
 
-                            $sql = "SELECT * FROM user WHERE id = '$id'";
+                            $sql = "SELECT * FROM user WHERE id = '$mb_id'";
                             $result = mysqli_query($con, $sql);
                             $row = mysqli_fetch_assoc($result);
 

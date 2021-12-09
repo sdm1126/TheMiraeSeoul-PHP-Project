@@ -137,21 +137,20 @@ if(isset($_SESSION['session_id'])){
 
 
   </script>
-  =======
+
   <article class="button">
     <input type="submit" id="submit" name="mode" value="등 록" disabled>
   </article>
   </form>
   </main>
   <?php
-            include('./footer.php');
-            ?>
+    include('./footer.php');
+  ?>
   </div>
   <script>
 
 
   </script>
-  >>>>>>> origin/master
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 main {
   width: 700px;
-  height: auto;
+  min-height: 550px;
   float: right;
 }
 
@@ -81,11 +81,12 @@ tr {
 }
 
 .button {
+  position: fixed;
   width: 700px;
   text-align: center;
   display: flex;
   justify-content: right;
-  margin-bottom: 20px;
+  bottom: 320px;
 }
 
 .button input {
@@ -95,19 +96,23 @@ tr {
 }
 
 .paging {
-  text-align: center;
+  position: absolute;
+  transform: translate(-200%, -50%);
 }
 .paging a {
   /*
   display: inline-block 인라인 요소의 특징과 블록 요소의 특징을 모두 갖는다
   크기를 가질 수 있으며 텍스트 정렬도 적용받는다
   */
-  position: relative;
-  right: 150px;
   display: inline-block;
   font-weight: bold;
   padding: 5px 15px;
   border: 1px solid #ccc;
   color: #000;
   background-color: #e5ebf0;
+}
+
+.write {
+  position: absolute;
+  transform: translate(0%, -50%);
 }

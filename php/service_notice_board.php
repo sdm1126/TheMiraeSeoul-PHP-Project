@@ -3,12 +3,16 @@
   
   error_reporting(E_ALL & ~E_WARNING);
   $nameId;
+
+  $search = (isset($_GET['search'])) ? $_GET['search'] : "title";
   if (!isset($_GET['search'])) {
       $sql = " SELECT COUNT(*) AS `cnt` FROM notice"; // member 테이블에 등록되어있는 회원의 수를 구함
   } else {
-      if ($_GET['search'] === 'title') {
+      // 제목 검색
+      if ($search === 'title') {
           $nameId = $_GET['nameId'];
           $sql = " SELECT COUNT(*) AS `cnt` FROM notice where title ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
+      // 내용 검색
       } else {
           $nameId = $_GET['nameId'];
           $sql = " SELECT COUNT(*) AS `cnt` FROM notice where content ='" . $nameId . "'"; // member 테이블에 등록되어있는 회원의 수를 구함
@@ -16,6 +20,8 @@
   }
   $result = mysqli_query($con, $sql);
   $row = mysqli_fetch_assoc($result);
+  
+  // 총 목록 수
   $total_count = $row['cnt'];
   // 페이지당 목록 수
   $page_rows = 5;
@@ -23,25 +29,25 @@
   $page = isset($_GET["page"]) ? $_GET["page"] : 1;
   // 전체 페이지 계산
   $total_page  = ceil($total_count / $page_rows);
-
+  // 페이지가 없으면 첫 페이지 (1 페이지)
   if ($page < 1) {
-      $page = 1;
-  } // 페이지가 없으면 첫 페이지 (1 페이지)
-  $from_record = ($page - 1) * $page_rows; // 시작 열을 구함
-
-  $list = array(); // 회원 정보를 담을 배열 선언
+    $page = 1;
+  }
+  // 시작 열을 구함 
+  $from_record = ($page - 1) * $page_rows; 
+  // 회원 정보를 담을 배열 선언
+  $list = array(); 
   //해당되는 페이지 레코드를 가져온다.
   if (!isset($_GET['search'])) {
     $sql = " SELECT * FROM notice ORDER BY no desc LIMIT {$from_record}, {$page_rows}"; // 회원 정보를 조회
   } else {
-    if ($_GET['search'] === 'title') {
+    if ($search === 'title') {
         $nameId = $_GET['nameId'];
         $sql = " SELECT * FROM notice where title like '%{$nameId}%' ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
-    } else if ($_GET['search'] === 'content') {
+    } else if ($search === 'content') {
         $nameId = $_GET['nameId'];
         $sql = " SELECT * FROM notice where content like '%{$nameId}%' ORDER BY no desc LIMIT {$from_record}, {$page_rows} "; // 회원 정보를 조회
     }
-
   }
 
   $result = mysqli_query($con, $sql);
@@ -50,20 +56,19 @@
       $list_num = $total_count - ($page - 1) * $page_rows; // 회원 순번
       $list[$i]['num'] = $list_num - $i;
   }
-  //페이징을 시작한다. 
-  $str = ''; // 페이징 시작
+  // 페이징을 시작한다. 
+  $str = '';
   //7.1 1페이지 아닌 2페이지 이라면
   if ($page > 1) {
-
-      if (!isset($_GET['search'])) {
-          $str .= '<a href="./service_notice_board.php?page=1" class="arrow pprev"><<</a>';
-      } else {
-          if ($_GET['search'] === 'title') {
-              $str .= '<a href="./service_notice_board.php?page=1&search=name&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
-          } else {
-              $str .= '<a href="./service_notice_board.php?page=1&search=id&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
-          }
-      }
+    if (!isset($_GET['search'])) {
+        $str .= '<a href="./service_notice_board.php?page=1" class="arrow pprev"><<</a>';
+    } else {
+        if ($_GET['search'] === 'title') {
+            $str .= '<a href="./service_notice_board.php?page=1&search=name&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+        } else {
+            $str .= '<a href="./service_notice_board.php?page=1&search=id&nameId=' . $nameId . '" class="arrow pprev"><<</a>';
+        }
+    }
   }
 //7.2 시작페이지를 등록한다. 끝페이지를 구한다.
 //끝페이지가 중요함(56페이지일때 시작페이지 51~60페이지)
@@ -159,7 +164,7 @@ else
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/aside.css">
-  <script src="../js/service_notice.js "></script>
+  <script src="../js/service_notice_board.js "></script>
   <link rel="stylesheet" href="../css/page.css">
 </head>
 
@@ -167,8 +172,8 @@ else
   <div class="container">
     <!-- header -->
     <?php
-            include('./header.php');
-        ?>
+      include('./header.php');
+    ?>
 
     <!-- aside -->
     <aside>
@@ -182,15 +187,20 @@ else
         </ul>
       </div>
     </aside>
+
+    <!-- main -->
     <main>
+      <!-- main1 -->
       <div class="h2">
         <h2>공 지 사 항</h2>
       </div>
       <hr>
+
+      <!-- main2 -->
       <div class="search">
         <select name="" id="root">
-          <option value="title">제목</option>
-          <option value="content">내용</option>
+          <option value="title" <?= ($search === "title" ? "selected" : "") ?>>제목</option>
+          <option value="content" <?= ($search === "content" ? "selected" : "") ?>>내용</option>
         </select>
         <input type="text" id="nameId">
         <input type="submit" value="검 색" id="search">
@@ -201,8 +211,9 @@ else
         $list[$i] = $row;
         $written_date[$i]  = $list[$i]['written_date'];
       }
-
       ?>
+
+      <!-- main3 -->
       <div class="table">
         <table>
           <th>번 호</th>
@@ -212,10 +223,14 @@ else
           <th>조 회 수</th>
 
           <?php
-          
           if(isset($list)) {
+            if(count($list) === 0) {
+              echo "<tr>";
+              echo "<td colspan='5'>등록된 내용이 존재하지 않습니다.</td>";
+              echo "</tr>";
+            }
             for($i=0; $i< count($list); $i++) { 
-            echo "<tr>";
+                echo "<tr>";
                 $no = $list[$i]['no'];  
                 echo "<td>{$list[$i]['no'] }</td>";
                 echo "<td><a href='../php/service_notice_read.php?mode=글읽기&title=".$list[$i]['title']."&no=$no'>{$list[$i]['title']}</a></td>";
@@ -224,13 +239,12 @@ else
                 echo "<td>{$list[$i]['read_count']}</td>";
                 echo "</tr>";
               }
-          }else {
-            //게시판이 하나도 없을 때 list값이 없다고 오류가 나오는걸 방지하기 위해 공백을 줘서 에러 메세지를 없앰
-            $list = "";
           }
-                ?>
+          ?>
         </table>
       </div>
+
+      <!-- main4 -->
       <article class="button">
         <div class="paging">
           <div class="page_wrap">
@@ -239,7 +253,7 @@ else
             </div>
           </div>
         </div>
-        <div>
+        <div class="write">
           <?php
           if(isset($_SESSION['session_id'])&& $_SESSION['session_id'] === 'admin'){ ?>
           <a href="../php/service_notice_read.php?mode=글쓰기"><input type="button" value="글쓰기"></a>

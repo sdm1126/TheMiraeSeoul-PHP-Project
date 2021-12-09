@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/footer.css">
   <link rel="stylesheet" href="../css/aside.css">
+  <script src="../js/service_notice_read.js"></script>
 </head>
 
 <body>
@@ -76,7 +77,7 @@
               <!-- 관리자로 로그인 시 -->
               <?php if(isset($_SESSION['session_id'])&& $_SESSION['session_id'] === 'admin'){?>
               <td class="title"><b>제 목</b></td>
-              <td><input type="text" name="title" value="<?php echo $title; ?>" required></td>
+              <td><input type="text" id="title" name="title" value="<?php echo $title; ?>" required></td>
             </tr>
 
             <tr>
@@ -87,8 +88,9 @@
             </tr>
 
             <tr>
-              <td class="title" id="content"><b>내 용</b></td>
-              <td><textarea name="content" cols="30" rows="10" required><?php echo $content; ?></textarea></td>
+              <td class="title"><b>내 용</b></td>
+              <td><textarea id="content" name="content" cols="30" rows="10"><?php echo $content; ?></textarea>
+              </td>
             </tr>
 
             <!-- 관리자로 로그인 안했을 시 -->
@@ -120,10 +122,10 @@
           <?php if(isset($_SESSION['session_id'])&& $_SESSION['session_id'] === 'admin') { ?>
           <!-- 글쓰기 모드일 시-->
           <?php if($mode === '글쓰기') { ?>
-          <input type="submit" value="작 성" name="mode">
+          <input type="submit" class='submit' value="작 성" name="mode">
           <!-- 글읽기 모드일 시-->
           <?php } else if($mode === '글읽기') { ?>
-          <input type="submit" value="수 정" name="mode">
+          <input type="submit" class='submit' value="수 정" name="mode">
           <input type="submit" value="삭 제" name="mode">
           <?php } ?>
           <?php } ?>

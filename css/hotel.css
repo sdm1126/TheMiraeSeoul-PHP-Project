@@ -49,11 +49,10 @@ h2 {
 td.title {
   width: 330px;
   height: 200px;
-  background-color: #eaeaea;
+  background-color: beige;
   font-weight: bold;
 }
 
-.popup{
+.popup {
   margin-top: 10px;
 }
-

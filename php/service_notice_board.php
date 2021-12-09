@@ -156,56 +156,56 @@ else
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../css/service_notice_board.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/aside.css">
-  <script src="../js/service_notice_board.js "></script>
-  <link rel="stylesheet" href="../css/page.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/service_notice_board.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <script src="../js/service_notice_board.js "></script>
+    <link rel="stylesheet" href="../css/page.css">
 </head>
 
 <body>
-  <div class="container">
-    <!-- header -->
-    <?php
+    <div class="container">
+        <!-- header -->
+        <?php
       include('./header.php');
     ?>
 
-    <!-- aside -->
-    <aside>
-      <div>
-        <ul>
-          <li class="title">고객 서비스</li>
-          <hr>
-          <li><b><a href="./service_notice_board.php">공지사항</a></b></li>
-          <li><a href="./service_faq.php">F A Q</a></li>
-          <li><a href="./service_inquiry.php">문의하기</a></li>
-        </ul>
-      </div>
-    </aside>
+        <!-- aside -->
+        <aside>
+            <div>
+                <ul>
+                    <li class="title">고객 서비스</li>
+                    <hr>
+                    <li><b><a href="./service_notice_board.php">공지사항</a></b></li>
+                    <li><a href="./service_faq.php">F A Q</a></li>
+                    <li><a href="./service_inquiry.php">문의하기</a></li>
+                </ul>
+            </div>
+        </aside>
 
-    <!-- main -->
-    <main>
-      <!-- main1 -->
-      <div class="h2">
-        <h2>공 지 사 항</h2>
-      </div>
-      <hr>
+        <!-- main -->
+        <main>
+            <!-- main1 -->
+            <div class="h2">
+                <h2>공 지 사 항</h2>
+            </div>
+            <hr>
 
-      <!-- main2 -->
-      <div class="search">
-        <select name="" id="root">
-          <option value="title" <?= ($search === "title" ? "selected" : "") ?>>제목</option>
-          <option value="content" <?= ($search === "content" ? "selected" : "") ?>>내용</option>
-        </select>
-        <input type="text" id="nameId">
-        <input type="submit" value="검 색" id="search">
-      </div>
-      <?php 
+            <!-- main2 -->
+            <div class="search">
+                <select name="" id="root">
+                    <option value="title" <?= ($search === "title" ? "selected" : "") ?>>제목</option>
+                    <option value="content" <?= ($search === "content" ? "selected" : "") ?>>내용</option>
+                </select>
+                <input type="text" id="nameId">
+                <input type="submit" value="검 색" id="search">
+            </div>
+            <?php 
       $result = mysqli_query($con, $sql);
       for($i=0;   $row = mysqli_fetch_array($result); $i++){
         $list[$i] = $row;
@@ -213,16 +213,16 @@ else
       }
       ?>
 
-      <!-- main3 -->
-      <div class="table">
-        <table>
-          <th>번 호</th>
-          <th>제 목</th>
-          <th>성 명</th>
-          <th>작 성 일 자</th>
-          <th>조 회 수</th>
+            <!-- main3 -->
+            <div class="table">
+                <table>
+                    <th>번 호</th>
+                    <th>제 목</th>
+                    <th>성 명</th>
+                    <th>작 성 일 자</th>
+                    <th>조 회 수</th>
 
-          <?php
+                    <?php
           if(isset($list)) {
             if(count($list) === 0) {
               echo "<tr>";
@@ -241,30 +241,30 @@ else
               }
           }
           ?>
-        </table>
-      </div>
-
-      <!-- main4 -->
-      <article class="button">
-        <div class="paging">
-          <div class="page_wrap">
-            <div class="page_nation">
-              <p><?php echo $write_page; ?></p>
+                </table>
             </div>
-          </div>
-        </div>
-        <div class="write">
-          <?php
+
+            <!-- main4 -->
+            <article class="button">
+                <div class="paging">
+                    <div class="page_wrap">
+                        <div class="page_nation">
+                            <p><?php echo $write_page; ?></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="write">
+                    <?php
           if(isset($_SESSION['session_id'])&& $_SESSION['session_id'] === 'admin'){ ?>
-          <a href="../php/service_notice_read.php?mode=글쓰기"><input type="button" value="글쓰기"></a>
-          <?php } ?>
-        </div>
-      </article>
+                    <a href="../php/service_notice_read.php?mode=글쓰기"><input type="button" value="글쓰기"></a>
+                    <?php } ?>
+                </div>
+            </article>
 
-    </main>
+        </main>
 
-    <!-- footer -->
-    <?php
+        <!-- footer -->
+        <?php
       include('./footer.php');      
     ?>
 

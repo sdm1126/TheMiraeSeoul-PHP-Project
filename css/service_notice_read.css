@@ -37,7 +37,7 @@ td {
 }
 
 td.title {
-  background-color: #eaeaea;
+  background-color: beige;
   width: 200px;
 }
 
@@ -79,6 +79,7 @@ td > textarea {
 }
 
 .button {
+  position: relative;
   width: 700px;
   text-align: center;
   display: flex;
@@ -89,11 +90,14 @@ td > textarea {
   width: 250px;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .button input {
+  position: absolute;
+  right: 0;
   width: 100px;
   height: 40px;
   font-weight: bold;
+  background-color: beige;
 }

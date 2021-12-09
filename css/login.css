@@ -39,6 +39,7 @@ article .section2 #login {
   height: 100px;
   font-weight: bold;
   margin-left: 10px;
+  background-color: beige;
 }
 
 article .section3 {
@@ -52,4 +53,5 @@ article .section3 #findId,
   height: 40px;
   font-weight: bold;
   cursor: pointer;
+  background-color: beige;
 }

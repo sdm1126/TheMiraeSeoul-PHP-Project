@@ -34,19 +34,20 @@ h2 {
 }
 
 .search select {
-  width: 80px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
 }
 
 .search input[type="text"] {
-  width: 200px;
-  height: 30px;
+  width: 250px;
+  height: 40px;
 }
 
 .search input[type="submit"] {
-  width: 50px;
-  height: 30px;
+  width: 70px;
+  height: 40px;
   font-weight: bold;
+  background-color: beige;
 }
 
 .table {
@@ -70,10 +71,10 @@ tr {
 }
 
 .table th {
-  background-color: #eaeaea;
+  background-color: beige;
 }
 
-.table table th:nth-child(2){
+.table table th:nth-child(2) {
   width: 500px;
   /* 2021-11-29 수정 게시판 제목 */
   max-width: 500px;

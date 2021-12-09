@@ -176,101 +176,103 @@ mysqli_close($con); // 데이터베이스 접속 종료
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/aside.css">
-  <link rel="stylesheet" href="../css/adminpage_inquiry_board.css">
-  <link rel="stylesheet" href="../css/page.css">
-  <script src="../js/adminpage_inquiry_board.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <link rel="stylesheet" href="../css/adminpage_inquiry_board.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <script src="../js/adminpage_inquiry_board.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
 <body>
-  <div class="container">
-    <!-- header -->
-    <?php
+    <div class="container">
+        <!-- header -->
+        <?php
         include('./header.php');
         ?>
 
-    <!-- aside -->
-    <aside>
-      <div>
-        <ul>
-          <li class="title">관리자 페이지
-          </li>
-          <hr>
-          <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
-          <li><a href="./adminpage_reservation.php?page=1">전체 예약</a></li>
-          <li><a href="./adminpage_inquiry_board.php?page=1"><b>전체 문의</a></b></li>
-        </ul>
-      </div>
-    </aside>
-    <main>
-      <article class="h2">
-        <h2 id="h2">전 체 문 의</h2>
-      </article>
-      <hr>
-      <article class="search">
-        <select class="custom-select" id="root" name="option">
-          <option value="id">아이디</option>
-          <option value="title">제목</option>
-        </select>
-        <input type="text" class="custum-search form-control" id="nameId">
-        <button type="button" class="btn btn-secondary" id="search">조회</button>
-        <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">로그 출력</button>
-      </article>
-      <article class="table">
-        <table>
-          <th>번호</th>
-          <th>아이디</th>
-          <th>제목</th>
-          <th>작성일자</th>
-          <th>삭제</th>
-          <?php
+        <!-- aside -->
+        <aside>
+            <div>
+                <ul>
+                    <li class="title">관리자 페이지</li>
+                    <hr>
+                    <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
+                    <li><a href="./adminpage_reservation.php?page=1">전체 예약</a></li>
+                    <li><a href="./adminpage_inquiry_board.php?page=1"><b>전체 문의</a></b></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- main -->
+        <main>
+            <article class="h2">
+                <h2 id="h2">전 체 문 의</h2>
+            </article>
+            <hr>
+            <article class="search">
+                <select class="custom-select" id="root" name="option">
+                    <option value="id">아이디</option>
+                    <option value="title">제목</option>
+                </select>
+                <input type="text" class="custum-search form-control" id="nameId">
+                <button type="button" class="btn btn-secondary" id="search">조회</button>
+                <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">로그
+                    출력</button>
+            </article>
+            <article class="table">
+                <table>
+                    <th>번호</th>
+                    <th>아이디</th>
+                    <th>제목</th>
+                    <th>작성일자</th>
+                    <th>삭제</th>
+                    <?php
                     for ($i = 0; $i < count($list); $i++) {
                     ?>
-          <form action="adminpage_inquiry_board_delete.php" method="post">
-            <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
-            <tr>
-              <td><?php echo $list[$i]['no'] ?></td>
-              <td><?php echo $list[$i]['id'] ?></td>
-              <td><a
-                  href="adminpage_inquiry_read.php?no=<?php echo $list[$i]['no'] ?>&id=<?php echo $list[$i]['id'] ?>"><?php echo $list[$i]['title'] ?></a>
-              </td>
-              <td><?php echo $list[$i]['written_date'] ?></td>
-              <td><button type="submit" class="btn btn-secondary btn1">삭제</button></td>
-            </tr>
-          </form>
-          <?php } ?>
-          <?php if (count($list) == 0) {
+                    <form action="adminpage_inquiry_board_delete.php" method="post">
+                        <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                        <tr>
+                            <td><?php echo $list[$i]['no'] ?></td>
+                            <td><?php echo $list[$i]['id'] ?></td>
+                            <td><a
+                                    href="adminpage_inquiry_read.php?no=<?php echo $list[$i]['no'] ?>&id=<?php echo $list[$i]['id'] ?>"><?php echo $list[$i]['title'] ?></a>
+                            </td>
+                            <td><?php echo $list[$i]['written_date'] ?></td>
+                            <td><button type="submit" class="btn btn-secondary btn1">삭제</button></td>
+                        </tr>
+                    </form>
+                    <?php } ?>
+                    <?php if (count($list) == 0) {
                         echo '<tr><td colspan="9">등록된 문의가 없습니다.</td></tr>';
                     } ?>
-        </table>
-        <br>
-        <div class="page_wrap">
-          <div class="page_nation">
-            <p><?php echo $write_page; ?>
-              <!-- 페이지 -->
-            </p>
-          </div>
-        </div>
-      </article>
-    </main>
+                </table>
+                <br>
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        <p><?php echo $write_page; ?>
+                            <!-- 페이지 -->
+                        </p>
+                    </div>
+                </div>
+            </article>
+        </main>
 
 
-    <!-- footer -->
-    <?php
+        <!-- footer -->
+        <?php
         include('./footer.php');
         ?>
-  </div>
-  <script>
-  $("#root").val('<?= $search ?>').prop("selected", true);
-  </script>
+    </div>
+    <script>
+    $("#root").val('<?= $search ?>').prop("selected", true);
+    </script>
 </body>
 
 </html>

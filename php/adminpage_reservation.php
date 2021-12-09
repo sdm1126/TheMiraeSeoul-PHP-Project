@@ -176,99 +176,101 @@ mysqli_close($con); // 데이터베이스 접속 종료
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/aside.css">
-  <link rel="stylesheet" href="../css/adminpage_reservation.css">
-  <link rel="stylesheet" href="../css/page.css">
-  <script src="../js/adminpage_reservation.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <link rel="stylesheet" href="../css/adminpage_reservation.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <script src="../js/adminpage_reservation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <!-- header -->
-    <?php
+    <div class="container">
+        <!-- header -->
+        <?php
         include('./header.php');
         ?>
 
-    <!-- aside -->
-    <aside>
-      <div>
-        <ul>
-          <li class="title">관리자 페이지
-          </li>
-          <hr>
-          <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
-          <li><a href="./adminpage_reservation.php?page=1"><b>전체 예약</b></a></li>
-          <li><a href="./adminpage_inquiry_board.php?page=1">전체 문의</a></li>
-        </ul>
-      </div>
-    </aside>
-    <main>
-      <div class="h2">
-        <h2 id="h2">전 체 예 약</h2>
-      </div>
-      <hr>
-      <div class="search">
-        <select class="custom-select" id="root">
-          <option value="name">성명</option>
-          <option value="no">예약번호</option>
-          <option value="check_in">체크인</option>
-        </select>
-        <input type="text" class="custum-search form-control" id="nameId">
-        <button type="button" class="btn btn-secondary" id="search">조회</button>
-        <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">로그
-          출력</button>
-      </div>
-      <div class="table">
-        <table>
-          <th>성명</th>
-          <th>예약번호</th>
-          <th>체크인</th>
-          <th>체크아웃</th>
-          <th>취소</th>
-          <?php
+        <!-- aside -->
+        <aside>
+            <div>
+                <ul>
+                    <li class="title">관리자 페이지
+                    </li>
+                    <hr>
+                    <li><a href="./adminpage_user.php?page=1">전체 정보</a></li>
+                    <li><a href="./adminpage_reservation.php?page=1"><b>전체 예약</b></a></li>
+                    <li><a href="./adminpage_inquiry_board.php?page=1">전체 문의</a></li>
+                </ul>
+            </div>
+        </aside>
+        <main>
+            <div class="h2">
+                <h2 id="h2">전 체 예 약</h2>
+            </div>
+            <hr>
+            <div class="search">
+                <select class="custom-select" id="root">
+                    <option value="name">성명</option>
+                    <option value="no">예약번호</option>
+                    <option value="check_in">체크인</option>
+                </select>
+                <input type="text" class="custum-search form-control" id="nameId">
+                <button type="button" class="btn btn-secondary" id="search">조회</button>
+                <button type="button" class="btn btn-excel" id="search_excel"><img src="../image/excel_icon.png">로그
+                    출력</button>
+            </div>
+            <div class="table">
+                <table>
+                    <th>예약번호</th>
+                    <th>성명</th>
+                    <th>체크인</th>
+                    <th>체크아웃</th>
+                    <th>예약일자</th>
+                    <th>취소</th>
+                    <?php
                     for ($i = 0; $i < count($list); $i++) {
                     ?>
-          <form action="adminpage_reservation_delete.php" method="post">
-            <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
-            <tr>
-              <td><?php echo $list[$i]['full_name'] ?></td>
-              <td><?php echo $list[$i]['no'] ?></td>
-              <td><?php echo $list[$i]['check_in'] ?></td>
-              <td><?php echo $list[$i]['check_out'] ?></td>
-              <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
-            </tr>
-          </form>
-          <?php } ?>
-          <?php if (count($list) == 0) {
+                    <form action="adminpage_reservation_delete.php" method="post">
+                        <input type="hidden" name="no" value="<?php echo $list[$i]['no'] ?>">
+                        <tr>
+                            <td><?php echo $list[$i]['no'] ?></td>
+                            <td><?php echo $list[$i]['full_name'] ?></td>
+                            <td><?php echo $list[$i]['check_in'] ?></td>
+                            <td><?php echo $list[$i]['check_out'] ?></td>
+                            <td><?php echo $list[$i]['reservation_date'] ?></td>
+                            <td><button type="submit" class="btn btn-secondary btn1">취소</button></td>
+                        </tr>
+                    </form>
+                    <?php } ?>
+                    <?php if (count($list) == 0) {
                         echo '<tr><td colspan="9">등록된 예약이 없습니다.</td></tr>';
                     } ?>
-        </table>
-        <div class="page_wrap">
-          <div class="page_nation">
-            <p><?php echo $write_page;  ?>
-              <!-- 페이지 -->
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
+                </table>
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        <p><?php echo $write_page;  ?>
+                            <!-- 페이지 -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
 
 
-    <!-- footer -->
-    <?php
+        <!-- footer -->
+        <?php
         include('./footer.php');
         ?>
-  </div>
-  <script>
-  $("#root").val('<?= $search ?>').prop("selected", true);
-  </script>
+    </div>
+    <script>
+    $("#root").val('<?= $search ?>').prop("selected", true);
+    </script>
 </body>
 
 </html>

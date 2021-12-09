@@ -50,122 +50,123 @@ if (isset($_SESSION['session_id'])) {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../css/mypage_inquiry_read.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/aside.css">
-  <script src="../js/mypage_inquiry_read.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/mypage_inquiry_read.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <script src="../js/mypage_inquiry_read.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <?php
+    <div class="container">
+        <?php
                         include('./header.php');
                         ?>
-    <aside>
-      <div>
-        <ul>
-          <li class="title">마이 페이지</li>
-          <hr>
-          <li><a href="./mypage_user.php">내 정보</a></li>
-          <li><a href="./mypage_reservation.php">내 예약</a></li>
-          <li><a href="./mypage_inquiry_board.php?option=title&page=1"><b>내 문의</b></a></li>
-          <li><a href="./mypage_resignation.php">회원탈퇴</a></li>
-        </ul>
-      </div>
-    </aside>
-    <main>
-      <article class="h2">
-        <h2>내 문의</h2>
-      </article>
-      <hr>
-      <article class="form">
-        <!-- 게시글 불러오기 -->
-        <form action="./mypage_inquiry_update.php?no=<?= $list_number ?>" method="post">
-          <table>
-            <tr>
-              <td class="title">성명</td>
-              <td><?= $full_name ?></td>
-            </tr>
-            <tr>
-              <td class="title">아이디</td>
-              <td><?= $id ?></td>
-            </tr>
-            <tr>
-              <td class="title">제목</td>
-              <td><input name="title" type="text" id="title" value="<?= $title ?>" readonly></input></td>
-            </tr>
-            <tr>
-              <td class="title">내용</td>
-              <td><textarea name="content" id="content" cols="30" rows="10" readonly><?= $content ?></textarea></td>
-            </tr>
-            <tr>
-              <td class="title">휴대전화</td>
-              <td><?= $mobile ?></td>
-            </tr>
-            <tr>
-              <td class="title">이메일</td>
-              <td><?= $email ?></td>
-            </tr>
-            <tr>
-              <?php
+        <aside>
+            <div>
+                <ul>
+                    <li class="title">마이 페이지</li>
+                    <hr>
+                    <li><a href="./mypage_user.php">내 정보</a></li>
+                    <li><a href="./mypage_reservation.php">내 예약</a></li>
+                    <li><a href="./mypage_inquiry_board.php?option=title&page=1"><b>내 문의</b></a></li>
+                    <li><a href="./mypage_resignation.php">회원탈퇴</a></li>
+                </ul>
+            </div>
+        </aside>
+        <main>
+            <article class="h2">
+                <h2>내 문의</h2>
+            </article>
+            <hr>
+            <article class="form">
+                <!-- 게시글 불러오기 -->
+                <form action="./mypage_inquiry_update.php?no=<?= $list_number ?>" method="post">
+                    <table>
+                        <tr>
+                            <td class="title">성명</td>
+                            <td><?= $full_name ?></td>
+                        </tr>
+                        <tr>
+                            <td class="title">아이디</td>
+                            <td><?= $id ?></td>
+                        </tr>
+                        <tr>
+                            <td class="title">제목</td>
+                            <td><input name="title" type="text" id="title" value="<?= $title ?>" readonly></input></td>
+                        </tr>
+                        <tr>
+                            <td class="title">내용</td>
+                            <td><textarea name="content" id="content" cols="30" rows="10"
+                                    readonly><?= $content ?></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="title">휴대전화</td>
+                            <td><?= $mobile ?></td>
+                        </tr>
+                        <tr>
+                            <td class="title">이메일</td>
+                            <td><?= $email ?></td>
+                        </tr>
+                        <tr>
+                            <?php
                                             if($attached_file !== ""){
                                             ?>
-              <td class="title">첨부 파일</td>
-              <td><a href="../php/download_files.php?file=<?=$attached_file?>">다운로드</a></td>
-              <?php }
+                            <td class="title">첨부 파일</td>
+                            <td><a href="../php/download_files.php?file=<?=$attached_file?>">다운로드</a></td>
+                            <?php }
                                             ?>
-            </tr>
-          </table>
-      </article>
-      <article class="button">
-        <div>
-          <input type="button" value="수 정" id="btn_modify" name="mode">
-          <input type="button" value="삭 제" id="btn_delete" name="mode">
-        </div>
-        </form>
-      </article>
-      <!-- 댓글 불러오기 -->
-      <?php
+                        </tr>
+                    </table>
+            </article>
+            <article class="button">
+                <div>
+                    <input type="button" value="수 정" id="btn_modify" name="mode">
+                    <input type="button" value="삭 제" id="btn_delete" name="mode">
+                </div>
+                </form>
+            </article>
+            <!-- 댓글 불러오기 -->
+            <?php
                             for ($i = 0; $i < count($comment); $i++) {
                             ?>
-      <article class="textarea">
-        <h3><?= $comment[$i]['id'] ?></h3>
-        <!-- 댓글 테이블의 PK값을 작성된 댓글의 no값으로 한다-->
-        <form action="./mypage_comment_update.php?no=<?= $comment[$i]['no'] ?>" method="post">
-          <textarea name="content" class="comment_content" cols="30" rows="10"
-            readonly><?= $comment[$i]['content'] ?></textarea>
-      </article>
-      <article class="reply">
-        <div>
-          <input type="button" class="comment_update" name="mode" value="수 정">
-          <input type="button" class="comment_delete" name="mode" value="삭 제">
-        </div>
-        </form>
-      </article>
-      <?php }
+            <article class="textarea">
+                <h3><?= $comment[$i]['id'] ?></h3>
+                <!-- 댓글 테이블의 PK값을 작성된 댓글의 no값으로 한다-->
+                <form action="./mypage_comment_update.php?no=<?= $comment[$i]['no'] ?>" method="post">
+                    <textarea name="content" class="comment_content" cols="30" rows="10"
+                        readonly><?= $comment[$i]['content'] ?></textarea>
+            </article>
+            <article class="reply">
+                <div>
+                    <input type="button" class="comment_update" name="mode" value="수 정">
+                    <input type="button" class="comment_delete" name="mode" value="삭 제">
+                </div>
+                </form>
+            </article>
+            <?php }
                             ?>
-      <article class="textarea">
-        <h3>답 변</h3>
-        <!-- 작성될 댓글 어느 게시글에 작성될지 모르기 때문에 게시글 PK를 값으로 준다 -->
-        <form action="./mypage_comment_update.php?no=<?= $list_number ?>" method="post">
-          <textarea name="content" id="" cols="30" rows="10"></textarea>
-      </article>
-      <article class="reply">
-        <div>
-          <input type="submit" id="comment_insert" name="mode" value="등 록">
-        </div>
-        </form>
-      </article>
-    </main>
-    <?php
+            <article class="textarea">
+                <h3>댓 글</h3>
+                <!-- 작성될 댓글 어느 게시글에 작성될지 모르기 때문에 게시글 PK를 값으로 준다 -->
+                <form action="./mypage_comment_update.php?no=<?= $list_number ?>" method="post">
+                    <textarea name="content" id="" cols="30" rows="10"></textarea>
+            </article>
+            <article class="reply">
+                <div>
+                    <input type="submit" id="comment_insert" name="mode" value="등 록">
+                </div>
+                </form>
+            </article>
+        </main>
+        <?php
                         include('./footer.php');
                         ?>
-  </div>
+    </div>
 </body>
 
 </html>

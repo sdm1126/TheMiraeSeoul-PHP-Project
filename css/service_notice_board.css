@@ -39,7 +39,7 @@ h2 {
 }
 
 .search input[type="text"] {
-  width: 320px;
+  width: 250px;
   height: 40px;
 }
 
@@ -47,6 +47,7 @@ h2 {
   width: 70px;
   height: 40px;
   font-weight: bold;
+  background-color: beige;
 }
 
 .table {
@@ -70,7 +71,7 @@ tr {
 }
 
 .table th {
-  background-color: #eaeaea;
+  background-color: beige;
 }
 
 .table table tr td:nth-child(2) {
@@ -81,12 +82,11 @@ tr {
 }
 
 .button {
-  position: fixed;
+  position: relative;
   width: 700px;
   text-align: center;
   display: flex;
   justify-content: right;
-  bottom: 320px;
 }
 
 .button input {
@@ -109,10 +109,14 @@ tr {
   padding: 5px 15px;
   border: 1px solid #ccc;
   color: #000;
-  background-color: #e5ebf0;
+  background-color: beige;
 }
 
 .write {
   position: absolute;
   transform: translate(0%, -50%);
+}
+
+.write input[type="button"] {
+  background-color: beige;
 }

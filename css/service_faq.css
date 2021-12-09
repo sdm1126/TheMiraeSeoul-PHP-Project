@@ -40,13 +40,14 @@ h2 {
 
 .search input[type="text"] {
   width: 250px;
-  height: 30px;
+  height: 40px;
 }
 
 .search input[type="submit"] {
   width: 70px;
-  height: 30px;
+  height: 40px;
   font-weight: bold;
+  background-color: beige;
 }
 
 .table {
@@ -69,7 +70,7 @@ tr {
 }
 
 .table th {
-  background-color: #eaeaea;
+  background-color: beige;
 }
 
 .table table tr th:nth-child(1) {
@@ -80,12 +81,12 @@ tr {
   width: 600px;
 }
 
-.page_wrap{
+.page_wrap {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-form{
+form {
   margin-top: 10px;
   margin-bottom: 10px;
 }

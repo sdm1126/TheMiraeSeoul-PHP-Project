@@ -34,7 +34,7 @@
         // 3. 체크인 검색
         } else {
             $keyword = $_GET['keyword'];
-            $sql = "SELECT * FROM reservation WHERE check_in = '{$keyword}' ORDER BY no DESC";
+            $sql = "SELECT * FROM reservation WHERE check_in LIKE '%{$keyword}%' ORDER BY no DESC";
         } 
     }
 

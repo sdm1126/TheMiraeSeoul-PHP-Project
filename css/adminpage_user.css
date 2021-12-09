@@ -35,13 +35,20 @@ h2 {
 }
 
 .search select {
-  width: 80px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
 }
 
 .search input[type="text"] {
-  width: 200px;
-  height: 30px;
+  width: 250px;
+  height: 40px;
+}
+
+.search #search {
+  width: 70px;
+  height: 40px;
+  font-weight: bold;
+  background-color: beige;
 }
 
 .table {
@@ -65,32 +72,54 @@ tr {
 }
 
 .table th {
-  background-color: #eaeaea;
+  background-color: beige;
 }
 
-.table table th:nth-child(4){
-  width: 400px;
-  /* 2021-11-29 수정 게시판 제목 */
-  max-width: 400px;
+.table table th:nth-child(1) {
+  width: 150px;
+  max-width: 150px;
   white-space: nowrap;
   overflow: hidden;
 }
-.table table th:nth-child(5){
+
+.table table th:nth-child(2) {
+  width: 180px;
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.table table th:nth-child(3) {
+  width: 280px;
+  max-width: 280px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.table table th:nth-child(4) {
+  width: 200px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.table table th:nth-child(5) {
   width: 100px;
-  /* 2021-11-29 수정 게시판 제목 */
   max-width: 100px;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.btn{
+.btn {
   width: 50px;
   height: 30px;
   font-weight: bold;
+  background-color: beige;
 }
 
-.btn-excel{
+.btn-excel {
   width: 100px;
   position: absolute;
   right: 0;
+  background-color: beige;
 }

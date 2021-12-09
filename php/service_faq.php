@@ -1,4 +1,3 @@
-
 <?php 
     include_once "../db/db_connector.php";
 ?>
@@ -6,40 +5,40 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../css/service_faq.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/aside.css">
-  <link rel="stylesheet" href="../css/page.css">
-  <script src="../js/faq.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/service_faq.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <script src="../js/faq.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <!-- header -->
-    <?php
+    <div class="container">
+        <!-- header -->
+        <?php
             include('./header.php');
         ?>
 
-    <!-- aside -->
-    <aside>
-      <div>
-        <ul>
-          <li class="title">고객 서비스</li>
-          <hr>
-          <li><a href="../php/service_notice_board.php">공지사항</a></li>
-          <li><a href="../php/service_faq.php"><b>F A Q</b></a></li>
-          <li><a href="../php/service_inquiry.php">문의하기</a></li>
-        </ul>
-      </div>
-    </aside>
+        <!-- aside -->
+        <aside>
+            <div>
+                <ul>
+                    <li class="title">고객 서비스</li>
+                    <hr>
+                    <li><a href="../php/service_notice_board.php">공지사항</a></li>
+                    <li><a href="../php/service_faq.php"><b>F A Q</b></a></li>
+                    <li><a href="../php/service_inquiry.php">문의하기</a></li>
+                </ul>
+            </div>
+        </aside>
 
-    <!-- main -->
-    <?php
+        <!-- main -->
+        <?php
             // 0. current_page 설정
             if(isset($_GET['page'])) {
                 $current_page = $_GET['page'];
@@ -127,85 +126,85 @@
             $index_page = get_paging($page_row, $current_page, $total_page, $url);
         ?>
 
-    <main>
-      <!-- main1 -->
-      <div class="h2">
-        <h2>F A Q</h2>
-      </div>
-      <hr>
+        <main>
+            <!-- main1 -->
+            <div class="h2">
+                <h2>F A Q</h2>
+            </div>
+            <hr>
 
-      <!-- main2 -->
-      <div class="search">
-        <form action="./service_faq.php" method="get">
-          <select name="option" id="select" style="width:100px;height:30px;">
-            <option value="question">질문</option>
-            <option value="answer">질문 및 답변</option>
-          </select>
-          <input type="text" id="search_str" name="search_str">
-          <input type="submit" value="검 색" id="submit" onsubmit="return false">
-          <span id="error" style="color: red; font-size: 14px;"></span>
-        </form>
-      </div>
+            <!-- main2 -->
+            <div class="search">
+                <form action="./service_faq.php" method="get">
+                    <select name="option" id="select">
+                        <option value="question">질문</option>
+                        <option value="answer">질문 및 답변</option>
+                    </select>
+                    <input type="text" id="search_str" name="search_str">
+                    <input type="submit" value="검 색" id="submit" onsubmit="return false">
+                    <span id="error" style="color: red; font-size: 14px;"></span>
+                </form>
+            </div>
 
-      <!-- main3 -->
-      <div class="table"> 
-        <table>
-          <tr>
-            <th id="type">구 분</th>
-            <th id="content">내 용</th>
-            </style=>
-            <!-- PHP문 반복 시작 -->
-            <?php  
+            <!-- main3 -->
+            <div class="table">
+                <table>
+                    <tr>
+                        <th id="type">구 분</th>
+                        <th id="content">내 용</th>
+                        </style=>
+                        <!-- PHP문 반복 시작 -->
+                        <?php  
                         $sql = "SELECT * FROM faq ";
                         $result = mysqli_query($con, $sql);
 
                         for($i = 0; $i < count($list); $i++) { ?>
-          <tr>
-            <td>Q</td>
-            <td><a class="<?= $i?>" href="#"><?= $list[$i]['question']; ?></a></td>
-          </tr>
-          <tr class="A<?= $i?>" style="display:none;">
-            <td>A</td>
-            <td><b class="<?= $i?>" href="#"><?= $list[$i]['answer']; ?></td>
-          </tr>
-          <?php } ?>
-          <!-- PHP문 반복 끝 -->
-        </table>
-      </div>
+                    <tr>
+                        <td>Q</td>
+                        <td><a class="<?= $i?>" href="#"><?= $list[$i]['question']; ?></a></td>
+                    </tr>
+                    <tr class="A<?= $i?>" style="display:none;">
+                        <td>A</td>
+                        <td><b class="<?= $i?>" href="#"><?= $list[$i]['answer']; ?></td>
+                    </tr>
+                    <?php } ?>
+                    <!-- PHP문 반복 끝 -->
+                </table>
+            </div>
 
-      <!-- main4 -->
-      <article class="index">
-        <div class="page_wrap">
-          <div class="page_nation">
-            <p><?php echo $index_page; ?></p>
-          </div>
-        </div>
-      </article>
-    </main>
+            <!-- main4 -->
+            <article class="index">
+                <div class="page_wrap">
+                    <div class="page_nation">
+                        <p><?php echo $index_page; ?></p>
+                    </div>
+                </div>
+            </article>
+        </main>
 
-    <!-- footer -->
-    <?php
+        <!-- footer -->
+        <?php
             include('./footer.php');
         ?>
-  </div>
+    </div>
 
-  <script>
-  // 1. question의 객체를 전부 찾는다 for문으로 몇개를 생성했는지 모르기 때문에  let Q = document.querySelectorAll('table td a')
-  let Q = document.querySelectorAll('table td a')
+    <script>
+    // 1. question의 객체를 전부 찾는다 for문으로 몇개를 생성했는지 모르기 때문에  let Q = document.querySelectorAll('table td a')
+    let Q = document.querySelectorAll('table td a')
 
-  // 2. for으로 반복문을 생성해서 1단계에서 찾은 question의 갯수만큼 question 개별객체를 불러온다
-  for (let i = 0; i < Q.length; i++) {
-    // 3. 찾은 question객체에 하나씩 이벤트리스너를 걸어준다 클릭했을때 임시함수(function)을 호출하는 이벤트 리스너
-    Q[i].addEventListener('click', function(e) {
-      // 4. answer.style.display가 none일 때 보이게하는 코드 ===연산자로 타입과 값이 같음
-      if (document.querySelector('.A' + i).style.display === '') {
-        document.querySelector('.A' + i).style.display = 'none'
-      } else {
-        document.querySelector('.A' + i).style.display = ''
-      }
-    })
-  }
-  </script>
+    // 2. for으로 반복문을 생성해서 1단계에서 찾은 question의 갯수만큼 question 개별객체를 불러온다
+    for (let i = 0; i < Q.length; i++) {
+        // 3. 찾은 question객체에 하나씩 이벤트리스너를 걸어준다 클릭했을때 임시함수(function)을 호출하는 이벤트 리스너
+        Q[i].addEventListener('click', function(e) {
+            // 4. answer.style.display가 none일 때 보이게하는 코드 ===연산자로 타입과 값이 같음
+            if (document.querySelector('.A' + i).style.display === '') {
+                document.querySelector('.A' + i).style.display = 'none'
+            } else {
+                document.querySelector('.A' + i).style.display = ''
+            }
+        })
+    }
+    </script>
 </body>
 
 </html>

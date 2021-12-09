@@ -27,15 +27,21 @@ h2 {
 }
 
 .search select {
-  width: 80px;
-  height: 30px;
+  width: 120px;
+  height: 40px;
 }
 
 .search input[type="text"] {
-  width: 200px;
-  height: 30px;
+  width: 250px;
+  height: 40px;
 }
 
+.search #search {
+  width: 70px;
+  height: 40px;
+  font-weight: bold;
+  background-color: beige;
+}
 
 .table {
   width: 700px;
@@ -58,31 +64,32 @@ tr {
 }
 
 .table th {
-  background-color: #eaeaea;
+  background-color: beige;
 }
 
-.table table th:nth-child(3){
+.table table th:nth-child(3) {
   width: 300px;
   max-width: 300px;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.table table th:nth-child(4){
+.table table th:nth-child(4) {
   width: 200px;
   max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.btn{
+.btn {
   width: 50px;
   height: 30px;
   font-weight: bold;
 }
 
-.btn-excel{
+.btn-excel {
   width: 100px;
   position: absolute;
   right: 0;
+  background-color: beige;
 }

@@ -18,9 +18,8 @@ if (isset($_SESSION['session_id'])) {
         // 아이디가 존재한다면 넘어온 값 점검
         if (mysqli_num_rows($result) > 0) {
 
-
             // 삭제 query문 실행
-            $sql = "DELETE  FROM user WHERE id = '$id'";
+            $sql = "DELETE FROM user WHERE id = '$id'";
             $result = mysqli_query($con, $sql);
 
             // 성공시 세션 해제

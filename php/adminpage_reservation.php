@@ -252,12 +252,12 @@ mysqli_close($con); // 데이터베이스 접속 종료
                         echo '<tr><td colspan="9">등록된 예약이 없습니다.</td></tr>';
                     } ?>
                 </table>
-                <div class="page_wrap">
-                    <div class="page_nation">
-                        <p><?php echo $write_page;  ?>
-                            <!-- 페이지 -->
-                        </p>
-                    </div>
+            </div>
+            <div class="page_wrap">
+                <div class="page_nation">
+                    <p><?php echo $write_page;  ?>
+                        <!-- 페이지 -->
+                    </p>
                 </div>
             </div>
         </main>

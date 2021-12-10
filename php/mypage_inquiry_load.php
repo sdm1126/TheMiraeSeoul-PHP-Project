@@ -25,7 +25,7 @@
             $total_count = $row['total_count'];
             
             // 게시판 한 페이지에 들어갈 게시글 갯수 
-            $page_row = 10;
+            $page_row = 5;
 
             //총 페이지 갯수 구하기
             $total_page = ($total_count !== 0)? ceil($total_count / $page_row) : (0);

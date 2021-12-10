@@ -1,7 +1,6 @@
 <?php
   include_once $_SERVER['DOCUMENT_ROOT']."/TheMiraeSeoul/db/db_connector.php";
   
-  error_reporting(E_ALL & ~E_WARNING);
   $nameId;
 
   $search = (isset($_GET['search'])) ? $_GET['search'] : "title";

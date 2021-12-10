@@ -32,6 +32,5 @@
     create_trigger($con, "user_log_update");
     create_trigger($con, "user_log_delete");
     create_trigger($con, "reservation_log_insert");
-    // create_trigger($con, "reservation_log_update");
     create_trigger($con, "reservation_log_delete");
 ?>

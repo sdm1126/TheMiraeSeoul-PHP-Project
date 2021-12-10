@@ -57,7 +57,7 @@
             
             if(empty($title)) {
                 alert_back("제목이 비어 있어요");
-                exit();
+                
             }else if(empty($content)) {
                 alert_back("내용이 비어 있어요");
                 exit();

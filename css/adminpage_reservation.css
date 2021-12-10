@@ -53,7 +53,7 @@ h2 {
 
 .table {
   width: 700px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .table table,
@@ -123,4 +123,8 @@ th:nth-child(1) {
   position: absolute;
   right: 0;
   background-color: beige;
+}
+
+.page_wrap {
+  margin-bottom: 30px;
 }

@@ -23,7 +23,7 @@
                         first_name VARCHAR(20) NOT NULL DEFAULT '',
                         full_name VARCHAR(40) NOT NULL DEFAULT '',
                         gender CHAR(3) NOT NULL DEFAULT '',
-                        id VARCHAR(20) NOT NULL DEFAULT '',
+                        id VARCHAR(20) NOT NULL DEFAULT ''  ,
                         password VARCHAR(255) NOT NULL DEFAULT '',
                         email1 VARCHAR(20) NOT NULL DEFAULT '',
                         email2 VARCHAR(20) NOT NULL DEFAULT '',
@@ -82,7 +82,8 @@
                         content VARCHAR(255) NOT NULL DEFAULT '',
                         inquiry_number INT(11) NOT NULL DEFAULT 0,
                         written_date DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-                        PRIMARY KEY(no)
+                        PRIMARY KEY(no),
+                        KEY (written_date)
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
       
@@ -106,7 +107,7 @@
                        cc_number VARCHAR(19) NOT NULL DEFAULT '',
                        cc_expiry_month CHAR(2) NOT NULL DEFAULT '',
                        cc_expiry_year CHAR(4) NOT NULL DEFAULT '',
-                       special_request VARCHAR(255) NOT NULL DEFAULT '',
+                       special_request VARCHAR(255) DEFAULT '',
                        reservation_date DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
                        PRIMARY KEY (no),
                        KEY(reservation_date)
@@ -129,18 +130,21 @@
                 // 8. 객실수량    
                 case 'inventory':
                     $sql = "CREATE TABLE IF NOT EXISTS inventory (
+                        no INT(11) NOT NULL AUTO_INCREMENT,
                         inventory_date DATE NOT NULL DEFAULT '0000-00-00',
                         inventory_double INT NOT NULL DEFAULT 0,
                         inventory_twin INT NOT NULL DEFAULT 0,
                         inventory_triple INT NOT NULL DEFAULT 0,
                         inventory_grand INT NOT NULL DEFAULT 0,
-                        PRIMARY KEY(inventory_date)
+                        PRIMARY KEY(no),
+                        UNIQUE KEY(inventory_date)
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 
                 // 9. 객실요금
                 case 'tariff':
                     $sql = "CREATE TABLE IF NOT EXISTS tariff (
+                        no INT(11) NOT NULL AUTO_INCREMENT,
                         tariff_date DATE NOT NULL DEFAULT '0000-00-00',
                         tariff_double INT NOT NULL DEFAULT 0,
                         tariff_twin INT NOT NULL DEFAULT 0,
@@ -152,7 +156,8 @@
                         discount_rate_everland INT NOT NULL,
                         discount_rate_winter INT NOT NULL,
                         discount_rate_christmas INT NOT NULL,
-                        PRIMARY KEY(tariff_date)
+                        PRIMARY KEY(no),
+                        UNIQUE KEY(tariff_date)
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
                     break;
 

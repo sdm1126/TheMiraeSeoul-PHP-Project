@@ -6,8 +6,9 @@ PHP와 MySQL을 활용한 중저가 비즈니스 호텔 웹사이트 제작
 
 ## 개발환경
 
-| OS | Windows 10 Home |
+| 구 분 | 내 용 |
 | --- | --- |
+| OS | Windows 10 Home |
 | Language | PHP 7.0.30 |
 | Editor | Visual Studio Code 1.63.0 |
 | DBMS | MySQL Workbench 6.3 |

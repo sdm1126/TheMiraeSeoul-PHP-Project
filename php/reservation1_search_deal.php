@@ -23,7 +23,7 @@
     if($flag === true) {
         
         // 2. 상품 판매기간 체크
-        $sql = "SELECT * FROM deal WHERE '$prev_check_out' BETWEEN deal_start AND deal_end";
+        $sql = "SELECT * FROM deal WHERE (deal_start <= '$check_in') AND (deal_end >= '$prev_check_out')";
         $result = mysqli_query($con, $sql);
         $list = array();
 

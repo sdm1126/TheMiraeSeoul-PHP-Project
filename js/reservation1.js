@@ -41,8 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let date_min_check_out = new Date((number_check_in + (24 * 60 * 60 * 1000))); // Date형
         let min_check_out = date_min_check_out.getFullYear() + "-" + (date_min_check_out.getMonth() + 1) + "-" + date_min_check_out.getDate(); // string형
 
-        $("#check_out").datepicker("option", "startDate", min_check_out);
-        // $('#check_out').datepicker("option", "minDate", min_check_out_next);
+        $('#check_out').datepicker("option", "minDate", min_check_out);
     });
     
     // 1-5. 체크아웃 선택 시, 최대 체크인 일자 설정
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let number_check_out = $(this).datepicker("getDate"); // number형
         let date_max_check_in = new Date((number_check_out - (24 * 60 * 60 * 1000))); // Date형
         let max_check_in = date_max_check_in.getFullYear() + "-" + (date_max_check_in.getMonth() + 1) + "-" + date_max_check_in.getDate(); // string형
-        // $('#check_in').datepicker("option", "endDate", max_check_in);
+    
         $("#check_in").datepicker("option", "maxDate", max_check_in);
     });
 
@@ -79,26 +78,26 @@ document.addEventListener('DOMContentLoaded', () => {
             check_out = date_check_out.getFullYear() + "-" + (date_check_out.getMonth() + 1) + "-" + date_check_out.getDate(); // string형
         }
 
-        // Check if check-in date and check-out date are selected
+        // 체크인, 체크아웃이 선택이 안된 경우 방어
         if(check_in === "1970-01-01" || check_out === "1970-01-01") {
             document.querySelector(".section3-3-sub").innerHTML = "<h4 style=\"color: red\">체크인, 체크아웃 날짜를 모두 선택해주세요.</h4>";
             return;
         }
 
-        // Create an XMLHttpRequest object
+        // XMLHttpRequest 객체 생성
         let xhttp = new XMLHttpRequest();
 
-        // Create the function to be executed when the server response is ready
+        // Server Response가 준비되면 실행
         xhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 document.querySelector(".section3-3-sub").innerHTML = this.responseText;
             }
         };
 
-        // Notice that a parameter (q) is added to the URL (with the content of the dropdown list)
+        // GET 방식으로 클릭한 값 전송 준비
         xhttp.open("GET", "reservation1_search_deal.php?q="+check_in+"_"+check_out, true);
         
-        // Send the request off to a file on the server
+        // 전송
         xhttp.send();
     }
 
@@ -121,23 +120,23 @@ document.addEventListener('DOMContentLoaded', () => {
         // 4인 초과 시, 
         if(parseInt($("#adult").val()) + parseInt($("#child").val()) > 4) {
             alert('총 4명까지만 투숙 가능합니다. 인원을 다시 선택해주세요.');
-            // localStorage에 저장된 인원 수 세팅
-            $("#adult").val(localStorage.getItem("adult"));
-            $("#child").val(localStorage.getItem("child"));
+            // sessionStorage에 저장된 인원 수 세팅
+            $("#adult").val(sessionStorage.getItem("adult"));
+            $("#child").val(sessionStorage.getItem("child"));
 
         // 1인 미만 시, 
         } else if (parseInt($("#adult").val()) + parseInt($("#child").val()) < 1) {
             alert('최소 1명 이상 선택 부탁드립니다. 인원을 다시 선택해주세요.');
-            // localStorage에 저장된 인원 수 세팅
-            $("#adult").val(localStorage.getItem("adult"));
-            $("#child").val(localStorage.getItem("child"));
+            // sessionStorage에 저장된 인원 수 세팅
+            $("#adult").val(sessionStorage.getItem("adult"));
+            $("#child").val(sessionStorage.getItem("child"));
 
         // 정상 인원 선택 시,
         } else {
-            // localStorage에 인원 수 데이터 저장
-            localStorage.clear();
-            localStorage.setItem("adult", $("#adult").val());
-            localStorage.setItem("child", $("#child").val());
+            // sessionStorage에 인원 수 데이터 저장
+            sessionStorage.clear();
+            sessionStorage.setItem("adult", $("#adult").val());
+            sessionStorage.setItem("child", $("#child").val());
         }
     }
 
@@ -213,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             check_out = date_check_out.getFullYear() + "-" + (date_check_out.getMonth() + 1) + "-" + date_check_out.getDate(); // string형
         }
 
-        // Check if check-in date and check-out date are selected
+        // 체크인, 체크아웃이 선택이 안된 경우 방어
         if(check_in === "1970-01-01" || check_out === "1970-01-01") {
             document.querySelector(".section3-3-sub").innerHTML = "<h2 style=\"color: red\">체크인, 체크아웃 날짜를 모두 선택해주세요.</h2>";
             return;
@@ -225,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let deal_name = array_deal_info[0];
         let room_type = array_deal_info[1];
 
-        // Check if deal and type are selected
+        // 상품 및 객실 타입이 선택 되었는 지 확인
         if(room_type === undefined) {
             document.querySelector(".section4").innerHTML = "<h4 style=\"color: red\">상품, 타입을 선택해주세요.</h2>";
             return;
@@ -235,20 +234,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let adult_breakfast = $('#adult_breakfast').val();
         let child_breakfast = $('#child_breakfast').val();
 
-        // Create an XMLHttpRequest object
+        // XMLHttpRequest 객체 생성
         let xhttp = new XMLHttpRequest();
 
-        // Create the function to be executed when the server response is ready
+        // Server Response가 준비되면 실행
         xhttp.onreadystatechange = function() {
             if(this.readyState == 4 && this.status == 200) {
                 document.querySelector(".section4").innerHTML = this.responseText;
             }
         };
 
-        // Notice that a parameter (q) is added to the URL (with the content of the dropdown list)
+        // GET 방식으로 클릭한 값 전송 준비
         xhttp.open("GET", "reservation1_search_tariff.php?q="+check_in+"_"+check_out+"_"+adult_breakfast+"_"+child_breakfast+"_"+deal_name+"_"+room_type, true);
         
-        // Send the request off to a file on the server
+        // 전송
         xhttp.send();
     }
 

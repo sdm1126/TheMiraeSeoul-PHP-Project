@@ -126,9 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
             $("#adult").val(sessionStorage.getItem("adult"));
             $("#child").val(sessionStorage.getItem("child"));
 
-        // 1인 미만 시, 
-        } else if (parseInt($("#adult").val()) + parseInt($("#child").val()) < 1) {
-            alert('최소 1명 이상 선택 부탁드립니다. 인원을 다시 선택해주세요.');
+        // 0인 미만 시, 
+        } else if (parseInt($("#adult").val()) + parseInt($("#child").val()) < 0) {
+            alert('최소 0명 이상 선택 부탁드립니다. 인원을 다시 선택해주세요.');
             // sessionStorage에 저장된 인원 수 세팅
             $("#adult").val(sessionStorage.getItem("adult"));
             $("#child").val(sessionStorage.getItem("child"));
